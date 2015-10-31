@@ -3,7 +3,7 @@
 files=()
 files+='/home/fizzo/.vim/UltiSnips'
 files+='/home/fizzo/.vimrc'
-files+='/home/fizzo/.i3/config'
+files+='/home/fizzo/.i3'
 files+='/home/fizzo/.i3status.conf'
 files+='/home/fizzo/.zprofile'
 files+='/home/fizzo/.zshrc'
