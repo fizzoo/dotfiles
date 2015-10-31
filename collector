@@ -1,0 +1,45 @@
+#!/bin/zsh
+#Really only here that i might remember where these files actually are supposed to go
+files=()
+files+='/home/fizzo/.vim/UltiSnips'
+files+='/home/fizzo/.vimrc'
+files+='/home/fizzo/.i3/config'
+files+='/home/fizzo/.zprofile'
+files+='/home/fizzo/.zshrc'
+
+if (( $# == 0 ))
+then
+    for f in $files
+    do
+        if [[ -h $f ]]
+        then
+            printf "$f already a symlink, ignoring\n"
+        elif [[ -e $f ]]
+        then
+            printf "$f exists, move it manually or '$0 forcemove'\n"
+        else
+            printf "ln -s $PWD/$f:t $f\n"
+            ln -s $PWD/$f:t $f
+        fi
+    done
+elif (( $# == 1 )) && [[ $1 == clean ]]
+then
+    for f in $files
+    do
+        if [[ -h $f ]]
+        then
+            printf "rm $f\n"
+            rm $f
+        elif [[ -e $f ]]
+        then
+            printf "$f exists, but isn't a symlink, ignored\n"
+        fi
+    done
+elif (( $# == 1 )) && [[ $1 == forcemove ]]
+then
+    for f in $files
+    do
+        printf "mv $f .\n"
+        mv $f .
+    done
+fi
