@@ -61,6 +61,13 @@ serve(){
     while true; do; sleep 1; done
 }
 
+# just kill mpd after ncmpcpp closes, i have enough space to let it have a window...
+musik(){
+    mpd
+    ncmpcpp
+    mpd --kill
+}
+
 #sync the time with chrony
 alias synctime='sudo systemctl restart chrony.service && sleep 10 && chronyc -a makestep && sleep 1 && timedatectl'
 
