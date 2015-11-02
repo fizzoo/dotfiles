@@ -3,7 +3,7 @@ resize_grip = false
 scroll_on_output = false
 scroll_on_keystroke = true
 audible_bell = false
-visible_bell = true
+visible_bell = false
 urgent_on_bell = false
 mouse_autohide = false
 allow_bold = true
@@ -18,7 +18,7 @@ transparency = 0.0
 pseudo_transparency = false
 
 # "system", "on" or "off"
-cursor_blink = off
+cursor_blink = on
 
 # "block", "underline" or "ibeam"
 cursor_shape = block
