@@ -34,10 +34,9 @@ bindkey -v
 export KEYTIMEOUT=1
 bindkey "^?" backward-delete-char
 bindkey "^[[3~" delete-char
+bindkey -M vicmd '?' history-incremental-search-backward
 
 eval $(dircolors /etc/fizz/.dircolors)
-autoload -U colors && colors
-autoload -U promptinit && promptinit
 export PROMPT='%K{magenta}%(?..[%?])%1(j.{%j}.) %n %3~ %k'
 
 color(){
@@ -52,6 +51,25 @@ color(){
 sensibleown(){
     sudo chown -R fizzo:a $*
     sudo chmod -R ug=rwX,o-rwx $*
+}
+
+serve(){
+    TRAPINT(){ sudo nginx -s stop; return 42 }
+    nginxfile='/tmp/nginx.conf'
+    myip=$(ip a show wlo1 | ag "inet " | sed "s/inet //" | sed "s/\/.*$//" | sed "s/[ \t]*//")
+
+    printf "user fizzo; worker_processes 1;
+    events {worker_connections  1024;}
+    http {
+    sendfile on;
+    server {listen 80; server_name %s;
+    location / {root \"%s\"; autoindex on;} } }
+    " $myip $PWD >$nginxfile
+
+    sudo nginx -c $nginxfile
+    printf "Started server on directory $PWD, ip $myip\n"
+
+    while true; do; sleep 1; done
 }
 
 #synca klockan

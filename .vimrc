@@ -3,7 +3,6 @@
 " make -f Make_ming.mak ARCH=x86-64 PYTHON=/c/programs/python2 DYNAMIC_PYTHON=yes PYTHON_VER=27
 execute pathogen#infect()
 
-
 if has('win32') || has('win64')
     command ERC e ~/_vimrc
     set guifont=Dina:h6
@@ -12,6 +11,8 @@ else
     set guifont=Dina\ 6
 endif
 
+" term fix
+set ttimeoutlen=0
 
 " leader maps, själva mapleader behöver vara tidig.
 nnoremap    <space>         <nop>
@@ -76,8 +77,8 @@ set expandtab
 " completion
 set complete+=d
 set completeopt+=menuone
-inoremap <c-d> <c-x><c-p>
-inoremap <expr> <c-@> pumvisible() ? "<c-n>" : "<c-x><c-o>"
+inoremap <c-f> <space><bs><c-x><c-o>
+inoremap <c-@> <c-n>
 
 " c++ completes, Syntastic & Marching
 let g:syntastic_always_populate_loc_list = 1
