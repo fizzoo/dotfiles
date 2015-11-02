@@ -56,18 +56,11 @@ sensibleown(){
 serve(){
     TRAPINT(){ sudo nginx -s stop; return 42 }
     nginxfile='/tmp/nginx.conf'
+    printf "user fizzo a; events { worker_connections 1024; } http { server { root \"$PWD\"; autoindex on; } }" >$nginxfile
     myip=$(ip a show wlo1 | ag "inet " | sed "s/inet //" | sed "s/\/.*$//" | sed "s/[ \t]*//")
 
-    printf "user fizzo; worker_processes 1;
-    events {worker_connections  1024;}
-    http {
-    sendfile on;
-    server {listen 80; server_name %s;
-    location / {root \"%s\"; autoindex on;} } }
-    " $myip $PWD >$nginxfile
-
     sudo nginx -c $nginxfile
-    printf "Started server on directory $PWD, ip $myip\n"
+    printf "Started server on directory '$PWD', localip '$myip'\n"
 
     while true; do; sleep 1; done
 }
