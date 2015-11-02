@@ -1,5 +1,3 @@
-# The following lines were added by compinstall
-
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' completions 1
@@ -18,12 +16,7 @@ zstyle ':completion:*' prompt '%e errors'
 zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
 zstyle ':completion:*' substitute 1
 zstyle ':completion:*' verbose true
-zstyle :compinstall filename '/home/fizzo/.zshrc'
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
-
+autoload -Uz compinit && compinit
 
 HISTFILE=~/.zhistory
 HISTSIZE=1000
@@ -39,6 +32,9 @@ bindkey -M vicmd '?' history-incremental-search-backward
 eval $(dircolors /etc/fizz/.dircolors)
 export PROMPT='%K{magenta}%(?..[%?])%1(j.{%j}.) %n %3~ %k'
 
+umask 002
+
+# functions & aliases
 color(){
     for i in {0..256}
     do
@@ -65,10 +61,10 @@ serve(){
     while true; do; sleep 1; done
 }
 
-#synca klockan
+#sync the time with chrony
 alias synctime='sudo systemctl restart chrony.service && sleep 10 && chronyc -a makestep && sleep 1 && timedatectl'
 
-#kör reflector och mata in den i mirrorlist för bra mirrors
+#execute reflector and put the result in the mirrorlist
 alias mirrorup='cp -vf /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup && reflector --verbose -l 100 -n 25 --sort rate --save /etc/pacman.d/mirrorlist'
 
 alias syn='rsync --size-only --del -vrun '

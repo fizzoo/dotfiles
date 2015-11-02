@@ -1,0 +1,63 @@
+[options]
+resize_grip = false
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+visible_bell = true
+urgent_on_bell = false
+mouse_autohide = false
+allow_bold = true
+dynamic_title = false
+clickable_url = true
+font = Dina 6
+scrollback_lines = 10000
+search_wrap = true
+
+# 0.0: opaque, 1.0: transparent
+transparency = 0.0
+pseudo_transparency = false
+
+# "system", "on" or "off"
+cursor_blink = off
+
+# "block", "underline" or "ibeam"
+cursor_shape = block
+
+[colors]
+foreground = #eeeeee
+foreground_bold = #ffffff
+#foreground_dim = #888888
+background = #111111
+cursor = #ff3333
+
+# if unset, will reverse foreground and background
+highlight = #3333ff
+
+# colors from color0 to color254 can be set
+color0  = #262626
+color8  = #252525
+color1  = #C12121
+color9  = #E50E0E
+color2  = #597b20
+color10 = #89b83f
+color3  = #Ded838
+color11 = #efef60
+color4  = #265997
+color12 = #3F6FD0
+color5  = #706c9a
+color13 = #826ab1
+color6  = #69a2b0
+color14 = #a1cdcd
+color7  = #BBBBBB
+color15 = #EEEEEF
+
+[hints]
+#font = Monospace 12
+#foreground = #dcdccc
+#background = #3f3f3f
+#padding = 2
+#border = #3f3f3f
+#border_width = 0.5
+#roundness = 2.0
+
+# vim: ft=dosini
