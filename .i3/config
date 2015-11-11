@@ -19,10 +19,11 @@ bindsym $mod+F9 exec amixer set Master 2dB- && killall -USR1 i3status
 bindsym $mod+F10 exec amixer set Master 2dB+ && killall -USR1 i3status
 
 
-bindsym $mod+s exec dmenu_extended_run
-
-bindsym $mod+Tab scratchpad show
-bindsym $mod+z move scratchpad
+#bindsym $mod+Tab scratchpad show
+#bindsym $mod+z move scratchpad
+for_window [title="scratchy"] move scratchpad
+exec termite -t scratchy
+bindsym $mod+s scratchpad show
 
 
 

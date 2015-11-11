@@ -23,6 +23,8 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt extendedglob histverify autopushd pushdsilent
 
+REPORTTIME=1
+
 bindkey -v
 export KEYTIMEOUT=1
 bindkey "^?" backward-delete-char
@@ -81,5 +83,7 @@ alias g='g++ -std=c++11 -g '
 alias ls='ls --color=always'
 alias l='ls -A'
 alias ll='ls -Al'
+
+alias tig="tig --all"
 
 source /etc/fizz/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
