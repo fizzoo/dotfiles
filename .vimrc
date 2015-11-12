@@ -44,7 +44,6 @@ let &undodir = &dir
 
 " syntax
 set list listchars=tab:>-,trail:·,nbsp:%
-
 syntax on
 filetype plugin indent on
 set background=dark
