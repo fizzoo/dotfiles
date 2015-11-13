@@ -7,7 +7,7 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*' insert-unambiguous true
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|[._-]=* r:|=*'
+zstyle ':completion:*' matcher-list '' '+m:{[:lower:]}={[:upper:]}' '+r:|[._-]=* r:|=*' '+l:|=* r:|=*'
 zstyle ':completion:*' max-errors 3
 zstyle ':completion:*' menu select=1
 zstyle ':completion:*' original true
@@ -85,5 +85,3 @@ alias l='ls -A'
 alias ll='ls -Al'
 
 alias tig="tig --all"
-
-source /etc/fizz/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

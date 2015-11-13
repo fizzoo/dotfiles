@@ -14,4 +14,8 @@ fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
 
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+if [[ -z $startxstarted && -z $DISPLAY && $XDG_VTNR -eq 1 && -z $TMUX ]]
+then
+    startxstarted='ja'
+    startx
+fi
