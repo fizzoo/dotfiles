@@ -83,5 +83,3 @@ alias g='g++ -std=c++11 -g '
 alias ls='ls --color=always'
 alias l='ls -A'
 alias ll='ls -Al'
-
-alias tig="tig --all"
