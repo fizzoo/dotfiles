@@ -70,11 +70,15 @@ musik(){
     mpd --kill
 }
 
+twi(){
+    livestreamer twitch.tv/$1 best
+}
+
 #sync the time with chrony
 alias synctime='sudo systemctl restart chrony.service && sleep 10 && chronyc -a makestep && sleep 1 && timedatectl'
 
 #execute reflector and put the result in the mirrorlist
-alias mirrorup='cp -vf /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup && reflector --verbose -l 100 -n 25 --sort rate --save /etc/pacman.d/mirrorlist'
+alias mirrorup='cp -vf /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup && reflector --verbose -l 64 -n 16 --sort rate --save /etc/pacman.d/mirrorlist'
 
 alias syn='rsync --size-only --del -vrun '
 
@@ -83,3 +87,4 @@ alias g='g++ -std=c++11 -g '
 alias ls='ls --color=always'
 alias l='ls -A'
 alias ll='ls -Al'
+
