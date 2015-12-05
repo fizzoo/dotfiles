@@ -36,6 +36,7 @@ set undofile
 set backspace=indent,eol,start
 set history=100
 set hidden
+set clipboard=unnamed
 
 " tempsaker
 set dir-=.

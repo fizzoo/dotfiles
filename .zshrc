@@ -88,3 +88,6 @@ alias ls='ls --color=always'
 alias l='ls -A'
 alias ll='ls -Al'
 
+alias ats='tmux -S /tmp/1'
+alias at='tmux -S /tmp/1 attach'
+alias wlo='sudo iftop -i wlo1'
