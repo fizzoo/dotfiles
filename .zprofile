@@ -13,10 +13,3 @@ if [[ ! -d "$TMPDIR" ]]; then
 fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
-
-if [[ -z $startxstarted && -z $DISPLAY && $XDG_VTNR -eq 1 && -z $TMUX ]]
-then
-    startxstarted='y'
-    printf "Starting X with gnome. Press anything to cancel.\n"
-    read -k -t 2 || startx
-fi
