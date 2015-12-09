@@ -7,6 +7,8 @@ files+='/home/fizzo/.zprofile'
 files+='/home/fizzo/.zshrc'
 files+='/home/fizzo/.config/termite'
 files+='/etc/tmux.conf'
+files+='/home/fizzo/.mpd/mpd.conf'
+files+='/home/fizzo/.ncmpcpp'
 
 if (( $# == 0 ))
 then
