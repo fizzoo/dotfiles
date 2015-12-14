@@ -21,7 +21,7 @@ autoload -Uz compinit && compinit
 HISTFILE=~/.zhistory
 HISTSIZE=1000
 SAVEHIST=1000
-setopt extendedglob histverify autopushd pushdsilent
+setopt extendedglob histverify autopushd pushdsilent nobeep
 
 REPORTTIME=1
 
