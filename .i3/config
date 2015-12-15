@@ -17,11 +17,6 @@ bindsym $mod+F2 exec xbacklight = 8
 bindsym $mod+F3 exec xbacklight = 32
 bindsym $mod+F4 exec xbacklight = 100
 
-bindsym $mod+F8 exec pactl set-sink-volume 0 16%
-bindsym $mod+F9 exec pactl set-sink-volume 0 32%
-bindsym $mod+F10 exec pactl set-sink-volume 0 64%
-bindsym $mod+F11 exec pactl set-sink-volume 0 0%
-
 
 bindsym $mod+c exec chromium
 
