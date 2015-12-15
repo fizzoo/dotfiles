@@ -101,6 +101,8 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+bindsym $mod+Shift+e exit
+
 # switch to workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -150,4 +152,5 @@ bindsym $mod+r mode "resize"
 bar {
         mode hide
         status_command i3status
+        tray_output primary
 }
