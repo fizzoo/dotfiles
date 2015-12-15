@@ -10,7 +10,6 @@ fi
 xset b off &
 xset m 0 0 &
 synclient AccelFactor=0 MinSpeed=2 MaxSpeed=2 &
-pulseaudio --daemonize
 
 XDG_CURRENT_DESKTOP=i3
 export XDG_CURRENT_DESKTOP
