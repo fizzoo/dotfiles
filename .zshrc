@@ -88,3 +88,7 @@ alias ll='ls -Al'
 alias ats='tmux -S /tmp/1'
 alias at='tmux -S /tmp/1 attach'
 alias wlo='sudo iftop -i wlo1'
+
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'

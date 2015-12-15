@@ -7,10 +7,11 @@ files+='/home/fizzo/.zprofile'
 files+='/home/fizzo/.zshrc'
 files+='/home/fizzo/.config/termite'
 files+='/etc/tmux.conf'
-files+='/home/fizzo/.i3/config'
+files+='/home/fizzo/.i3'
 files+='/home/fizzo/.i3status.conf'
 files+='/home/fizzo/.mpd/mpd.conf'
 files+='/home/fizzo/.ncmpcpp'
+files+='/home/fizzo/.xinitrc'
 
 if (( $# == 0 ))
 then
@@ -18,7 +19,7 @@ then
     do
         if [[ -h $f ]]
         then
-            printf "$f already a symlink, ignoring\n"
+            printf "        $f already a symlink, ignoring\n"
         elif [[ -e $f ]]
         then
             printf "$f exists, move it manually or '$0 move'\n"
