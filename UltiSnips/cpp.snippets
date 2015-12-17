@@ -173,3 +173,19 @@ asm (
 	:"r" (${2:invar})
 );
 endsnippet
+
+snippet TC "test case catch" b
+TEST_CASE("$1"){
+	$0
+}
+endsnippet
+
+snippet R "require catch" b
+REQUIRE(${1:${VISUAL}});$0
+endsnippet
+
+snippet S "section catch" b
+SECTION("$1"){
+	${0:${VISUAL}}
+}
+endsnippet
