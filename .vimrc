@@ -3,14 +3,6 @@
 " make -f Make_ming.mak ARCH=x86-64 PYTHON=/c/programs/python2 DYNAMIC_PYTHON=yes PYTHON_VER=27
 execute pathogen#infect()
 
-if has('win32') || has('win64')
-    command ERC e ~/_vimrc
-    set guifont=Dina:h6
-else
-    command ERC e ~/.vimrc
-    set guifont=Dina\ 6
-endif
-
 " term fix
 set ttimeoutlen=0
 
@@ -39,9 +31,9 @@ set hidden
 set clipboard=unnamed
 
 " tempsaker
-set dir-=.
-let &bdir = &dir
-let &undodir = &dir
+set dir=/tmp
+set backupdir=/tmp
+set undodir=/tmp
 
 " syntax
 set list listchars=tab:>-,trail:·,nbsp:%
@@ -90,6 +82,7 @@ let g:syntastic_cpp_compiler_options = "-Wall -Wextra -pedantic -std=c++14"
 let g:marching#clang_command#options = {"cpp" : "-std=c++14"}
 
 " diverse commands
+command ERC e ~/.vimrc
 command -nargs=1 PAD %s/$/\=repeat(' ',<args>-virtcol('$'))
 command RTW %s/\s\+$//
 
@@ -127,3 +120,14 @@ nnoremap    <leader>p       :Unite register<cr>
 nnoremap    <leader>g       :Unite grep<cr>
 nnoremap    <leader>f       :Unite file<cr>
 nnoremap    <leader><tab>   :Unite line:buffers<cr>
+
+
+
+" Windows
+if has('win32') || has('win64')
+    command ERC e ~/_vimrc
+    set guifont=Dina:h6
+    set dir=%TMP%
+    set backupdir=%TMP%
+    set undodir=%TMP%
+endif
