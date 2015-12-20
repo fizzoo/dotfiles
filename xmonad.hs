@@ -17,7 +17,7 @@ main = xmonad defaultConfig
     }
 
 -- smartBorders
-minLayoutHook = smartBorders $ Tall 1 (1/40) (1/2) ||| noBorders(Full) ||| Grid ||| Accordion
+minLayoutHook = Tall 1 (1/40) (1/2) ||| noBorders(Full) ||| Grid ||| Accordion
 
 minaKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [ ((modMask,               xK_Return), spawn $ XMonad.terminal conf)
