@@ -11,7 +11,8 @@ xset b off &
 xset m 0 0 &
 synclient AccelFactor=0 MinSpeed=2 MaxSpeed=2 &
 
-XDG_CURRENT_DESKTOP=i3
+XDG_CURRENT_DESKTOP=xmonad
 export XDG_CURRENT_DESKTOP
 
-exec i3
+variety &
+exec xmonad

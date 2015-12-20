@@ -12,6 +12,7 @@ files+='/home/fizzo/.i3status.conf'
 files+='/home/fizzo/.mpd/mpd.conf'
 files+='/home/fizzo/.ncmpcpp'
 files+='/home/fizzo/.xinitrc'
+files+='/home/fizzo/.xmonad/xmonad.hs'
 
 if (( $# == 0 ))
 then

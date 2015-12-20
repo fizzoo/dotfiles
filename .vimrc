@@ -6,7 +6,7 @@ execute pathogen#infect()
 " term fix
 set ttimeoutlen=0
 
-" leader maps, själva mapleader behöver vara tidig.
+" leader maps, själva mapleader behöver vara tidig
 nnoremap    <space>         <nop>
 let mapleader = " "
 nnoremap    <leader>w       :bn<cr>
@@ -52,6 +52,7 @@ set ruler
 set laststatus=2
 set wildmenu
 set wrap linebreak breakindent showbreak=>\ "
+set foldmethod=marker
 
 " sökning
 set incsearch
@@ -120,7 +121,6 @@ nnoremap    <leader>p       :Unite register<cr>
 nnoremap    <leader>g       :Unite grep<cr>
 nnoremap    <leader>f       :Unite file<cr>
 nnoremap    <leader><tab>   :Unite line:buffers<cr>
-
 
 
 " Windows
