@@ -15,4 +15,4 @@ XDG_CURRENT_DESKTOP=xmonad
 export XDG_CURRENT_DESKTOP
 
 variety &
-exec xmonad
+exec xmonad | xmobar
