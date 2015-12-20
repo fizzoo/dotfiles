@@ -6,18 +6,20 @@ import qualified Data.Map as M
 
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops
 
-main = xmonad defaultConfig
+main = xmonad $ ewmh defaultConfig
     { modMask = mod4Mask
     , terminal = "termite"
     , layoutHook = minLayoutHook
     , manageHook = minManageHook
+    , handleEventHook = handleEventHook defaultConfig <+> fullscreenEventHook
     , keys = minaKeys <+> keys defaultConfig
     , logHook = dynamicLogWithPP xmobarPP {ppOrder = (\(ws:_:_:_) -> [ws]) }
     }
 
 -- smartBorders
-minLayoutHook = Tall 1 (1/40) (1/2) ||| noBorders(Full) ||| Grid ||| Accordion
+minLayoutHook = smartBorders $ Tall 1 (1/40) (1/2) ||| noBorders(Full) ||| Grid
 
 minaKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [ ((modMask,               xK_Return), spawn $ XMonad.terminal conf)
@@ -34,4 +36,5 @@ minaKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
 minManageHook = composeAll
     [ title =? "statusy" --> doFullFloat
+    , isFullscreen --> doFullFloat
     ]
