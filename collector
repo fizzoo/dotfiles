@@ -7,12 +7,11 @@ files+='/home/fizzo/.zprofile'
 files+='/home/fizzo/.zshrc'
 files+='/home/fizzo/.config/termite'
 files+='/etc/tmux.conf'
-files+='/home/fizzo/.i3'
-files+='/home/fizzo/.i3status.conf'
 files+='/home/fizzo/.mpd/mpd.conf'
 files+='/home/fizzo/.ncmpcpp'
 files+='/home/fizzo/.xinitrc'
 files+='/home/fizzo/.xmonad/xmonad.hs'
+files+='/home/fizzo/.xmobarrc'
 
 if (( $# == 0 ))
 then

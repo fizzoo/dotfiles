@@ -5,6 +5,7 @@ import XMonad.Layout.Accordion
 import qualified Data.Map as M
 import Data.Bits ((.|.))
 import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.DynamicLog
 
 main = xmonad defaultConfig
     { modMask = mod4Mask
@@ -12,6 +13,7 @@ main = xmonad defaultConfig
     , layoutHook = minLayoutHook
     , manageHook = minManageHook
     , keys = minaKeys <+> keys defaultConfig
+    , logHook = dynamicLogWithPP xmobarPP {ppOrder = (\(ws:_:_:_) -> [ws]) }
     }
 
 -- smartBorders
