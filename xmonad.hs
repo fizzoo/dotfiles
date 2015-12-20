@@ -3,7 +3,7 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.Grid
 import XMonad.Layout.Accordion
 import qualified Data.Map as M
-import Data.Bits ((.|.))
+
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.DynamicLog
 
@@ -26,6 +26,10 @@ minaKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,               xK_c     ), spawn "chromium")
     , ((modMask,               xK_y     ), spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in PATH: \"$PATH\"; fi")
     , ((modMask,               xK_q     ), kill) -- %! Close the focused window
+    , ((modMask,               xK_F1    ), spawn "xbacklight = 4")
+    , ((modMask,               xK_F2    ), spawn "xbacklight = 16")
+    , ((modMask,               xK_F3    ), spawn "xbacklight = 50")
+    , ((modMask,               xK_F4    ), spawn "xbacklight = 100")
     ]
 
 minManageHook = composeAll
