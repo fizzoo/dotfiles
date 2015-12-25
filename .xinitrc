@@ -14,5 +14,6 @@ synclient AccelFactor=0 MinSpeed=2 MaxSpeed=2 &
 XDG_CURRENT_DESKTOP=xmonad
 export XDG_CURRENT_DESKTOP
 
+stalonetray &
 variety &
 exec xmonad | xmobar

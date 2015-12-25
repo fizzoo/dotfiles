@@ -1,0 +1,8 @@
+background "#000000"
+window_type desktop
+window_layer bottom
+grow_gravity NW
+icon_gravity NW
+geometry 1x1+640-0
+icon_size 12
+kludges force_icons_size

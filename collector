@@ -12,6 +12,7 @@ files+='/home/fizzo/.ncmpcpp'
 files+='/home/fizzo/.xinitrc'
 files+='/home/fizzo/.xmonad/xmonad.hs'
 files+='/home/fizzo/.xmobarrc'
+files+='/home/fizzo/.stalonetrayrc'
 
 if (( $# == 0 ))
 then
