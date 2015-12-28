@@ -21,7 +21,7 @@ autoload -Uz compinit && compinit
 HISTFILE=~/.zhistory
 HISTSIZE=1000
 SAVEHIST=1000
-setopt extendedglob histverify autopushd pushdsilent nobeep
+setopt extendedglob histverify autopushd pushdsilent nobeep hist_ignore_all_dups
 
 REPORTTIME=1
 
@@ -81,9 +81,9 @@ alias syn='rsync --size-only --del -vrun '
 
 alias g='g++ -std=c++11 -g '
 
-alias ls='ls --color=always'
-alias l='ls -A'
-alias ll='ls -Al'
+alias l='ls --color=always -A'
+alias ll='ls --color=always -al'
+alias d='du -d1 -h'
 
 alias ats='tmux -S /tmp/1'
 alias at='tmux -S /tmp/1 attach'
@@ -92,3 +92,12 @@ alias wlo='sudo iftop -i wlo1'
 alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
+
+if [[ $HOST == mag ]]
+then
+    rut(){
+        sudo systemctl start nginx
+        sudo systemctl start php-fpm
+        printf 'http://localhost/rutorrent'
+    }
+fi
