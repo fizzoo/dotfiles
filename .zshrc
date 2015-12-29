@@ -66,7 +66,9 @@ serve(){
 # just kill mpd after ncmpcpp closes, i have enough space to let it have a window...
 musik(){
     mpd
+    ~/.config/albumart/albumart.py &>/tmp/aalog &
     ncmpcpp
+    kill %~/.config/albumart
     mpd --kill
 }
 

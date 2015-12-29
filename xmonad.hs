@@ -37,4 +37,5 @@ minManageHook = composeAll
     [ title =? "statusy" --> doFullFloat
     , isFullscreen --> doFullFloat
     , resource =? "stalonetray" --> doIgnore
+    , title =? "album art" --> doSideFloat CE
     ]
