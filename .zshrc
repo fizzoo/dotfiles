@@ -63,7 +63,7 @@ serve(){
     while true; do; sleep 1; done
 }
 
-# just kill mpd after ncmpcpp closes, i have enough space to let it have a window...
+# just kill mpd after ncmpcpp closes, let it have a workspace
 musik(){
     mpd
     ~/.config/albumart/albumart.py &>/tmp/aalog &
@@ -100,6 +100,6 @@ then
     rut(){
         sudo systemctl start nginx
         sudo systemctl start php-fpm
-        printf 'http://localhost/rutorrent'
+        printf 'http://localhost/rutorrent\n'
     }
 fi

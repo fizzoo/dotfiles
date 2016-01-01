@@ -1,24 +1,25 @@
 import XMonad
-import XMonad.Layout.NoBorders
 import XMonad.Layout.Grid
-import qualified Data.Map as M
+import qualified Data.Map as M -- for keys
 
-import XMonad.Hooks.ManageHelpers
+import XMonad.Hooks.ManageHelpers -- doFullFloat, isFullScreen etc
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops
+import XMonad.Hooks.FadeInactive
 
 main = xmonad $ ewmh defaultConfig
     { modMask = mod4Mask
     , terminal = "termite"
+    , borderWidth = 0
     , layoutHook = minLayoutHook
     , manageHook = minManageHook
     , handleEventHook = handleEventHook defaultConfig <+> fullscreenEventHook
     , keys = minaKeys <+> keys defaultConfig
-    , logHook = dynamicLogWithPP xmobarPP {ppOrder = (\(ws:_:_:_) -> [ws]) }
+    , logHook = fadeInactiveCurrentWSLogHook 0.90 <+> -- fade inactive windows on active workspace
+        dynamicLogWithPP xmobarPP {ppOrder = (\(ws:_:_:_) -> [ws]) } -- log in xmobar format, take only the workspace part (and notifications, where applicable)
     }
 
--- smartBorders
-minLayoutHook = smartBorders $ Tall 1 (1/40) (1/2) ||| noBorders Full ||| Grid
+minLayoutHook = Tall 1 (1/40) (1/2) ||| Full ||| Grid
 
 minaKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList
     [ ((modMask, xK_Return), spawn $ XMonad.terminal conf)
