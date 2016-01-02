@@ -16,7 +16,6 @@ export XDG_CURRENT_DESKTOP
 
 if [[ $HOSTNAME == mag ]]
 then
-    tmux new-session -s rtorrent -d rtorrent
     xmodmap -e 'keycode 191 = Insert' #F13
     numlockx & #no numpad on arc
 fi

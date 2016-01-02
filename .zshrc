@@ -94,12 +94,3 @@ alias wlo='sudo iftop -i wlo1'
 alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
-
-if [[ $HOST == mag ]]
-then
-    rut(){
-        sudo systemctl start nginx
-        sudo systemctl start php-fpm
-        printf 'http://localhost/rutorrent\n'
-    }
-fi
