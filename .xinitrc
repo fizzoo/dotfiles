@@ -23,5 +23,4 @@ fi
 xcompmgr &
 stalonetray &
 variety &
-sleep 1 && volumeicon &
 exec xmonad | xmobar

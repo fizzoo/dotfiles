@@ -27,6 +27,7 @@ minaKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList
     , ((modMask, xK_d), spawn "dmenu_run")
     , ((modMask, xK_s), spawn "termite -t statusy -e htop")
     , ((modMask, xK_c), spawn "chromium")
+    , ((modMask, xK_p), spawn "pavucontrol")
     , ((modMask, xK_y), spawn "if type xmonad; then xmonad --recompile && xmonad --restart; else xmessage xmonad not in PATH: \"$PATH\"; fi")
     , ((modMask .|. shiftMask, xK_y), io (exitWith ExitSuccess)) -- Quit xmonad
     , ((modMask, xK_q), kill)
@@ -39,6 +40,7 @@ minaKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList
 
 minManageHook = composeAll
     [ title =? "statusy" --> doFullFloat
+    , resource =? "pavucontrol" --> doFullFloat
     , isFullscreen --> doFullFloat
     , resource =? "stalonetray" --> doIgnore
     , title =? "album art" --> doSideFloat CE
