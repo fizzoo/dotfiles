@@ -21,6 +21,11 @@ then
     variety &
 fi
 
+if [[ $HOSTNAME == arc ]]
+then
+    sh ~/.fehbg &
+fi
+
 xcompmgr &
 stalonetray &
 exec xmonad | xmobar
