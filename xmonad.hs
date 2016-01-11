@@ -4,7 +4,6 @@ import System.Exit
 
 import XMonad.Hooks.ManageHelpers -- doFullFloat, isFullScreen etc
 import XMonad.Hooks.DynamicLog -- for xmobar
-import XMonad.Hooks.FadeInactive
 import XMonad.Hooks.EwmhDesktops -- fullscreenEventHook, emwh etc
 import XMonad.Hooks.ManageDocks -- avoidStruts, manageDocks, docksEventHook etc
 import XMonad.Layout.GridVariants --grid variant that tiles the first two vertically
@@ -17,8 +16,7 @@ main = xmonad $ ewmh defaultConfig
     , manageHook = minManageHook <+> manageDocks
     , handleEventHook = handleEventHook defaultConfig <+> fullscreenEventHook <+> docksEventHook
     , keys = minaKeys <+> keys defaultConfig
-    , logHook = fadeInactiveCurrentWSLogHook 0.90 <+> -- fade inactive windows on active workspace
-        dynamicLogWithPP xmobarPP {ppOrder = (\(ws:_:_:_) -> [ws]) } -- log in xmobar format, take only the workspace part (and notifications, where applicable)
+    , logHook = dynamicLogWithPP xmobarPP {ppOrder = (\(ws:_:_:_) -> [ws]) } -- log in xmobar format, take only the workspace part (and notifications, where applicable)
     }
 
 minLayoutHook = avoidStruts grid ||| Full
