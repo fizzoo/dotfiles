@@ -82,7 +82,7 @@ alias mirrorup='cp -vf /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup 
 
 alias syn='rsync --size-only --del -vrun '
 
-alias g='g++ -std=c++11 -g '
+alias g='g++ -std=c++14 -g '
 
 alias l='ls --color=always -A'
 alias ll='ls --color=always -al'
