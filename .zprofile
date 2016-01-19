@@ -3,6 +3,8 @@ export VISUAL='vim'
 export PAGER='less'
 export BROWSER='chromium'
 
+export PATH=/home/fizzo/.cabal/bin:$PATH
+
 if [[ -z "$LANG" ]]; then
     export LANG='en_US.UTF-8'
 fi

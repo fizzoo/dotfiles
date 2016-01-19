@@ -15,6 +15,11 @@ nnoremap    <leader>q       :bd<cr>
 nnoremap    <leader>l       :lopen<cr>
 nnoremap    <leader>t       / $<cr>
 nnoremap    <leader><space> gg=G''zz
+nnoremap    Q               <nop>
+nnoremap    <leader>ht      :GhcModType<cr>
+nnoremap    <leader>hc      :GhcModTypeClear<cr>
+nnoremap    <leader>hk      :GhcModCheck<cr>
+nnoremap    <leader>hl      :GhcModLint<cr>
 
 " språk
 set encoding=utf8

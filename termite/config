@@ -9,7 +9,7 @@ mouse_autohide = false
 allow_bold = true
 dynamic_title = false
 clickable_url = true
-font = Dina 6
+font = Dina 8
 scrollback_lines = 10000
 search_wrap = true
 
