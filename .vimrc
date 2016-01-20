@@ -6,11 +6,11 @@ execute pathogen#infect()
 " term fix
 set ttimeoutlen=0
 
-" leader maps, själva mapleader behöver vara tidig
+" div maps, mapleader behöver vara tidig
 nnoremap    <space>         <nop>
 let mapleader = " "
-nnoremap    <leader>w       :bn<cr>
-nnoremap    <leader>b       :bp<cr>
+nnoremap    <c-n>           :bn<cr>
+nnoremap    <c-p>           :bp<cr>
 nnoremap    <leader>q       :bd<cr>
 nnoremap    <leader>l       :lopen<cr>
 nnoremap    <leader>t       / $<cr>
@@ -44,20 +44,16 @@ set undodir=/tmp
 set list listchars=tab:>-,trail:·,nbsp:%
 syntax on
 filetype plugin indent on
-set background=dark
-colorscheme slate
 let g:tex_flavor="latex"
 
 " användbara/fina prylar
 set guioptions=c
-set number
 set showcmd
-set nostartofline
 set ruler
-set laststatus=2
 set wildmenu
 set wrap linebreak breakindent showbreak=>\ "
 set foldmethod=marker
+set fillchars=
 
 " sökning
 set incsearch
@@ -117,14 +113,11 @@ augroup END
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 
-" Airline
-let g:airline#extensions#tabline#enabled = 1
-
-
 " Unite
 nnoremap    <leader>p       :Unite register<cr>
 nnoremap    <leader>g       :Unite grep<cr>
 nnoremap    <leader>f       :Unite file<cr>
+nnoremap    <leader>b       :Unite buffer<cr>
 nnoremap    <leader><tab>   :Unite line:buffers<cr>
 
 

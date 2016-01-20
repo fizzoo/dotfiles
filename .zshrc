@@ -18,9 +18,7 @@ zstyle ':completion:*' substitute 1
 zstyle ':completion:*' verbose true
 autoload -Uz compinit && compinit
 
-HISTFILE=~/.zhistory
 HISTSIZE=1000
-SAVEHIST=1000
 setopt extendedglob histverify autopushd pushdsilent nobeep hist_ignore_all_dups
 
 REPORTTIME=1
@@ -86,7 +84,7 @@ alias g='g++ -std=c++14 -g '
 
 alias l='ls --color=always -A'
 alias ll='ls --color=always -al'
-alias d='du -d1 -h'
+alias d='du -had1'
 
 alias ats='tmux -S /tmp/1'
 alias at='tmux -S /tmp/1 attach'
