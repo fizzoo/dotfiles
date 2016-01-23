@@ -5,6 +5,9 @@ execute pathogen#infect()
 
 " term fix
 set ttimeoutlen=0
+" midclick paste through ssh works when in input, (doing so when not in input
+" is 99% an error anyway), and mouse works otherwise.
+set mouse=nv
 
 " div maps, mapleader behöver vara tidig
 nnoremap    <space>         <nop>
