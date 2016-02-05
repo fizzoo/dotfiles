@@ -46,8 +46,6 @@ minaKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList
 minManageHook :: ManageHook
 minManageHook = composeAll
     [ title =? "statusy" --> doFullFloat
-    , resource =? "pavucontrol" --> doFullFloat
     , isFullscreen --> doFullFloat
-    , resource =? "stalonetray" --> doIgnore
     , title =? "album art" --> doSideFloat CE
     ]
