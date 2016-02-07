@@ -82,8 +82,7 @@ alias syn='rsync --size-only --del -vrun '
 
 alias g='g++ -std=c++14 -g '
 
-alias l='ls --color=always -A'
-alias ll='ls --color=always -al'
+alias l='ls --color=always -al'
 alias d='du -had1'
 
 alias ats='tmux -S /tmp/1'
