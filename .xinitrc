@@ -18,14 +18,9 @@ if [[ $HOSTNAME == mag ]]
 then
     xmodmap -e 'keycode 191 = Insert' #F13
     numlockx & #no numpad on arc
-    variety &
 fi
 
-if [[ $HOSTNAME == arc ]]
-then
-    sh ~/.fehbg &
-fi
-
+sh ~/.fehbg &
 xcompmgr &
 stalonetray &
 exec xmonad | xmobar
