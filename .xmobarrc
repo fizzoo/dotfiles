@@ -5,6 +5,7 @@ Config {
         , bgColor =      "black"
         , fgColor =      "#aaaaaa"
         , position =     Bottom
+        , alpha = 0
 
         -- layout
         , sepChar =  "%"   -- delineator between plugin names and straight text

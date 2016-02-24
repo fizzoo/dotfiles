@@ -20,7 +20,7 @@ main = xmonad $ ewmh def
     , logHook = dynamicLogWithPP xmobarPP {ppOrder = \(ws:_) -> [ws] } -- log in xmobar format, take only the workspace part (and notifications, where applicable)
     }
 
-minLayoutHook = avoidStruts grid ||| Full
+minLayoutHook = grid ||| Full
     where
     grid = Grid (16/9) -- first 3 windows are exactly like tall, then degrades gracefully into grids
 
