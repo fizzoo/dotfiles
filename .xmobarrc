@@ -1,16 +1,16 @@
 Config {
 
     -- appearance
-        font =         "xft:Dina:size=8"
+        font =         "xft:Dina:size=10"
         , bgColor =      "black"
-        , fgColor =      "#aaaaaa"
+        , fgColor =      "#ffffff"
         , position =     Bottom
         , alpha = 0
 
         -- layout
         , sepChar =  "%"   -- delineator between plugin names and straight text
         , alignSep = "}{"  -- separator between left-right alignment
-        , template = " %StdinReader% }{ %battery%    %date% "
+        , template = "}{ %battery%    %date% "
 
         , commands =
         [
