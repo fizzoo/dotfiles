@@ -25,7 +25,7 @@ minLayoutHook = grid ||| Full
 minaKeys :: XConfig l -> M.Map (KeyMask, KeySym) (X ())
 minaKeys conf@XConfig {XMonad.modMask = modMask} = M.fromList
     [ ((modMask, xK_Return), spawn $ XMonad.terminal conf)
-    , ((modMask, xK_d), spawn "dmenu_run")
+    , ((modMask, xK_d), spawn "dmenu_extended_run")
     , ((modMask, xK_s), spawn "termite -t statusy -e htop")
     , ((modMask, xK_c), spawn "chromium")
     , ((modMask, xK_p), spawn "pavucontrol")

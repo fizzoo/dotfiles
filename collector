@@ -13,6 +13,7 @@ files+='/home/fizzo/.xinitrc'
 files+='/home/fizzo/.xmonad/xmonad.hs'
 files+='/home/fizzo/.xmobarrc'
 files+='/home/fizzo/.stalonetrayrc'
+files+='/home/fizzo/.config/dmenu-extended/config/dmenuExtended_preferences.txt'
 
 if (( $# == 0 ))
 then
