@@ -3,7 +3,6 @@ import qualified Data.Map as M -- for keys
 import System.Exit
 
 import XMonad.Hooks.ManageHelpers -- doFullFloat, isFullScreen etc
-import XMonad.Hooks.DynamicLog -- for xmobar
 import XMonad.Hooks.EwmhDesktops -- fullscreenEventHook, emwh etc
 import XMonad.Hooks.ManageDocks -- avoidStruts, manageDocks, docksEventHook etc
 import XMonad.Layout.GridVariants --grid variant that tiles the first two vertically
@@ -17,7 +16,6 @@ main = xmonad $ ewmh def
     , manageHook = minManageHook <+> manageDocks
     , handleEventHook = handleEventHook def <+> fullscreenEventHook <+> docksEventHook
     , keys = minaKeys <+> keys def
-    , logHook = dynamicLogWithPP xmobarPP {ppOrder = \(ws:_) -> [ws] } -- log in xmobar format, take only the workspace part (and notifications, where applicable)
     }
 
 minLayoutHook = grid ||| Full

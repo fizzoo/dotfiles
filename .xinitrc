@@ -23,4 +23,5 @@ fi
 sh ~/.fehbg &
 xcompmgr &
 stalonetray &
-exec xmonad | xmobar
+xmobar &
+exec xmonad
