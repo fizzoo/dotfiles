@@ -34,7 +34,7 @@
     ],
     "path_shellCommand": "~/.dmenuEextended_shellCommand.sh",
     "scan_hidden_folders": false,
-    "terminal": "xterm",
+    "terminal": "termite",
     "valid_extensions": [
         "py",
         "svg",
