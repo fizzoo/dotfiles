@@ -6,7 +6,7 @@
     "fileopener": "rifle",
     "filter_binaries": false,
     "follow_symlinks": false,
-    "ignore_folders": [],
+    "ignore_folders": ["~/musik"],
     "include_applications": true,
     "include_binaries": true,
     "include_hidden_files": false,
