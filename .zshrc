@@ -1,19 +1,19 @@
-zstyle ':completion:*' auto-description 'specify: %d'
+#completers, _approximate tolerates 1 - max-errors faults
 zstyle ':completion:*' completer _complete _approximate
-zstyle ':completion:*' completions 1
-zstyle ':completion:*' format 'Completing %d'
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' insert-unambiguous true
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
-zstyle ':completion:*' matcher-list '' '+m:{[:lower:]}={[:upper:]}' '+r:|[._-]=* r:|=*' '+l:|=* r:|=*'
-zstyle ':completion:*' max-errors 2
+zstyle ':completion:*' max-errors 4
+
+#menu + color on cd and recommended group-name for that
 zstyle ':completion:*' menu select=1
-zstyle ':completion:*' original true
-zstyle ':completion:*' preserve-prefix '//[^/]##/'
-zstyle ':completion:*' prompt '%e errors'
-zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
-zstyle ':completion:*' verbose true
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' group-name ''
+
+#show it all, tab again to see the start of it, less keystrokes
+LISTMAX=800
+
+#ignore case if nothing found, allow writing something in the middle of a word
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]} l:|=* r:|=*'
+
+#load the completing
 autoload -Uz compinit && compinit
 
 HISTSIZE=1000
@@ -28,7 +28,6 @@ bindkey "^[[3~" delete-char
 bindkey "^[[A" up-line-or-search && bindkey "^[[B" down-line-or-search
 bindkey -M vicmd '?' history-incremental-search-backward
 
-eval $(dircolors /etc/fizz/.dircolors)
 export PROMPT='%K{magenta}%(?..[%?])%1(j.{%j}.) %n %3~ %k'
 
 umask 002
@@ -73,9 +72,6 @@ twi(){
     livestreamer twitch.tv/$1 best
 }
 
-#execute reflector and put the result in the mirrorlist
-alias mirrorup='cp -vf /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup && reflector --verbose -l 64 -n 16 --sort rate --save /etc/pacman.d/mirrorlist'
-
 alias syn='rsync --size-only --del -vrun '
 
 alias g='g++ -std=c++14 -g '
@@ -85,7 +81,6 @@ alias d='du -had1'
 
 alias ats='tmux -S /tmp/1'
 alias at='tmux -S /tmp/1 attach'
-alias wlo='sudo iftop -i wlo1'
 
 alias gs='git status'
 alias ga='git add'
