@@ -2,7 +2,7 @@
     "alias_applications": false,
     "aliased_applications_format": "{name} ({command})",
     "exclude_items": [],
-    "filebrowser": "rifle",
+    "filebrowser": "termite -d",
     "fileopener": "rifle",
     "filter_binaries": false,
     "follow_symlinks": false,
