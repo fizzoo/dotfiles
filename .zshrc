@@ -72,6 +72,18 @@ twi(){
     livestreamer twitch.tv/$1 best
 }
 
+c(){
+    file=$(find / -print 2> /dev/null | fzf)
+    if [[ -z $file ]]; then return; fi
+    if [[ -d $file ]]
+    then
+        dir=$file
+    else
+        dir=$(dirname $file)
+    fi
+    cd $dir
+}
+
 alias syn='rsync --size-only --del -vrun '
 
 alias g='g++ -std=c++14 -g '
