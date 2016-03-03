@@ -19,8 +19,6 @@ autoload -Uz compinit && compinit
 HISTSIZE=1000
 setopt extendedglob histverify autopushd pushdsilent nobeep hist_ignore_all_dups
 
-REPORTTIME=1
-
 bindkey -v
 export KEYTIMEOUT=1
 bindkey "^?" backward-delete-char
