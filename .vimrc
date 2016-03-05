@@ -11,7 +11,6 @@ nnoremap    <c-n>           :bn<cr>
 nnoremap    <c-p>           :bp<cr>
 nnoremap    <leader>q       :bd<cr>
 nnoremap    <leader>l       :lopen<cr>
-nnoremap    <leader><space> gg=G''zz
 nnoremap    Q               <nop>
 nnoremap    <leader>ht      :GhcModType<cr>
 nnoremap    <leader>hc      :GhcModTypeClear<cr>
