@@ -32,54 +32,54 @@ umask 002
 
 # functions & aliases
 color(){
-    for i in {0..256}
-    do
-        tput setab $i
-        printf %$(tput cols)s
-    done
-    tput op
+  for i in {0..256}
+  do
+    tput setab $i
+    printf %$(tput cols)s
+  done
+  tput op
 }
 
 sensibleown(){
-    sudo chown -R fizzo:a $*
-    sudo chmod -R ug=rwX,o-rwx $*
+  sudo chown -R fizzo:a $*
+  sudo chmod -R ug=rwX,o-rwx $*
 }
 
 serve(){
-    TRAPINT(){ sudo nginx -s stop; return 42 }
-    nginxfile='/tmp/nginx.conf'
-    printf "user fizzo a; events { worker_connections 1024; } http { server { root \"$PWD\"; autoindex on; } }" >$nginxfile
-    myip=$(ip a show wlo1 | ag "inet " | sed "s/inet //" | sed "s/\/.*$//" | sed "s/[ \t]*//")
+  TRAPINT(){ sudo nginx -s stop; return 42 }
+  nginxfile='/tmp/nginx.conf'
+  printf "user fizzo a; events { worker_connections 1024; } http { server { root \"$PWD\"; autoindex on; } }" >$nginxfile
+  myip=$(ip a show wlo1 | ag "inet " | sed "s/inet //" | sed "s/\/.*$//" | sed "s/[ \t]*//")
 
-    sudo nginx -c $nginxfile
-    printf "Started server on directory '$PWD', localip '$myip'\n"
+  sudo nginx -c $nginxfile
+  printf "Started server on directory '$PWD', localip '$myip'\n"
 
-    while true; do; sleep 1; done
+  while true; do; sleep 1; done
 }
 
 # just kill mpd after ncmpcpp closes, let it have a workspace
 musik(){
-    mpd
-    ~/.config/albumart/albumart.py &>/tmp/aalog &
-    ncmpcpp
-    kill %~/.config/albumart
-    mpd --kill
+  mpd
+  ~/.config/albumart/albumart.py &>/tmp/aalog &
+  ncmpcpp
+  kill %~/.config/albumart
+  mpd --kill
 }
 
 twi(){
-    livestreamer twitch.tv/$1 best
+  livestreamer twitch.tv/$1 best
 }
 
 c(){
-    file=$(find / -print 2> /dev/null | fzf)
-    if [[ -z $file ]]; then return; fi
-    if [[ -d $file ]]
-    then
-        dir=$file
-    else
-        dir=$(dirname $file)
-    fi
-    cd $dir
+  file=$(find / -print 2> /dev/null | fzf)
+  if [[ -z $file ]]; then return; fi
+  if [[ -d $file ]]
+  then
+    dir=$file
+  else
+    dir=$(dirname $file)
+  fi
+  cd $dir
 }
 
 alias syn='rsync --size-only --del -vrun '
