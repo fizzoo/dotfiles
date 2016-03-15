@@ -1,0 +1,145 @@
+global !p
+import string, vim
+def make_box(twidth):
+	b = "/"
+	bwidth_inner = twidth + 6
+	sline = b*2 + bwidth_inner * b + b*2
+	mlines = b*2 + " "*3
+	mlinee = " "*3 + b*2
+	return sline, mlines, mlinee, sline
+endglobal
+
+snippet box
+`!p
+box = make_box(len(t[1]))
+snip.rv = box[0]
+snip += box[1]
+`${1:content}`!p
+box = make_box(len(t[1]))
+snip.rv = box[2]
+snip += box[3]`
+$0
+endsnippet
+
+snippet a
+assert(${0:${VISUAL}});
+endsnippet
+
+snippet b
+{
+	$0
+}
+endsnippet
+
+snippet /*
+/**
+ * $0
+ */
+endsnippet
+
+snippet f
+/**
+ * 
+ */
+${1:void} ${2:name} ($3) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet if
+if (${1:true}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet eli
+else if (${1:true}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet el
+else {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet while
+while (${1:true}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet fo
+for ($1) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet for
+for (int ${1:i} = ${2:0}; $1 < ${3:10}; ${4:++$1}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet switch
+switch ($1) {
+	case $0
+}
+endsnippet
+
+snippet once
+#ifndef ${1:`!p
+if not snip.c:
+	import string
+	snip.rv = (re.sub(r'[^A-Za-z0-9]+','_', snip.fn).upper()).upper()
+else:
+	snip.rv = snip.c`}
+#define $1
+
+${VISUAL}${0}
+
+#endif /* end of include guard: $1 */
+endsnippet
+
+snippet main
+int main(int argc, const char* argv[]) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet temp
+template <typename ${1:T}>
+endsnippet
+
+snippet inch
+#include "$1"$0
+endsnippet
+
+snippet inc
+#include <$1>$0
+endsnippet
+
+snippet ifd
+#ifdef ${1:1}
+${0:${VISUAL}}
+#endif
+endsnippet
+
+snippet ifn
+#ifndef ${1:NDEBUG}
+${0:${VISUAL}}
+#endif
+endsnippet
+
+snippet def
+#define ${1}$0
+endsnippet
+
+snippet asm
+asm (
+	"$0"
+	:"=r" (${1:outvar})
+	:"r" (${2:invar})
+);
+endsnippet
