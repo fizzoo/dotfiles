@@ -2,6 +2,7 @@ import XMonad
 import qualified Data.Map as M (fromList, Map)
 import qualified XMonad.StackSet as W
 import System.Exit (exitSuccess)
+import Control.Monad (liftM)
 
 import XMonad.Hooks.ManageHelpers (doFullFloat)
 import XMonad.Hooks.ManageDocks (manageDocks, docksEventHook)
@@ -78,14 +79,16 @@ myManageHook = composeAll
 floatAllCurrent :: X ()
 floatAllCurrent = do 
   ws <- getWindows
-  wsir <- mapM floatLocation ws
-  let wr = map snd wsir
+  wr <- mapM floaty ws
   mapM_ (windows . uncurry W.float) (zip ws wr)
 
 sinkAll :: X ()
 sinkAll = do
   ws <- getWindows
   mapM_ (windows . W.sink) ws
+
+floaty :: Window -> X W.RationalRect
+floaty = liftM snd . floatLocation
 
 getWindows :: X [Window]
 getWindows = withWindowSet (return . W.integrate' . W.stack . W.workspace . W.current)
