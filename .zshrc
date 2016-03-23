@@ -83,6 +83,7 @@ c(){
 }
 
 alias syn='rsync --size-only --del -vrun '
+alias crash='coredumpctl info -1'
 
 alias g='g++ -std=c++14 -g '
 
