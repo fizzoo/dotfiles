@@ -9,7 +9,6 @@ fi
 
 xset b off &
 xset m 0 0 &
-synclient AccelFactor=0 MinSpeed=2 MaxSpeed=2 HorizTwoFingerScroll=1 &
 
 XDG_CURRENT_DESKTOP=xmonad
 export XDG_CURRENT_DESKTOP
@@ -21,7 +20,5 @@ then
 fi
 
 sh ~/.fehbg &
-xcompmgr &
 stalonetray &
-xmobar &
 exec xmonad

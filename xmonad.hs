@@ -32,7 +32,8 @@ myKeys conf = M.fromList $
   , ((mod4Mask .|. shiftMask, xK_j), windows W.swapDown)
   , ((mod4Mask .|. shiftMask, xK_k), windows W.swapUp)
   , ((mod4Mask, xK_d), spawn "dmenu_extended_run")
-  , ((mod4Mask, xK_s), spawn "termite -t statusy -e htop")
+  , ((mod4Mask, xK_s), spawn "termite -t fully -e htop")
+  , ((mod4Mask, xK_w), spawn "termite -t fully -e statusy")
   , ((mod4Mask, xK_c), spawn "chromium")
   , ((mod4Mask, xK_p), spawn "pavucontrol")
   , ((mod4Mask, xK_i), spawn "maim -s")
@@ -51,10 +52,6 @@ myKeys conf = M.fromList $
   [((m .|. mod4Mask, k), windows $ f i)
     | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
     , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
-  ++
-  [((m .|. mod4Mask, key), screenWorkspace sc >>= flip whenJust (windows . f))
-    | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
-    , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 
 myMouseBindings :: XConfig Layout -> M.Map (KeyMask, Button) (Window -> X ())
 myMouseBindings _ = M.fromList
@@ -69,7 +66,7 @@ myMouseBindings _ = M.fromList
 
 myManageHook :: ManageHook
 myManageHook = composeAll
-  [ title =? "statusy" --> doFullFloat
+  [ title =? "fully" --> doFullFloat
   ]
 
 
