@@ -11,7 +11,7 @@ import XMonad.Layout.GridVariants (Grid(..))
 main :: IO ()
 main = xmonad $ def
   { modMask = mod4Mask
-  , terminal = "termite"
+  , terminal = "xterm"
   , borderWidth = 0
   , layoutHook = Grid (16/9)
   , manageHook = myManageHook <+> manageDocks
@@ -32,8 +32,8 @@ myKeys conf = M.fromList $
   , ((mod4Mask .|. shiftMask, xK_j), windows W.swapDown)
   , ((mod4Mask .|. shiftMask, xK_k), windows W.swapUp)
   , ((mod4Mask, xK_d), spawn "dmenu_extended_run")
-  , ((mod4Mask, xK_s), spawn "termite -t fully -e htop")
-  , ((mod4Mask, xK_w), spawn "termite -t fully -e statusy")
+  , ((mod4Mask, xK_s), spawn "xterm -T fully -e htop")
+  , ((mod4Mask, xK_w), spawn "xterm -T fully -e statusy")
   , ((mod4Mask, xK_c), spawn "chromium")
   , ((mod4Mask, xK_p), spawn "pavucontrol")
   , ((mod4Mask, xK_i), spawn "maim -s")
