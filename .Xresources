@@ -1,5 +1,5 @@
 xterm*termName: xterm-256color
-
+xterm*BorderWidth: 0
 
 XTerm*foreground: #111111
 XTerm*background: #eeeae4
