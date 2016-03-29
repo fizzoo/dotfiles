@@ -3,8 +3,8 @@ xterm*BorderWidth: 0
 
 XTerm*foreground: #111111
 XTerm*background: #eeeae4
-XTerm*color0 : #262626
-XTerm*color8 : #252525
+XTerm*color0 : #222222
+XTerm*color8 : #333333
 XTerm*color1 : #c12121
 XTerm*color9 : #e50e0e
 XTerm*color2 : #597b20
@@ -17,5 +17,5 @@ XTerm*color5 : #706c9a
 XTerm*color13: #826ab1
 XTerm*color6 : #69a2b0
 XTerm*color14: #a1cdcd
-XTerm*color7 : #bbbbbb
-XTerm*color15: #eeeeef
+XTerm*color7 : #aaaaaa
+XTerm*color15: #bbbbbb
