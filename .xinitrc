@@ -19,6 +19,7 @@ then
   synclient HorizTwoFingerScroll=1
 fi
 
+[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
 xset b off
 xset m 0 0

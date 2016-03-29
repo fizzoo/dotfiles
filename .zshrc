@@ -35,7 +35,7 @@ color(){
   for i in {0..256}
   do
     tput setab $i
-    printf %$(tput cols)s
+    printf "%8s" $i
   done
   tput op
 }
