@@ -82,6 +82,13 @@ c(){
   cd $dir
 }
 
+wifi(){
+  line=$(nmcli d wifi | tac | fzf +s)
+  [[ -z $line ]] && return
+  ssid=$(echo $line | sed 's/^.  //' | sed 's/ .*//')
+  nmcli d wifi connect $ssid
+}
+
 alias syn='rsync --size-only --del -vrun '
 alias crash='coredumpctl info -1'
 
