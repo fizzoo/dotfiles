@@ -25,5 +25,4 @@ xset b off
 xset m 0 0
 sh ~/.fehbg
 
-stalonetray &
 exec xmonad

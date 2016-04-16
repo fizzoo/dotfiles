@@ -5,19 +5,19 @@ import System.Exit (exitSuccess)
 import Control.Monad (liftM)
 
 import XMonad.Hooks.ManageHelpers (doFullFloat)
-import XMonad.Hooks.ManageDocks (manageDocks, docksEventHook)
 import XMonad.Layout.GridVariants (Grid(..))
 import XMonad.Hooks.EwmhDesktops (ewmh, fullscreenEventHook)
 import XMonad.Layout.Spacing (spacing)
+import XMonad.Layout.LayoutHints (layoutHintsWithPlacement)
 
 main :: IO ()
 main = xmonad $ ewmh def
   { modMask = mod4Mask
   , terminal = "xterm"
   , borderWidth = 0
-  , layoutHook = spacing 4 $ Grid (16/9)
-  , manageHook = myManageHook <+> manageDocks
-  , handleEventHook = handleEventHook def <+> docksEventHook <+> fullscreenEventHook
+  , layoutHook = layoutHintsWithPlacement (0.5, 0.5) $ spacing 4 $ Grid (16/9)
+  , manageHook = myManageHook
+  , handleEventHook = handleEventHook def <+> fullscreenEventHook
   , keys = myKeys
   , mouseBindings = myMouseBindings
   }
