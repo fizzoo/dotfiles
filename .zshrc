@@ -16,8 +16,10 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]} l:|=* r:|=*'
 #load the completing
 autoload -Uz compinit && compinit
 
-HISTSIZE=1000
-setopt extendedglob histverify autopushd pushdsilent nobeep hist_ignore_all_dups
+HISTFILE=~/.zhistory
+HISTSIZE=800
+SAVEHIST=800
+setopt extendedglob histverify autopushd pushdsilent nobeep hist_ignore_all_dups hist_ignore_space inc_append_history
 
 bindkey -v
 export KEYTIMEOUT=1
