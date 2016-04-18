@@ -1,5 +1,6 @@
 import XMonad
 import qualified Data.Map as M (fromList, Map)
+import Data.Maybe (fromMaybe)
 import qualified XMonad.StackSet as W
 import System.Exit (exitSuccess)
 import Control.Monad (liftM)
@@ -68,9 +69,12 @@ myMouseBindings _ = M.fromList
 
 myManageHook :: ManageHook
 myManageHook = composeAll
-  [ title =? "fully" --> doFullFloat
+  [ title =? "fully" --> doFullFloat,
+    title =? "WAKEUP" --> (doShiftScreen 2 <+> doFullFloat)
   ]
 
+doShiftScreen :: ScreenId -> ManageHook
+doShiftScreen n = liftX (screenWorkspace n) >>= doShift . fromMaybe "0"
 
 -- Floats all windows, while keeping them in the positions they were in (unlike
 -- a simple sequence float where it calculates new positions after each float
