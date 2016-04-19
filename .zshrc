@@ -73,7 +73,9 @@ twi(){
 }
 
 c(){
-  file=$(find / -print 2> /dev/null | fzf)
+  rootfind="."
+  if [[ ! -z $1 && -d $1 ]]; then rootfind=$1; fi
+  file=$(find $rootfind -print 2> /dev/null | fzf)
   if [[ -z $file ]]; then return; fi
   if [[ -d $file ]]
   then
