@@ -93,7 +93,7 @@ alias crash='coredumpctl info -1'
 
 alias g='g++ -std=c++14 -g '
 
-alias l='ls --color=always -alu'
+alias l='ls --color=always -al'
 alias d='du -had1'
 
 alias ats='tmux -S /tmp/1'
