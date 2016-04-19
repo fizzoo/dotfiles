@@ -75,14 +75,9 @@ twi(){
 c(){
   rootfind="."
   if [[ ! -z $1 && -d $1 ]]; then rootfind=$1; fi
-  file=$(find $rootfind -print 2> /dev/null | fzf)
-  if [[ -z $file ]]; then return; fi
-  if [[ -d $file ]]
-  then
-    dir=$file
-  else
-    dir=$(dirname $file)
-  fi
+  dir=$(find $rootfind -print 2> /dev/null | fzf)
+  if [[ -z $dir ]]; then return; fi
+  if [[ ! -d $dir ]]; then dir=$(dirname $dir); fi
   cd $dir
 }
 
