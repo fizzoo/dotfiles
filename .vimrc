@@ -24,7 +24,6 @@ command SV set spell spelllang=sv | syntax spell toplevel
 command EN set spell spelllang=en | syntax spell toplevel
 
 set undofile
-set backspace=indent,eol,start
 set history=100
 set hidden
 set clipboard=unnamed
@@ -49,6 +48,7 @@ set incsearch
 set ignorecase
 set smartcase
 
+set backspace=
 set autoindent
 set ts=2 sw=2 et
 set smarttab

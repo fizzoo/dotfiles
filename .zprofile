@@ -16,4 +16,7 @@ fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
 
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+if [[ -z $DISPLAY && $(tty) = /dev/tty1 && ! -a /tmp/x_started_dummy ]]; then
+  touch /tmp/x_started_dummy
+  exec startx
+fi
