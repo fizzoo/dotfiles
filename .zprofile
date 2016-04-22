@@ -1,7 +1,7 @@
 export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
-export BROWSER='chromium'
+export BROWSER='google-chrome-stable'
 
 export PATH=/home/fizzo/.cabal/bin:$PATH
 
