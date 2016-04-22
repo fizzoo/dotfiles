@@ -59,13 +59,14 @@ serve(){
   while true; do; sleep 1; done
 }
 
-# just kill mpd after ncmpcpp closes, let it have a workspace
-musik(){
-  mpd
-  ~/.config/albumart/albumart.py &>/tmp/aalog &
+m(){
+  if [[ ! -a /tmp/music_dummy ]]
+  then
+    mpd
+    albumart 2>/dev/null &
+    touch /tmp/music_dummy
+  fi
   ncmpcpp
-  kill %~/.config/albumart
-  mpd --kill
 }
 
 twi(){
