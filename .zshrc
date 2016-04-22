@@ -63,7 +63,7 @@ m(){
   if [[ ! -a /tmp/music_dummy ]]
   then
     mpd
-    albumart 2>/dev/null &
+    albumart 2>/dev/null & disown
     touch /tmp/music_dummy
   fi
   ncmpcpp
