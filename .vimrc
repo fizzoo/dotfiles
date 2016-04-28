@@ -45,6 +45,7 @@ set foldmethod=marker
 set fillchars=
 
 set incsearch
+set nohlsearch
 set ignorecase
 set smartcase
 

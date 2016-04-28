@@ -48,6 +48,7 @@ myKeys conf = M.fromList $
   , ((mod4Mask, xK_KP_Right), spawn "mpc next")
   , ((mod4Mask, xK_KP_Home), spawn "mpc volume -10")
   , ((mod4Mask, xK_KP_Page_Up), spawn "mpc volume +10")
+  , ((0, 0x1008ff49), spawn "sleep 0.1 && xset dpms force off") -- F18
   , ((mod4Mask, xK_y), spawn "xmonad --recompile && xmonad --restart")
   , ((mod4Mask .|. shiftMask, xK_y), io exitSuccess)
   , ((mod4Mask, xK_q), kill)
