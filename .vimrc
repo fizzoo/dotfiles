@@ -40,7 +40,7 @@ set guioptions=c
 set showcmd
 set ruler
 set wildmenu
-set wrap linebreak breakindent showbreak=>\ "
+set linebreak breakindent showbreak=>\ "
 set foldmethod=marker
 set fillchars=
 
