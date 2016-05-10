@@ -21,6 +21,8 @@ HISTSIZE=800
 SAVEHIST=800
 setopt extendedglob histverify autopushd pushdsilent nobeep hist_ignore_all_dups hist_ignore_space inc_append_history
 
+umask 007
+
 bindkey -v
 export KEYTIMEOUT=1
 bindkey "^?" backward-delete-char
@@ -30,8 +32,6 @@ bindkey -M vicmd '?' history-incremental-search-backward
 
 export PROMPT='%K{magenta}%(?..[%?])%1(j.{%j}.) %n %3~ %k'
 
-umask 002
-
 # functions & aliases
 color(){
   for i in {0..256}
@@ -40,11 +40,6 @@ color(){
     printf "%8s" $i
   done
   tput op
-}
-
-sensibleown(){
-  sudo chown -R fizzo:a $*
-  sudo chmod -R ug=rwX,o-rwx $*
 }
 
 serve(){
@@ -76,7 +71,7 @@ twi(){
 c(){
   rootfind="."
   if [[ ! -z $1 && -d $1 ]]; then rootfind=$1; fi
-  dir=$(find $rootfind -print 2> /dev/null | fzf)
+  dir=$(find $rootfind -xdev -print 2> /dev/null | fzf)
   if [[ -z $dir ]]; then return; fi
   if [[ ! -d $dir ]]; then dir=$(dirname $dir); fi
   cd $dir

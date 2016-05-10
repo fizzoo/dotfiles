@@ -49,7 +49,7 @@ set nohlsearch
 set ignorecase
 set smartcase
 
-set backspace=indent
+set backspace=indent,eol,start
 set autoindent
 set ts=2 sw=2 et
 set smarttab

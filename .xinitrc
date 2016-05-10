@@ -25,4 +25,4 @@ xset b off
 xset m 0 0
 sh ~/.fehbg
 
-exec xmonad
+exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
