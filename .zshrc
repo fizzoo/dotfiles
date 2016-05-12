@@ -21,7 +21,11 @@ HISTSIZE=800
 SAVEHIST=800
 setopt extendedglob histverify autopushd pushdsilent nobeep hist_ignore_all_dups hist_ignore_space inc_append_history
 
-umask 007
+if [[ $EUID = 0 ]]; then
+  umask 022
+else
+  umask 007
+fi
 
 bindkey -v
 export KEYTIMEOUT=1
