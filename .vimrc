@@ -44,10 +44,7 @@ set linebreak breakindent showbreak=>\ "
 set foldmethod=marker
 set fillchars=
 
-set incsearch
-set nohlsearch
-set ignorecase
-set smartcase
+set incsearch hlsearch ignorecase smartcase
 
 set backspace=indent,eol,start
 set autoindent
@@ -69,8 +66,8 @@ let g:syntastic_enable_signs = 0
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_cpp_compiler_options = "-Wall -Wextra -pedantic -std=c++14"
 
-let g:marching#clang_command#options = {"cpp" : "-std=c++14"}
-command -nargs=1 FLAG let g:syntastic_cpp_compiler_options .= " " . <args> | let g:marching#clang_command#options["cpp"] .= " " . <args>
+let g:clang_user_options = '-std=c++11'
+command -nargs=1 FLAG let g:syntastic_cpp_compiler_options .= " " . <args>
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
