@@ -36,6 +36,7 @@ myKeys conf = M.fromList $
   , ((mod4Mask .|. shiftMask, xK_k), windows W.swapUp)
   , ((mod4Mask, xK_d), spawn "dmenu_extended_run")
   , ((mod4Mask, xK_s), spawn "xterm -T fully -e htop")
+  , ((mod4Mask, xK_x), spawn "emacs")
   , ((mod4Mask, xK_w), spawn "xterm -T fully -e statusy")
   , ((mod4Mask, xK_c), spawn "google-chrome-stable")
   , ((mod4Mask, xK_p), spawn "pavucontrol")
