@@ -88,12 +88,23 @@ wifi(){
   nmcli -a d wifi connect $ssid
 }
 
+checkhs(){
+  cp $1 /tmp/lel.hs && \
+  echo "return []\nrunchecks = \$quickCheckAll" >> /tmp/lel.hs && \
+  echo runchecks | ghci -XTemplateHaskell /tmp/lel.hs
+}
+
+e(){
+  emacs $* &!
+}
+
 alias syn='rsync --size-only --del -vrun '
 alias crash='coredumpctl info -1'
 
 alias g='g++ -std=c++14 -g '
 
-alias l='ls --color=always -al'
+alias l='ls --color=always -l'
+alias ll='ls --color=always -Al'
 alias d='du -had1'
 
 alias ats='tmux -S /tmp/1'

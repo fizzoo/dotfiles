@@ -55,6 +55,9 @@ set complete+=d
 set completeopt+=menuone
 inoremap <c-f> <space><bs><c-x><c-o>
 inoremap <c-@> <c-n>
+inoremap <c-d> ()<esc>i
+inoremap <c-e> <esc>f)a
+nnoremap <c-e> <esc>f)a
 
 command ERC e ~/.vimrc
 command -nargs=1 PAD %s/$/\=repeat(' ',<args>-virtcol('$'))
