@@ -1,5 +1,6 @@
 xterm*termName: xterm-256color
 xterm*BorderWidth: 0
+xterm*font: -*-dina-medium-r-*-*-10-*-*-*-*-*-*-*
 
 XTerm*foreground: #111111
 XTerm*background: #eeeae4
