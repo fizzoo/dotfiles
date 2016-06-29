@@ -25,6 +25,4 @@ xset b off
 xset m 0 0
 sh ~/.fehbg
 
-oneko -position -0-8 &
-
 exec ck-launch-session dbus-launch --sh-syntax --exit-with-session xmonad
