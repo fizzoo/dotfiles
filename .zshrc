@@ -98,6 +98,10 @@ e(){
   emacs $* &!
 }
 
+gm(){
+  emacs . -nw --funcall magit-status --funcall delete-other-windows
+}
+
 alias syn='rsync --size-only --del -vrun '
 alias crash='coredumpctl info -1'
 
@@ -110,7 +114,4 @@ alias d='du -had1'
 alias ats='tmux -S /tmp/1'
 alias at='tmux -S /tmp/1 attach'
 
-alias gs='git status'
-alias ga='git add'
-alias gc='git commit'
 alias ana='make clean && scan-build -enable-checker alpha --view make'
