@@ -62,3 +62,5 @@
 
 ;;; No emacs-vc
 (setq vc-handled-backends ())
+(global-set-key (kbd "C-x g") 'magit-status)
+(put 'upcase-region 'disabled nil)
