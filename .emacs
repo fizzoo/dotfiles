@@ -10,8 +10,12 @@
 ;;; Evil
 (require 'evil)
 (evil-mode 1)
-(setq evil-insert-state-map (make-sparse-keymap))
+(setq evil-insert-state-map (make-sparse-keymap)) ; pure emacs in insert
 (define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state)
+(evil-define-command ERC ()
+  "edit rc"
+  (find-file "~/.emacs"))
+
 
 ;;; Remove ugly gui
 (tool-bar-mode -1)
@@ -23,10 +27,6 @@
 (setq inferior-lisp-program "/usr/bin/sbcl")
 (require 'slime)
 (slime-setup)
-
-;;; Pure emacs while in insert mode
-(setq evil-insert-state-map (make-sparse-keymap))
-(define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state)
 
 ;;; Sane backup/autosave dir
 (setq backup-directory-alist `((".*"
@@ -59,3 +59,8 @@
 ;;; Customizer vars (automatic gui settings)
 (custom-set-variables '(inhibit-startup-screen t))
 (custom-set-faces)
+
+;;; No emacs-vc
+(setq vc-handled-backends ())
+(global-set-key (kbd "C-x g") 'magit-status)
+(put 'upcase-region 'disabled nil)
