@@ -98,7 +98,7 @@ e(){
   emacs $* &!
 }
 
-gm(){
+gs(){
   emacs . -nw --funcall magit-status --funcall delete-other-windows
 }
 
