@@ -23,6 +23,10 @@
 (scroll-bar-mode -1)
 (set-default-font "Dina")
 
+;;; Theme
+(require 'moe-theme)
+(load-theme 'moe-dark)
+
 ;;; Slime
 (setq inferior-lisp-program "/usr/bin/sbcl")
 (require 'slime)
