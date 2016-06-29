@@ -16,7 +16,6 @@
   "edit rc"
   (find-file "~/.emacs"))
 
-
 ;;; Remove ugly gui
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -25,7 +24,7 @@
 
 ;;; Theme
 (require 'moe-theme)
-(load-theme 'moe-dark)
+(load-theme 'moe-dark t)
 
 ;;; Slime
 (setq inferior-lisp-program "/usr/bin/sbcl")

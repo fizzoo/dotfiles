@@ -99,7 +99,7 @@ e(){
 }
 
 gs(){
-  emacs . -nw --funcall magit-status --funcall delete-other-windows
+  e . --funcall magit-status --funcall delete-other-windows
 }
 
 alias syn='rsync --size-only --del -vrun '
