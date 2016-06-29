@@ -60,11 +60,24 @@
 (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
 (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
 
-;;; Customizer vars (automatic gui settings)
-(custom-set-variables '(inhibit-startup-screen t))
-(custom-set-faces)
-
 ;;; No emacs-vc
 (setq vc-handled-backends ())
 (global-set-key (kbd "C-x g") 'magit-status)
+
+;;; Customizer vars (automatic gui settings)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("6bf237d23440fb0b340f4336695f2a08c6b785aa98288b3313526e76c38bca19" default)))
+ '(inhibit-startup-screen t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 (put 'upcase-region 'disabled nil)
