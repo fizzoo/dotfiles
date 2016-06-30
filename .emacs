@@ -27,6 +27,8 @@
   "edit rc"
   (find-file "~/.emacs"))
 
+;;; TODO evil-leader?
+
 ;;; Enable all functions
 (setq disabled-command-function nil)
 
