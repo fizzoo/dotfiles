@@ -23,8 +23,11 @@
 (set-default-font "Dina")
 
 ;;; Theme
+(require 'powerline)
 (require 'moe-theme)
-(load-theme 'moe-dark t)
+(moe-theme-set-color 'green)
+(moe-dark)
+(powerline-moe-theme)
 
 ;;; Slime
 (setq inferior-lisp-program "/usr/bin/sbcl")
