@@ -51,6 +51,11 @@
 (require 'smart-tab)
 (global-smart-tab-mode 1)
 
+;;; Show matching parens
+(setq show-paren-delay 0)
+(setq show-paren-style 'expression)
+(show-paren-mode 1)
+
 ;;; Paredit, on all lisp
 (autoload 'enable-paredit-mode
   "paredit"
