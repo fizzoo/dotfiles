@@ -86,7 +86,8 @@
 (global-set-key (kbd "<f1>") 'delete-other-windows)
 (global-set-key (kbd "<f2>") 'helm-mini)
 (global-set-key (kbd "<f3>") 'helm-find-files)
-(define-key evil-normal-state-map " " (lambda () (interactive) (evil-execute-macro 1 last-kbd-macro)))
+(define-key evil-normal-state-map " "
+  (lambda () (interactive) (evil-execute-macro 1 last-kbd-macro)))
 
 ;;; esc quits: http://stackoverflow.com/questions/8483182/evil-mode-best-practice
 (defun minibuffer-keyboard-quit ()
