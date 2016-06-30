@@ -8,13 +8,15 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (set-default-font "Dina")
+(setq inhibit-startup-screen t)
 
 ;;; Theme
 (require 'powerline)
+(require 'powerline-evil)
 (require 'moe-theme)
-(moe-theme-set-color 'blue)
 (moe-dark)
-(powerline-moe-theme)
+(powerline-moe-theme)                   ;This is a magic order/combination
+(powerline-evil-center-color-theme)     ; that simply werkz
 
 ;;; Evil
 (require 'evil)
@@ -25,16 +27,18 @@
   "edit rc"
   (find-file "~/.emacs"))
 
+;;; Enable all functions
+(setq disabled-command-function nil)
+
 ;;; Slime
 (setq inferior-lisp-program "/usr/bin/sbcl")
 (require 'slime)
 (slime-setup)
 
-;;; Sane backup/autosave dir
+;;; Sane backup dir
 (setq backup-directory-alist
       (list (cons ".*" (concat temporary-file-directory "backup/"))))
-(setq auto-save-file-name-transforms
-      (list (list ".*" (concat temporary-file-directory "autosave/") t)))
+(setq auto-save-default nil)
 
 ;;; Persistent history
 (setq undo-tree-auto-save-history t)
@@ -47,7 +51,6 @@
 
 ;;; Python
 (elpy-enable)
-
 
 ;;; Tab complete when reasonable
 (require 'smart-tab)
@@ -78,6 +81,8 @@
 (require 'helm)
 (require 'helm-config)
 (global-set-key (kbd "M-x") #'helm-M-x)
+(global-set-key (kbd "M-y") 'helm-show-kill-ring)
+(global-set-key (kbd "C-c h") 'helm-apropos)
 (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
 (define-key helm-map (kbd "C-z")  'helm-select-action) ; old tab
 (helm-mode 1)
@@ -107,21 +112,3 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
 
-
-;;; Customizer vars (automatic gui settings)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("6bf237d23440fb0b340f4336695f2a08c6b785aa98288b3313526e76c38bca19" default)))
- '(inhibit-startup-screen t))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-(put 'upcase-region 'disabled nil)
