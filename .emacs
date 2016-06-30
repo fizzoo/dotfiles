@@ -31,10 +31,15 @@
 (slime-setup)
 
 ;;; Sane backup/autosave dir
-(setq backup-directory-alist `((".*"
-				. ,temporary-file-directory)))
-(setq auto-save-file-name-transforms `((".*"
-					,temporary-file-directory t)))
+(setq backup-directory-alist
+      (list (cons ".*" (concat temporary-file-directory "backup/"))))
+(setq auto-save-file-name-transforms
+      (list (list ".*" (concat temporary-file-directory "autosave/") t)))
+
+;;; Persistent history
+(setq undo-tree-auto-save-history t)
+(setq undo-tree-history-directory-alist
+      (list (cons "." (concat temporary-file-directory "undo/"))))
 
 ;;; Use spaces
 (setq-default indent-tabs-mode nil)
@@ -43,9 +48,6 @@
 ;;; Python
 (elpy-enable)
 
-;;; Persistent history
-(setq undo-tree-auto-save-history t)
-(setq undo-tree-history-directory-alist `(("." . ,temporary-file-directory)))
 
 ;;; Tab complete when reasonable
 (require 'smart-tab)
