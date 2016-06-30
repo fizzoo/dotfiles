@@ -61,6 +61,12 @@
 (setq show-paren-style 'expression)
 (show-paren-mode 1)
 
+;;; Smooth scrolling
+(setq scroll-margin 800)                ;maxes somewhere around 25%
+(setq scroll-step 1)
+(setq scroll-conservatively 10000)
+(setq auto-window-vscroll nil)
+
 ;;; Paredit, on all lisp
 (require 'paredit)
 (autoload 'enable-paredit-mode
@@ -111,4 +117,3 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
-
