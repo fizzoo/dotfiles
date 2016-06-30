@@ -25,7 +25,7 @@
 ;;; Theme
 (require 'powerline)
 (require 'moe-theme)
-(moe-theme-set-color 'green)
+(moe-theme-set-color 'blue)
 (moe-dark)
 (powerline-moe-theme)
 
