@@ -1,5 +1,3 @@
-execute pathogen#infect()
-
 " term fix
 set ttimeoutlen=0
 " midclick paste through ssh works when in input
@@ -12,10 +10,6 @@ nnoremap    <c-p>           :bp<cr>
 nnoremap    <leader>q       :bd<cr>
 nnoremap    <leader>l       :lopen<cr>
 nnoremap    Q               <nop>
-nnoremap    <leader>ht      :GhcModType<cr>
-nnoremap    <leader>hc      :GhcModTypeClear<cr>
-nnoremap    <leader>hk      :GhcModCheck<cr>
-nnoremap    <leader>hl      :GhcModLint<cr>
 
 set encoding=utf8
 set spelllang=sv
@@ -62,15 +56,3 @@ nnoremap <c-e> <esc>f)a
 command ERC e ~/.vimrc
 command -nargs=1 PAD %s/$/\=repeat(' ',<args>-virtcol('$'))
 command RTW %s/\s\+$//
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_enable_balloons = 0
-let g:syntastic_enable_signs = 0
-let g:syntastic_cpp_check_header = 1
-let g:syntastic_cpp_compiler_options = "-Wall -Wextra -pedantic -std=c++14"
-
-let g:clang_user_options = '-std=c++11'
-command -nargs=1 FLAG let g:syntastic_cpp_compiler_options .= " " . <args>
-
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
