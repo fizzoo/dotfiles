@@ -35,7 +35,7 @@
 (require 'slime)
 (slime-setup)
 
-;;; Sane backup dir
+;;; Sane backup/autosave
 (setq backup-directory-alist
       (list (cons ".*" (concat temporary-file-directory "backup/"))))
 (setq auto-save-default nil)
