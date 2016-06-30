@@ -3,19 +3,6 @@
 (package-initialize)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 
-;;; Manual scripts
-(add-to-list 'load-path "~/.emacs.d/lisp/")
-(load "paredit.el")
-
-;;; Evil
-(require 'evil)
-(evil-mode 1)
-(setq evil-insert-state-map (make-sparse-keymap)) ; pure emacs in insert
-(define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state)
-(evil-define-command ERC ()
-  "edit rc"
-  (find-file "~/.emacs"))
-
 ;;; Remove ugly gui
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -28,6 +15,15 @@
 (moe-theme-set-color 'blue)
 (moe-dark)
 (powerline-moe-theme)
+
+;;; Evil
+(require 'evil)
+(evil-mode 1)
+(setq evil-insert-state-map (make-sparse-keymap)) ; pure emacs in insert
+(define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state)
+(evil-define-command ERC ()
+  "edit rc"
+  (find-file "~/.emacs"))
 
 ;;; Slime
 (setq inferior-lisp-program "/usr/bin/sbcl")
@@ -57,6 +53,7 @@
 (show-paren-mode 1)
 
 ;;; Paredit, on all lisp
+(require 'paredit)
 (autoload 'enable-paredit-mode
   "paredit"
   "Turn on pseudo-structural editing of Lisp code." t)
