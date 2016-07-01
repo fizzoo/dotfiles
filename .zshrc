@@ -34,7 +34,7 @@ bindkey "^[[3~" delete-char
 bindkey "^[[A" up-line-or-search && bindkey "^[[B" down-line-or-search
 bindkey -M vicmd '?' history-incremental-search-backward
 
-export PROMPT='%K{magenta}%(?..[%?])%1(j.{%j}.) %n %3~ %k'
+export PROMPT='%K{green}%(?..%K{red}[%?])%1(j.{%j}.) %n %3~ %k'
 
 # functions & aliases
 color(){
