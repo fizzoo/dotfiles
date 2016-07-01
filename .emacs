@@ -20,14 +20,22 @@
 
 ;;; Evil
 (require 'evil)
-(evil-mode 1)
 (setq evil-insert-state-map (make-sparse-keymap)) ; pure emacs in insert
 (define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state)
 (evil-define-command ERC ()
   "edit rc"
   (find-file "~/.emacs"))
 
-;;; TODO evil-leader?
+(require 'evil-leader)
+(evil-leader/set-leader "<SPC>")
+(define-key evil-normal-state-map (kbd "q") nil)
+(define-key evil-normal-state-map (kbd "C-q") 'evil-record-macro)
+(evil-leader/set-key
+  "q" 'evil-delete-buffer
+  "r" (lambda () (interactive) (evil-execute-macro 1 last-kbd-macro)))
+
+(global-evil-leader-mode)
+(evil-mode 1)
 
 ;;; Enable all functions
 (setq disabled-command-function nil)
@@ -43,9 +51,9 @@
 (setq auto-save-default nil)
 
 ;;; Persistent history
-(setq undo-tree-auto-save-history t)
 (setq undo-tree-history-directory-alist
       (list (cons "." (concat temporary-file-directory "undo/"))))
+(setq undo-tree-auto-save-history t)
 
 ;;; Use spaces
 (setq-default indent-tabs-mode nil)
@@ -99,8 +107,6 @@
 (global-set-key (kbd "<f1>") 'delete-other-windows)
 (global-set-key (kbd "<f2>") 'helm-mini)
 (global-set-key (kbd "<f3>") 'helm-find-files)
-(define-key evil-normal-state-map " "
-  (lambda () (interactive) (evil-execute-macro 1 last-kbd-macro)))
 
 ;;; esc quits: http://stackoverflow.com/questions/8483182/evil-mode-best-practice
 (defun minibuffer-keyboard-quit ()
