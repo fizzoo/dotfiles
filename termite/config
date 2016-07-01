@@ -24,32 +24,46 @@ cursor_blink = off
 cursor_shape = block
 
 [colors]
-foreground = #eeeeee
-foreground_bold = #ffffff
-#foreground_dim = #888888
-background = rgba(0,0,0,1.0)
-cursor = #00ff00
+# base16 default with slightly higher bg/black
 
-# if unset, will reverse foreground and background
-highlight = #3333ff
+# special
+foreground      = #d0d0d0
+foreground_bold = #d0d0d0
+cursor          = #d0d0d0
+background      = #222222
 
-# colors from color0 to color254 can be set
-color0  = #262626
-color8  = #252525
-color1  = #C12121
-color9  = #E50E0E
-color2  = #597b20
-color10 = #89b83f
-color3  = #Ded838
-color11 = #efef60
-color4  = #265997
-color12 = #3F6FD0
-color5  = #706c9a
-color13 = #826ab1
-color6  = #69a2b0
-color14 = #a1cdcd
-color7  = #BBBBBB
-color15 = #EEEEEF
+# black
+color0  = #2f2f2f
+color8  = #505050
+
+# red
+color1  = #ac4142
+color9  = #ac4142
+
+# green
+color2  = #90a959
+color10 = #90a959
+
+# yellow
+color3  = #f4bf75
+color11 = #f4bf75
+
+# blue
+color4  = #6a9fb5
+color12 = #6a9fb5
+
+# magenta
+color5  = #aa759f
+color13 = #aa759f
+
+# cyan
+color6  = #75b5aa
+color14 = #75b5aa
+
+# white
+color7  = #d0d0d0
+color15 = #f5f5f5
+
 
 [hints]
 #font = Monospace 12
