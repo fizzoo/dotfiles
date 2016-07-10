@@ -31,11 +31,12 @@
 (define-key evil-normal-state-map (kbd "q") nil)
 (define-key evil-normal-state-map (kbd "C-q") 'evil-record-macro)
 (evil-leader/set-key
-  "q" 'evil-delete-buffer
+  "q" 'delete-window
   "r" (lambda () (interactive) (evil-execute-macro 1 last-kbd-macro)))
 
 (global-evil-leader-mode)
 (evil-mode 1)
+(global-evil-matchit-mode)
 
 ;;; Enable all functions
 (setq disabled-command-function nil)
