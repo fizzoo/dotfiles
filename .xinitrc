@@ -13,6 +13,7 @@ if [[ $HOSTNAME == mag ]]
 then
   xmodmap -e 'keycode 191 = Insert' #F13
   numlockx
+  dunst &
 fi
 if [[ $HOSTNAME == arc ]]
 then
