@@ -1,7 +1,17 @@
 ;;; Package manager
 (require 'package)
-(package-initialize)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+(setq package-list '(moe-theme
+                     powerline powerline-evil 
+                     evil evil-leader evil-matchit
+                     helm magit paredit
+                     smart-tab
+                     slime undo-tree
+                     elpy pyvenv))
+(mapc #'package-install package-list)
 
 ;;; Remove ugly gui
 (tool-bar-mode -1)
