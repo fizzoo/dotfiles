@@ -12,13 +12,13 @@ import XMonad.Layout.Spacing (spacing)
 import XMonad.Layout.LayoutHints (layoutHintsWithPlacement)
 
 main :: IO ()
-main = xmonad $ ewmh defaultConfig
+main = xmonad $ ewmh def
   { modMask = mod4Mask
   , terminal = "termite"
   , borderWidth = 0
   , layoutHook = layoutHintsWithPlacement (0.5, 0.5) $ spacing 4 $ Grid (16/9)
   , manageHook = myManageHook
-  , handleEventHook = handleEventHook defaultConfig <+> fullscreenEventHook
+  , handleEventHook = handleEventHook def <+> fullscreenEventHook
   , keys = myKeys
   , mouseBindings = myMouseBindings
   }
