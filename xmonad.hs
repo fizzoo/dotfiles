@@ -16,7 +16,7 @@ main = xmonad $ ewmh def
   { modMask = mod4Mask
   , terminal = "termite"
   , borderWidth = 0
-  , layoutHook = layoutHintsWithPlacement (0.5, 0.5) $ spacing 4 $ Grid (16/9)
+  , layoutHook = (layoutHintsWithPlacement (0.5, 0.5) $ spacing 4 $ Grid (16/9)) ||| Full
   , manageHook = myManageHook
   , handleEventHook = handleEventHook def <+> fullscreenEventHook
   , keys = myKeys
@@ -58,9 +58,9 @@ myKeys conf = M.fromList $
   , ((mod4Mask, xK_F2), spawn "xbacklight = 16")
   , ((mod4Mask, xK_F3), spawn "xbacklight = 50")
   , ((mod4Mask, xK_F4), spawn "xbacklight = 100")
-  , ((mod4Mask, xK_t), sinkAll)
+  , ((mod4Mask, xK_t), sinkAll >> (setLayout $ XMonad.layoutHook conf))
   , ((mod4Mask, xK_a), sinkAll >> floatAllCurrent)
-  , ((mod4Mask, xK_f), withFocused $ windows . (\w -> W.float w (W.RationalRect 0 0 1 1)))
+  , ((mod4Mask, xK_f), sendMessage NextLayout)
   ]
   ++
   [((m .|. mod4Mask, k), windows $ f i)
@@ -74,8 +74,8 @@ myMouseBindings _ = M.fromList
   , ((mod4Mask, button2), windows . (W.shiftMaster .) . W.focusWindow)
   , ((mod4Mask, button3), \w -> focus w >> mouseResizeWindow w
                                        >> windows W.shiftMaster)
-  , ((mod4Mask, button4), \w -> focus w >> windows (W.sink w))
-  , ((mod4Mask, button5), \w -> focus w >> windows (W.float w (W.RationalRect 0 0 1 1)))
+--, ((mod4Mask, button4), \w -> focus w >> windows (W.sink w))
+--, ((mod4Mask, button5), \w -> focus w >> windows (W.float w (W.RationalRect 0 0 1 1)))
   ]
 
 myManageHook :: ManageHook
