@@ -7,9 +7,12 @@
 (setq package-list '(moe-theme
                      powerline powerline-evil 
                      evil evil-matchit
-                     helm magit paredit
-                     slime undo-tree
                      company
+                     ivy counsel swiper
+                     magit
+                     paredit
+                     slime
+                     undo-tree
                      elpy pyvenv
                      ))
 (mapc #'package-install package-list)
@@ -95,24 +98,22 @@
 (setq vc-handled-backends ())
 (global-set-key (kbd "C-x g") 'magit-status)
 
-;;; Helm
-(require 'helm)
-(require 'helm-config)
-(global-set-key      (kbd "M-x") #'helm-M-x)
-(global-set-key      (kbd "M-y") 'helm-show-kill-ring)
-(global-set-key      (kbd "C-c h") 'helm-apropos)
-(define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-(define-key helm-map (kbd "C-z")  'helm-select-action) ; old tab
-(helm-mode 1)
-
-;;; VA usability binds
 ;;; Company
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 
+;;; Ivy, counsel, swiper
+(require 'ivy)
+(require 'counsel)
+(require 'swiper)
+(setq ivy-use-virtual-buffers t)
+(global-set-key (kbd "M-x")  'counsel-M-x)
+(global-set-key "\C-s" 'swiper)
+
+;;; VA usability bind
 (global-set-key (kbd "<f1>") 'delete-other-windows)
-(global-set-key (kbd "<f2>") 'helm-mini)
-(global-set-key (kbd "<f3>") 'helm-find-files)
+(global-set-key (kbd "<f2>") 'ivy-switch-buffer)
+(global-set-key (kbd "<f3>") 'counsel-find-file)
 
 ;;; esc quits: http://stackoverflow.com/questions/8483182/evil-mode-best-practice
 (defun minibuffer-keyboard-quit ()
