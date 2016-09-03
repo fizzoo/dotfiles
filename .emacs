@@ -97,6 +97,7 @@
 (add-hook 'after-init-hook 'global-company-mode)
 
 ;;; Ivy, counsel, swiper
+(ivy-mode t)
 (setq ivy-use-virtual-buffers t)
 (global-set-key (kbd "M-x")  'counsel-M-x)
 (global-set-key "\C-s" 'swiper)
