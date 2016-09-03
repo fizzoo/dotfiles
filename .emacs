@@ -8,9 +8,9 @@
                      powerline powerline-evil 
                      evil evil-leader evil-matchit
                      helm magit paredit
-                     smart-tab
                      slime undo-tree
-                     elpy pyvenv))
+                     elpy pyvenv
+                     ))
 (mapc #'package-install package-list)
 
 ;;; Remove ugly gui
@@ -72,10 +72,6 @@
 
 ;;; Python
 (elpy-enable)
-
-;;; Tab complete when reasonable
-(require 'smart-tab)
-(global-smart-tab-mode 1)
 
 ;;; Show matching parens
 (setq show-paren-delay 0)
