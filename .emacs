@@ -37,9 +37,6 @@
   "edit rc"
   (find-file "~/.emacs"))
 
-(define-key evil-normal-state-map (kbd "q") nil)
-(define-key evil-normal-state-map (kbd "C-q") 'evil-record-macro)
-
 (evil-mode 1)
 (global-evil-matchit-mode)
 
