@@ -9,6 +9,7 @@
                      evil evil-matchit
                      helm magit paredit
                      slime undo-tree
+                     company
                      elpy pyvenv
                      ))
 (mapc #'package-install package-list)
@@ -105,6 +106,10 @@
 (helm-mode 1)
 
 ;;; VA usability binds
+;;; Company
+(require 'company)
+(add-hook 'after-init-hook 'global-company-mode)
+
 (global-set-key (kbd "<f1>") 'delete-other-windows)
 (global-set-key (kbd "<f2>") 'helm-mini)
 (global-set-key (kbd "<f3>") 'helm-find-files)
