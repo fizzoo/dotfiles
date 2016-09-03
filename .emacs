@@ -6,7 +6,7 @@
   (package-refresh-contents))
 (setq package-list '(moe-theme
                      powerline powerline-evil 
-                     evil evil-leader evil-matchit
+                     evil evil-matchit
                      helm magit paredit
                      slime undo-tree
                      elpy pyvenv
@@ -36,15 +36,9 @@
   "edit rc"
   (find-file "~/.emacs"))
 
-(require 'evil-leader)
-(evil-leader/set-leader "<SPC>")
 (define-key evil-normal-state-map (kbd "q") nil)
 (define-key evil-normal-state-map (kbd "C-q") 'evil-record-macro)
-(evil-leader/set-key
-  "q" 'delete-window
-  "r" (lambda () (interactive) (evil-execute-macro 1 last-kbd-macro)))
 
-(global-evil-leader-mode)
 (evil-mode 1)
 (global-evil-matchit-mode)
 
