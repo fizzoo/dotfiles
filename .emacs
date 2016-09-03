@@ -16,6 +16,7 @@
                      elpy pyvenv
                      ))
 (mapc #'package-install package-list)
+(mapc #'require package-list)
 
 ;;; Remove ugly gui
 (tool-bar-mode -1)
@@ -25,15 +26,11 @@
 (setq inhibit-startup-screen t)
 
 ;;; Theme
-(require 'powerline)
-(require 'powerline-evil)
-(require 'moe-theme)
 (moe-dark)
 (powerline-moe-theme)                   ;This is a magic order/combination
 (powerline-evil-center-color-theme)     ; that simply werkz
 
 ;;; Evil
-(require 'evil)
 (setq evil-insert-state-map (make-sparse-keymap)) ; pure emacs in insert
 (define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state)
 (evil-define-command ERC ()
@@ -51,7 +48,6 @@
 
 ;;; Slime
 (setq inferior-lisp-program "/usr/bin/sbcl")
-(require 'slime)
 (slime-setup)
 
 ;;; Sane backup/autosave
@@ -83,7 +79,6 @@
 (setq auto-window-vscroll nil)
 
 ;;; Paredit, on all lisp
-(require 'paredit)
 (autoload 'enable-paredit-mode
   "paredit"
   "Turn on pseudo-structural editing of Lisp code." t)
@@ -99,13 +94,9 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 
 ;;; Company
-(require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 
 ;;; Ivy, counsel, swiper
-(require 'ivy)
-(require 'counsel)
-(require 'swiper)
 (setq ivy-use-virtual-buffers t)
 (global-set-key (kbd "M-x")  'counsel-M-x)
 (global-set-key "\C-s" 'swiper)
