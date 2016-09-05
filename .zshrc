@@ -84,8 +84,8 @@ c(){
 wifi(){
   line=$(nmcli d wifi | tac | fzf +s)
   [[ -z $line ]] && return
-  ssid=$(echo $line | sed 's/^.  //' | sed 's/ .*//')
-  nmcli -a d wifi connect $ssid
+  ssid=$(echo $line | sed 's/^.  //' | sed 's/ \+Infra.*//')
+  nmcli -a d wifi connect "$ssid"
 }
 
 checkhs(){
