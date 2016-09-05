@@ -14,6 +14,7 @@
                      slime
                      undo-tree
                      elpy pyvenv
+                     org
                      ))
 (mapc #'package-install package-list)
 (mapc #'require package-list)
