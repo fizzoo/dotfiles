@@ -1,12 +1,14 @@
 {
     "alias_applications": false,
-    "aliased_applications_format": "{name} ({command})",
+    "alias_display_format": "{name} ({command})",
     "exclude_items": [],
     "filebrowser": "rifle",
     "fileopener": "rifle",
     "filter_binaries": false,
-    "follow_symlinks": false,
-    "ignore_folders": ["~/musik"],
+    "follow_symlinks": true,
+    "ignore_folders": [
+        "~/musik"
+    ],
     "include_applications": true,
     "include_binaries": true,
     "include_hidden_files": false,
@@ -32,18 +34,20 @@
         "-l",
         "20"
     ],
+    "path_aliasFile": "",
     "path_shellCommand": "~/.dmenuEextended_shellCommand.sh",
     "scan_hidden_folders": false,
-    "terminal": "xterm",
+    "terminal": "termite",
     "valid_extensions": [
         "pdf",
         "djvu",
         "dvi",
+        "mkv",
+        "avi",
         "py"
     ],
     "watch_folders": [
-        "~/",
-        "~/böcker"
+        "~/"
     ],
     "webbrowser": "xdg-open"
 }
