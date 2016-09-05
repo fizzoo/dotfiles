@@ -91,7 +91,7 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 
 ;;; Org
-(org-babel-do-load-languages 'org-babel-load-languages '((C . t) (haskell . t)))
+(org-babel-do-load-languages 'org-babel-load-languages '((C . t) (haskell . t) (emacs-lisp . t) (latex . t)))
 (setq org-confirm-babel-evaluate nil)
 
 ;;; Company
