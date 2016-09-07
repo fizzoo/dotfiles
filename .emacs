@@ -116,3 +116,6 @@
 (setq recentf-max-saved-items 512)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
+;;; gdb
+(setq gdb-many-windows t
+      gdb-show-main t)
