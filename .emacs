@@ -110,5 +110,12 @@
 (global-set-key (kbd "<f2>") 'ivy-switch-buffer)
 (global-set-key (kbd "<f3>") 'counsel-find-file)
 
+;;; recentf
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-saved-items 512)
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
-
+;;; gdb
+(setq gdb-many-windows t
+      gdb-show-main t)
