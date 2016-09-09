@@ -1,6 +1,7 @@
 {
     "alias_applications": false,
     "alias_display_format": "{name} ({command})",
+    "aliased_applications_format": "{name} ({command})",
     "exclude_items": [],
     "filebrowser": "rifle",
     "fileopener": "rifle",
