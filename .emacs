@@ -71,7 +71,7 @@
 (show-paren-mode 1)
 
 ;;; Smooth scrolling
-(setq scroll-margin 800)                ;maxes somewhere around 25%
+(setq scroll-margin 4)                ;maxes somewhere around 25%
 (setq scroll-step 1)
 (setq scroll-conservatively 10000)
 (setq auto-window-vscroll nil)
@@ -109,6 +109,16 @@
 (global-set-key (kbd "<f1>") 'delete-other-windows)
 (global-set-key (kbd "<f2>") 'ivy-switch-buffer)
 (global-set-key (kbd "<f3>") 'counsel-find-file)
+
+(defun zsh-terminal ()
+  (interactive)
+  (cond ((equal (buffer-name) "*terminal*")
+         (make-term "terminal" "/bin/zsh"))
+        (t
+         (if (get-buffer "*terminal*")
+             (display-buffer "*terminal*")
+             (term "/bin/zsh")))))
+(global-set-key (kbd "<f4>") 'zsh-terminal)
 
 ;;; recentf
 (require 'recentf)
