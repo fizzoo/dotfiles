@@ -41,7 +41,7 @@ myKeys conf = M.fromList $
   , ((mod4Mask, xK_c), spawn "firefox")
   , ((mod4Mask, xK_o), spawn "swapsinks")
   , ((mod4Mask, xK_p), spawn "pavucontrol")
-  , ((mod4Mask, xK_i), spawn "maim -s")
+  , ((0, xK_Print), spawn "maim -s")
   , ((mod4Mask, xK_KP_Down), spawn "mpc toggle")
   , ((mod4Mask, xK_KP_Begin), spawn "mpc stop")
   , ((mod4Mask, xK_KP_End), spawn "mpc seek -10")
