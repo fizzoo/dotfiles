@@ -71,7 +71,7 @@
 (show-paren-mode 1)
 
 ;;; Smooth scrolling
-(setq scroll-margin 4)                ;maxes somewhere around 25%
+(setq scroll-margin 4)
 (setq scroll-step 1)
 (setq scroll-conservatively 10000)
 (setq auto-window-vscroll nil)
@@ -92,7 +92,9 @@
 (global-set-key (kbd "C-x g") 'magit-status)
 
 ;;; Org
-(org-babel-do-load-languages 'org-babel-load-languages '((C . t) (haskell . t) (emacs-lisp . t) (latex . t) (python . t) (shell . t)))
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((C . t) (haskell . t) (emacs-lisp . t) (latex . t) (python . t)))
 (setq org-confirm-babel-evaluate nil)
 
 ;;; Company
@@ -102,7 +104,8 @@
 ;;; Ivy, counsel, swiper
 (ivy-mode t)
 (setq ivy-use-virtual-buffers t)
-(global-set-key (kbd "M-x")  'counsel-M-x)
+(setq ivy-initial-inputs-alist '())
+(counsel-mode 1)
 (global-set-key "\C-s" 'swiper)
 
 ;;; VA usability bind
