@@ -1,3 +1,14 @@
+;;; Early directory change to have undo work in case of breakage
+;;; Sane backup/autosave
+(setq backup-directory-alist
+      (list (cons ".*" (concat temporary-file-directory "backup/"))))
+(setq auto-save-default nil)
+
+;;; Persistent history
+(setq undo-tree-history-directory-alist
+      (list (cons "." (concat temporary-file-directory "undo/"))))
+(setq undo-tree-auto-save-history t)
+
 ;;; Package manager
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
@@ -47,16 +58,6 @@
 ;;; Slime
 (setq inferior-lisp-program "/usr/bin/sbcl")
 (slime-setup)
-
-;;; Sane backup/autosave
-(setq backup-directory-alist
-      (list (cons ".*" (concat temporary-file-directory "backup/"))))
-(setq auto-save-default nil)
-
-;;; Persistent history
-(setq undo-tree-history-directory-alist
-      (list (cons "." (concat temporary-file-directory "undo/"))))
-(setq undo-tree-auto-save-history t)
 
 ;;; Use spaces
 (setq-default indent-tabs-mode nil)
