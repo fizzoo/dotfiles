@@ -131,3 +131,7 @@
 ;;; gdb
 (setq gdb-many-windows t
       gdb-show-main t)
+
+;;; custom-set-variables
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
