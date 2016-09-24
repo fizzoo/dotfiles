@@ -43,8 +43,6 @@
 (powerline-evil-center-color-theme)     ; that simply werkz
 
 ;;; Evil
-(setq evil-insert-state-map (make-sparse-keymap)) ; pure emacs in insert
-(define-key evil-insert-state-map (kbd "<escape>") 'evil-normal-state)
 (evil-define-command ERC ()
   "edit rc"
   (find-file "~/.emacs"))
