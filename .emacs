@@ -137,3 +137,7 @@
 ;;; custom-set-variables
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
+
+;;; tex
+(package-install 'auctex)                ; no require since that's on 'tex
+(setq TeX-parse-self t)
