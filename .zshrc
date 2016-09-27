@@ -68,6 +68,13 @@ m(){
   ncmpcpp
 }
 
+cpr(){
+  if [ ! -d "$2" ]; then
+    mkdir -p "$2"
+  fi
+  cp -r "$1" "$2"
+}
+
 twi(){
   livestreamer twitch.tv/$1 best
 }
