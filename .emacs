@@ -52,13 +52,16 @@
 (setq vc-handled-backends ())
 
 ;;; gdb
-(setq gdb-many-windows t
-      gdb-show-main t)
+(defvar gdb-many-windows t)
+(defvar gdb-show-main t)
 
 ;;; VA binds
 (global-set-key (kbd "<f1>") 'delete-other-windows)
 
 (defun zsh-terminal ()
+  "Start up a terminal buffer with zsh somewhere visible.
+If there already exists one that we made, use that one.
+And if we're inside said buffer, start up a new zsh."
   (interactive)
   (cond ((equal (buffer-name) "*terminal*")
          (make-term "terminal" "/bin/zsh"))
