@@ -10,7 +10,7 @@
 
 ;;; custom-set-variables
 (setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
+(if (file-exists-p custom-file) (load custom-file))
 
 ;;; Package manager
 (require 'package)
