@@ -92,7 +92,8 @@ And if we're inside said buffer, start up a new zsh."
             (global-undo-tree-mode)
             (setq undo-tree-history-directory-alist
                   (list (cons "." (concat temporary-file-directory "undo/"))))
-            (setq undo-tree-auto-save-history t)))
+            (setq undo-tree-auto-save-history t))
+  :diminish undo-tree-mode)
 
 (use-package evil
   :demand
@@ -138,8 +139,10 @@ And if we're inside said buffer, start up a new zsh."
 
 
 (use-package company
+  :demand
   :init (defvar company-idle-delay 0)
-  :config (global-company-mode))
+  :config (global-company-mode)
+  :diminish company-mode)
 
 (use-package irony
   :init (progn
@@ -176,12 +179,14 @@ And if we're inside said buffer, start up a new zsh."
   :config (progn
             (ivy-mode t)
             (setq ivy-use-virtual-buffers t)
-            (setq ivy-initial-inputs-alist '())))
+            (setq ivy-initial-inputs-alist '()))
+  :diminish ivy-mode)
 
 (use-package counsel
   :after ivy
   :bind ("<f3>" . counsel-find-file)
-  :config (counsel-mode 1))
+  :config (counsel-mode 1)
+  :diminish counsel-mode)
 
 (use-package swiper
   :bind ("C-s" . swiper))
@@ -200,7 +205,8 @@ And if we're inside said buffer, start up a new zsh."
   :demand
   :config (progn
             (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
-            (yas-global-mode)))
+            (yas-global-mode))
+  :diminish yas-minor-mode)
 
 (provide 'init)
 ;;; .emacs ends here
