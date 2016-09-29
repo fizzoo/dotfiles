@@ -195,6 +195,11 @@ And if we're inside said buffer, start up a new zsh."
   :ensure auctex
   :config (setq TeX-parse-self t))
 
+(use-package yasnippet
+  :demand
+  :config (progn
+            (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
+            (yas-global-mode)))
 
 (provide 'init)
 ;;; .emacs ends here
