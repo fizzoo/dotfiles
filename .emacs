@@ -16,6 +16,7 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
+(if (not (file-exists-p "~/.emacs.d/elpa/")) (package-refresh-contents))
 
 ;;; use-package
 (if (not (featurep 'use-package)) (package-install 'use-package))
