@@ -16,7 +16,7 @@
 (unless package-archive-contents
   (package-refresh-contents))
 (setq package-list '(moe-theme
-                     powerline powerline-evil 
+                     powerline powerline-evil
                      evil evil-matchit
                      company
                      ivy counsel swiper
@@ -26,6 +26,8 @@
                      undo-tree
                      elpy pyvenv
                      org
+                     flycheck cmake-ide rtags irony flycheck-irony
+                     company-irony company-irony-c-headers
                      ))
 (mapc #'package-install package-list)
 (mapc #'require package-list)
@@ -102,6 +104,23 @@
 (add-hook 'after-init-hook 'global-company-mode)
 (setq company-idle-delay 0)
 
+;;; Irony
+(add-hook 'c++-mode-hook 'irony-mode)
+(add-hook 'c-mode-hook 'irony-mode)
+(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+(eval-after-load 'company
+  '(add-to-list 'company-backends '(company-irony-c-headers company-irony)))
+
+;;; Rtags
+;; Map some useful rtags things on 'C-c r ?'
+(add-hook 'c-mode-common-hook 'rtags-start-process-unless-running)
+(add-hook 'c++-mode-common-hook 'rtags-start-process-unless-running)
+(rtags-enable-standard-keybindings)
+
+;;; Flycheck
+(global-flycheck-mode)
+(flycheck-irony-setup)
+
 ;;; Ivy, counsel, swiper
 (ivy-mode t)
 (setq ivy-use-virtual-buffers t)
@@ -121,7 +140,7 @@
         (t
          (if (get-buffer "*terminal*")
              (display-buffer "*terminal*")
-             (term "/bin/zsh")))))
+           (term "/bin/zsh")))))
 (global-set-key (kbd "<f4>") 'zsh-terminal)
 
 ;;; recentf
