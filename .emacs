@@ -142,6 +142,7 @@ And if we're inside said buffer, start up a new zsh."
   :config (global-company-mode))
 
 (use-package irony
+  :commands irony-mode
   :init (progn
           (add-hook 'c++-mode-hook 'irony-mode)
           (add-hook 'c-mode-hook 'irony-mode)
