@@ -1,0 +1,52 @@
+# -*- mode: snippet -*-
+# name: vatemp
+# key: vatemp
+# --
+\documentclass[11pt,a4paper,article,oneside]{memoir}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[swedish,english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\setlength{\parskip}{6pt}
+\setlength{\parindent}{0pt}
+
+\usepackage{minibox}
+\usepackage{listings}
+\usepackage{tabu}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amsmath}
+\usepackage{float}
+
+
+%\usepackage{wrapfig}
+%\usepackage{bchart}
+%\usepackage{wasysym}
+
+%\makeoddhead{plain}{\theauthor~- Grupp 4}{}{}
+%\makeevenhead{plain}{\theauthor~- Grupp 4}{}{}
+%\makeoddfoot{plain}{}{}{}
+%\makeevenfoot{plain}{}{}{}
+
+%\usepackage{titlesec}
+%\titleformat*{\section}{\large\bfseries}
+%\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+\usepackage[backend=biber]{biblatex}
+\bibliography{bib.bib}
+
+\title{$1}
+%\date{}
+%\author{Victor Ähdel}
+
+\checkandfixthelayout{}
+\begin{document}
+%\begin{titlingpage}
+\maketitle
+%\end{titlingpage}
+
+$0
+
+\printbibliography{}
+
+\end{document}
