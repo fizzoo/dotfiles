@@ -169,7 +169,7 @@ And if we're inside said buffer, start up a new zsh."
   :init (defvar cmake-ide-build-dir "build"))
 
 (use-package ivy
-  :demand
+  :after flx
   :bind ("<f2>" . ivy-switch-buffer)
   :config (progn
             (ivy-mode t)
@@ -177,10 +177,15 @@ And if we're inside said buffer, start up a new zsh."
             (setq ivy-initial-inputs-alist '()))
   :diminish ivy-mode)
 
+(use-package flx
+  :demand)
+
 (use-package counsel
   :after ivy
   :bind ("<f3>" . counsel-find-file)
-  :config (counsel-mode 1)
+  :config (progn
+            (counsel-mode 1)
+            (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy))))
   :diminish counsel-mode)
 
 (use-package swiper
