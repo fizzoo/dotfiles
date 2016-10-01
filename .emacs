@@ -157,13 +157,6 @@ And if we're inside said buffer, start up a new zsh."
   :after irony
   :config (add-to-list 'company-backends '(company-irony-c-headers company-irony)))
 
-(use-package rtags
-  :commands rtags-start-process-unless-running
-  :init (progn
-          (add-hook 'c-mode-common-hook 'rtags-start-process-unless-running)
-          (add-hook 'c++-mode-common-hook 'rtags-start-process-unless-running))
-  :config (rtags-enable-standard-keybindings))
-
 (use-package flycheck
   :config (global-flycheck-mode))
 
@@ -172,7 +165,8 @@ And if we're inside said buffer, start up a new zsh."
   :config (flycheck-irony-setup))
 
 (use-package cmake-ide
-  :after irony rtags)
+  :after irony
+  :init (defvar cmake-ide-build-dir "build"))
 
 (use-package ivy
   :demand
