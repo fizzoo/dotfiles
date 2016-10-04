@@ -1,0 +1,4 @@
+($1
+    :accessor $1
+    :initarg :$1
+    :initform nil)$0

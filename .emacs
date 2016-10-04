@@ -158,6 +158,7 @@ And if we're inside said buffer, start up a new zsh."
   :config (add-to-list 'company-backends '(company-irony-c-headers company-irony)))
 
 (use-package flycheck
+  :demand                               ;Pretty much in every mode, might as well
   :config (global-flycheck-mode))
 
 (use-package flycheck-irony
