@@ -50,10 +50,9 @@ serve(){
   TRAPINT(){ sudo nginx -s stop; return 42 }
   nginxfile='/tmp/nginx.conf'
   printf "user fizzo a; events { worker_connections 1024; } http { server { root \"$PWD\"; autoindex on; } }" >$nginxfile
-  myip=$(ip a show wlo1 | ag "inet " | sed "s/inet //" | sed "s/\/.*$//" | sed "s/[ \t]*//")
 
   sudo nginx -c $nginxfile
-  printf "Started server on directory '$PWD', localip '$myip'\n"
+  printf "Started server on directory '$PWD'\n"
 
   while true; do; sleep 1; done
 }
