@@ -10,18 +10,6 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (if (file-exists-p custom-file) (load custom-file))
 
-;;; Package manager
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(package-initialize)
-(if (not (file-exists-p "~/.emacs.d/elpa/")) (package-refresh-contents))
-
-;;; use-package
-(if (not (featurep 'use-package)) (package-install 'use-package))
-(require 'use-package)
-(setq use-package-always-ensure t
-      use-package-always-defer t)
-
 ;;; Remove ugly gui
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -74,6 +62,18 @@ And if we're inside said buffer, start up a new zsh."
 ;;; 
 ;;; Start of package-based settings
 ;;; 
+
+;;; Package manager
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(package-initialize)
+(if (not (file-exists-p "~/.emacs.d/elpa/")) (package-refresh-contents))
+
+;;; use-package
+(if (not (featurep 'use-package)) (package-install 'use-package))
+(require 'use-package)
+(setq use-package-always-ensure t
+      use-package-always-defer t)
 
 (use-package powerline
   :demand)
