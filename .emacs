@@ -2,10 +2,8 @@
 ;;; Commentary:
 ;;; Code:
 
-;;; Early directory change to have backups work in case of breakage
-;;; Sane backup/autosave
-(setq backup-directory-alist
-      (list (cons ".*" (concat temporary-file-directory "backup/"))))
+;;; No backup/autosave
+(setq backup-inhibited t)
 (setq auto-save-default nil)
 
 ;;; custom-set-variables
