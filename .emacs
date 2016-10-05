@@ -77,9 +77,10 @@ And if we're inside said buffer, start up a new zsh."
 ;;; Start of package-based settings
 ;;; 
 
-(use-package powerline)
+(use-package powerline
+  :demand)
 (use-package powerline-evil
-  :after evil)
+  :after powerline)
 (use-package moe-theme
   :after powerline-evil
   :config (progn
@@ -88,11 +89,8 @@ And if we're inside said buffer, start up a new zsh."
             (powerline-evil-center-color-theme)))
 
 (use-package undo-tree
-  :config (progn
-            (global-undo-tree-mode)
-            (setq undo-tree-history-directory-alist
-                  (list (cons "." (concat temporary-file-directory "undo/"))))
-            (setq undo-tree-auto-save-history t))
+  :demand
+  :config (global-undo-tree-mode)
   :diminish undo-tree-mode)
 
 (use-package evil
