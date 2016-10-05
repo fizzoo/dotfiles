@@ -14,8 +14,18 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
-(set-frame-font "Dina")
 (setq inhibit-startup-screen t)
+
+;;; Font selection
+(defun font-exists-p (font)
+  "Check if FONT exists."
+  (not (null (x-list-fonts font))))
+(defun choose-font-if-exists (font)
+  "Set frame font to FONT if it exists."
+  (if (font-exists-p font)
+      (set-frame-font font)
+    (message "Didn't find font %s." font)))
+(choose-font-if-exists "Dina")
 
 ;;; Enable all functions
 (setq disabled-command-function nil)
