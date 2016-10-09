@@ -22,7 +22,7 @@
   (not (null (x-list-fonts font))))
 (defun choose-font-if-exists (font)
   "Set frame font to FONT if it exists."
-  (if (font-exists-p font)
+  (if (and (display-graphic-p) (font-exists-p font))
       (set-frame-font font)
     (message "Didn't find font %s." font)))
 (choose-font-if-exists "Dina")
