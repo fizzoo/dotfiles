@@ -124,7 +124,7 @@ alias l='ls --color=always -l'
 alias ll='ls --color=always -Al'
 alias d='du -had1'
 
-alias ats='tmux -S /tmp/1 && chown :a /tmp/1'
+alias ats='tmux -S /tmp/1'
 alias at='tmux -S /tmp/1 attach'
 
 alias ana='make clean && scan-build -enable-checker alpha --view make'
