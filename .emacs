@@ -215,5 +215,7 @@ And if we're inside said buffer, start up a new zsh."
             (yas-global-mode))
   :diminish yas-minor-mode)
 
+(use-package ghc)
+
 (provide 'init)
 ;;; .emacs ends here
