@@ -1,0 +1,1 @@
+std::cerr << $1 << std::endl;$0
