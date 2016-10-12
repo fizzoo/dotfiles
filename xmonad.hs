@@ -3,25 +3,32 @@ import qualified Data.Map as M (fromList, Map)
 import Data.Maybe (fromMaybe)
 import qualified XMonad.StackSet as W
 import System.Exit (exitSuccess)
-import Control.Monad (liftM)
 
 import XMonad.Hooks.ManageHelpers (doFullFloat)
 import XMonad.Layout.GridVariants (Grid(..))
 import XMonad.Hooks.EwmhDesktops (ewmh, fullscreenEventHook)
 import XMonad.Layout.Spacing (spacing)
 import XMonad.Layout.LayoutHints (layoutHintsWithPlacement)
+import XMonad.Util.Run (spawnPipe, unsafeSpawn, hPutStrLn)
+import XMonad.Hooks.DynamicLog (dynamicLogWithPP, ppOrder, ppOutput, xmobarPP)
+import XMonad.Hooks.ManageDocks (manageDocks, avoidStruts)
 
 main :: IO ()
-main = xmonad $ ewmh def
-  { modMask = mod4Mask
-  , terminal = "termite"
-  , borderWidth = 0
-  , layoutHook = (layoutHintsWithPlacement (0.5, 0.5) $ spacing 4 $ Grid (16/9)) ||| Full
-  , manageHook = myManageHook
-  , handleEventHook = handleEventHook def <+> fullscreenEventHook
-  , keys = myKeys
-  , mouseBindings = myMouseBindings
-  }
+main = do
+  bar <- spawnPipe "xmobar"
+  unsafeSpawn "trayer --widthtype request --height 20 --transparent true --tint 0x00000000 --alpha 0"
+
+  xmonad $ ewmh def
+    { modMask = mod4Mask
+    , terminal = "termite"
+    , borderWidth = 0
+    , layoutHook = avoidStruts (layoutHintsWithPlacement (0.5, 0.5) (spacing 4 $ Grid (16/9))) ||| Full
+    , manageHook = myManageHook <+> manageDocks
+    , handleEventHook = handleEventHook def <+> fullscreenEventHook
+    , keys = myKeys
+    , mouseBindings = myMouseBindings
+    , logHook = dynamicLogWithPP xmobarPP {ppOrder = \(ws:_:wt:_) -> [ws, wt], ppOutput = hPutStrLn bar }
+    }
 
 -- Some keys brought straight from default config in order to have one overview
 -- of all active bindings.
@@ -59,7 +66,7 @@ myKeys conf = M.fromList $
   , ((mod4Mask, xK_F2), spawn "xbacklight = 16")
   , ((mod4Mask, xK_F3), spawn "xbacklight = 50")
   , ((mod4Mask, xK_F4), spawn "xbacklight = 100")
-  , ((mod4Mask, xK_t), sinkAll >> (setLayout $ XMonad.layoutHook conf))
+  , ((mod4Mask, xK_t), sinkAll >> setLayout (XMonad.layoutHook conf))
   , ((mod4Mask, xK_a), sinkAll >> floatAllCurrent)
   , ((mod4Mask, xK_f), sendMessage NextLayout)
   ]
@@ -82,7 +89,8 @@ myMouseBindings _ = M.fromList
 myManageHook :: ManageHook
 myManageHook = composeAll
   [ title =? "fully" --> doFullFloat,
-    title =? "WAKEUP" --> (doShiftScreen 2 <+> doFullFloat)
+    title =? "WAKEUP" --> (doShiftScreen 2 <+> doFullFloat),
+    title =? "stalonetray" --> doShiftScreen 2
   ]
 
 doShiftScreen :: ScreenId -> ManageHook
@@ -103,7 +111,7 @@ sinkAll = do
   mapM_ (windows . W.sink) ws
 
 floaty :: Window -> X W.RationalRect
-floaty = liftM snd . floatLocation
+floaty = fmap snd . floatLocation
 
 getWindows :: X [Window]
 getWindows = withWindowSet (return . W.integrate' . W.stack . W.workspace . W.current)

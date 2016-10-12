@@ -1,0 +1,38 @@
+Config {
+
+    -- appearance
+        font =         "xft:Dina:size=10"
+        , bgColor =      "black"
+        , fgColor =      "#aaaaaa"
+        , position =     Bottom
+
+        -- layout
+        , sepChar =  "%"   -- delineator between plugin names and straight text
+        , alignSep = "}{"  -- separator between left-right alignment
+        , template = " %StdinReader% }{ %battery%    %date% "
+
+        , commands =
+        [
+            -- battery monitor
+            Run Battery        [ "--template" , "<acstatus>"
+            , "--Low"      , "10"        -- units: %
+            , "--High"     , "80"        -- units: %
+            , "--low"      , "darkred"
+            , "--normal"   , "darkorange"
+            , "--high"     , "darkgreen"
+            , "--" -- battery specific options
+                -- discharging status
+                , "-o"	, "<left>% (<timeleft>)"
+                -- AC "on" status
+                , "-O"	, ""
+                -- charged status
+                , "-i"	, ""
+            ] 50
+
+            -- time and date indicator
+            --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
+            , Run Date           "%F (%a) %T" "date" 10
+
+            , Run StdinReader
+            ]
+}
