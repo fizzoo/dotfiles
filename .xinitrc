@@ -13,11 +13,11 @@ if [[ $HOSTNAME == mag ]]
 then
   xmodmap -e 'keycode 191 = Insert' #F13
   numlockx
-  dunst &
 fi
 if [[ $HOSTNAME == arc ]]
 then
   synclient HorizTwoFingerScroll=1
+  nm-applet &
 fi
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
@@ -25,5 +25,6 @@ fi
 xset b off
 xset m 0 0
 sh ~/.fehbg
+dunst &
 
 exec xmonad
