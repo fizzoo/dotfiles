@@ -11,7 +11,7 @@ import XMonad.Layout.Spacing (spacing)
 import XMonad.Layout.LayoutHints (layoutHintsWithPlacement)
 import XMonad.Util.Run (spawnPipe, unsafeSpawn, hPutStrLn)
 import XMonad.Hooks.DynamicLog (dynamicLogWithPP, ppOrder, ppOutput, xmobarPP)
-import XMonad.Hooks.ManageDocks (manageDocks, avoidStruts)
+import XMonad.Hooks.ManageDocks (manageDocks, avoidStruts, docksEventHook)
 
 main :: IO ()
 main = do
@@ -24,7 +24,7 @@ main = do
     , borderWidth = 0
     , layoutHook = avoidStruts (layoutHintsWithPlacement (0.5, 0.5) (spacing 4 $ Grid (16/9))) ||| Full
     , manageHook = myManageHook <+> manageDocks
-    , handleEventHook = handleEventHook def <+> fullscreenEventHook
+    , handleEventHook = handleEventHook def <+> fullscreenEventHook <+> docksEventHook
     , keys = myKeys
     , mouseBindings = myMouseBindings
     , logHook = dynamicLogWithPP xmobarPP {ppOrder = \(ws:_:wt:_) -> [ws, wt], ppOutput = hPutStrLn bar }
