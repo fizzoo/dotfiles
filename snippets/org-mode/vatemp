@@ -1,0 +1,6 @@
+#+TITLE: $1
+#+AUTHOR: ${2:Victor Ähdel}
+#+OPTIONS: toc:nil
+#+LATEX_HEADER: \usepackage{parskip}
+
+$0
