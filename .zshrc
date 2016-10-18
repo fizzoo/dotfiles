@@ -75,7 +75,7 @@ cpr(){
 }
 
 twi(){
-  livestreamer twitch.tv/$1 best
+  streamlink twitch.tv/$1 best
 }
 
 c(){
