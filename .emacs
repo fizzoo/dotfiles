@@ -192,7 +192,7 @@ And if we're inside said buffer, start up a new zsh."
   :bind ("<f3>" . counsel-find-file)
   :config (progn
             (counsel-mode 1)
-            (setq ivy-re-builders-alist '((t . ivy--regex-fuzzy))))
+            (setq ivy-re-builders-alist '((swiper . ivy--regex-plus) (t . ivy--regex-fuzzy))))
   :diminish counsel-mode)
 
 (use-package swiper
