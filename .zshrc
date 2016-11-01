@@ -101,6 +101,9 @@ checkhs(){
 }
 
 e(){
+  emacs -nw $*
+}
+ew(){
   emacs $* &!
 }
 
