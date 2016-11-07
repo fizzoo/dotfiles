@@ -25,7 +25,7 @@
   (if (and (display-graphic-p) (font-exists-p font))
       (set-frame-font font)
     (message "Didn't find font %s." font)))
-(choose-font-if-exists "Dina")
+(choose-font-if-exists "Dina 8")
 
 ;;; Enable all functions
 (setq disabled-command-function nil)
