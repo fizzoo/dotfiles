@@ -80,8 +80,10 @@ And if we're inside said buffer, start up a new zsh."
 (if (not (file-exists-p "~/.emacs.d/elpa/")) (package-refresh-contents))
 
 ;;; use-package
-(if (not (featurep 'use-package)) (package-install 'use-package))
-(require 'use-package)
+(eval-when-compile
+  (unless (require 'use-package nil 'noerror)
+    (package-install 'use-package)
+    (require 'use-package)))
 (setq use-package-always-ensure t
       use-package-always-defer t)
 
