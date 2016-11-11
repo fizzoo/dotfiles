@@ -5,7 +5,7 @@
 \documentclass[11pt,a4paper,article,oneside]{memoir}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage[swedish,english]{babel}
+\usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{microtype}
 \setlength{\parskip}{6pt}
@@ -32,8 +32,8 @@
 %\titleformat*{\section}{\large\bfseries}
 %\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
 
-\usepackage[backend=biber]{biblatex}
-\bibliography{bib.bib}
+%\usepackage[backend=biber]{biblatex}
+%\bibliography{bib.bib}
 
 \title{$1}
 %\date{}
@@ -47,6 +47,6 @@
 
 $0
 
-\printbibliography{}
+%\printbibliography{}
 
 \end{document}
