@@ -1,17 +1,19 @@
-import XMonad
-import qualified Data.Map as M (fromList, Map)
-import Data.Maybe (fromMaybe)
-import qualified XMonad.StackSet as W
-import System.Exit (exitSuccess)
+import qualified Data.Map                   as M (Map, fromList)
+import           Data.Maybe                 (fromMaybe)
+import           System.Exit                (exitSuccess)
+import           XMonad
+import qualified XMonad.StackSet            as W
 
-import XMonad.Hooks.ManageHelpers (doFullFloat)
-import XMonad.Layout.GridVariants (Grid(..))
-import XMonad.Hooks.EwmhDesktops (ewmh, fullscreenEventHook)
-import XMonad.Layout.Spacing (spacing)
-import XMonad.Layout.LayoutHints (layoutHintsWithPlacement)
-import XMonad.Util.Run (spawnPipe, unsafeSpawn, hPutStrLn)
-import XMonad.Hooks.DynamicLog (dynamicLogWithPP, ppOrder, ppOutput, xmobarPP)
-import XMonad.Hooks.ManageDocks (manageDocks, avoidStruts, docksEventHook)
+import           XMonad.Hooks.DynamicLog    (dynamicLogWithPP, ppOrder,
+                                             ppOutput, xmobarPP)
+import           XMonad.Hooks.EwmhDesktops  (ewmh, fullscreenEventHook)
+import           XMonad.Hooks.ManageDocks   (avoidStruts, docksEventHook,
+                                             manageDocks)
+import           XMonad.Hooks.ManageHelpers (doFullFloat)
+import           XMonad.Layout.GridVariants (Grid (..))
+import           XMonad.Layout.LayoutHints  (layoutHintsWithPlacement)
+import           XMonad.Layout.Spacing      (spacing)
+import           XMonad.Util.Run            (hPutStrLn, spawnPipe, unsafeSpawn)
 
 main :: IO ()
 main = do
@@ -82,8 +84,6 @@ myMouseBindings _ = M.fromList
   , ((mod4Mask, button2), windows . (W.shiftMaster .) . W.focusWindow)
   , ((mod4Mask, button3), \w -> focus w >> mouseResizeWindow w
                                        >> windows W.shiftMaster)
---, ((mod4Mask, button4), \w -> focus w >> windows (W.sink w))
---, ((mod4Mask, button5), \w -> focus w >> windows (W.float w (W.RationalRect 0 0 1 1)))
   ]
 
 myManageHook :: ManageHook
@@ -100,7 +100,7 @@ doShiftScreen n = liftX (screenWorkspace n) >>= doShift . fromMaybe "0"
 -- a simple sequence float where it calculates new positions after each float
 -- and they end up on top of eachother).
 floatAllCurrent :: X ()
-floatAllCurrent = do 
+floatAllCurrent = do
   ws <- getWindows
   wr <- mapM floaty ws
   mapM_ (windows . uncurry W.float) (zip ws wr)
