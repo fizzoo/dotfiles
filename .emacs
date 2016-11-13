@@ -217,6 +217,11 @@ And if we're inside said buffer, start up a new zsh."
    'org-babel-load-languages
    '((C . t) (haskell . t) (emacs-lisp . t) (latex . t) (python . t))))
 
+;; Markdown
+(use-package markdown-mode)
+(use-package flymd
+  :defer)
+
 ;; Lisp
 (use-package slime
   :defer
