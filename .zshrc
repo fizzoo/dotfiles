@@ -1,3 +1,8 @@
+
+
+export PATH=/home/fizzo/.cabal/bin:$PATH
+
+
 #completers, _approximate tolerates 1 - max-errors faults
 zstyle ':completion:*' completer _complete _approximate
 zstyle ':completion:*' max-errors 4
@@ -131,3 +136,5 @@ ats(){ sg a "tmux -S /tmp/1" }
 at(){ sg a "tmux -S /tmp/1 attach" }
 
 alias ana='make clean && scan-build -enable-checker alpha --view make'
+
+alias s='sudo -E zsh'

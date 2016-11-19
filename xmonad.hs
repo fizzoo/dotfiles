@@ -18,7 +18,7 @@ import           XMonad.Util.Run            (hPutStrLn, spawnPipe, unsafeSpawn)
 main :: IO ()
 main = do
   bar <- spawnPipe "xmobar"
-  unsafeSpawn "trayer --widthtype request --height 20 --transparent true --tint 0x00000000 --alpha 0"
+  unsafeSpawn "trayer-srg --widthtype request --height 20 --transparent true --tint 0x00000000 --alpha 0"
 
   xmonad $ ewmh def
     { modMask = mod4Mask
@@ -51,7 +51,7 @@ myKeys conf = M.fromList $
   , ((mod4Mask, xK_o), spawn "swapsinks")
   , ((mod4Mask, xK_p), spawn "pavucontrol")
   , ((0, xK_Print), spawn "maim -s")
-  , ((0, 0xff14), spawn "maim -s") -- F14
+  , ((0, 0x1008ff45), spawn "maim -s") -- F14
   , ((mod4Mask, xK_KP_Down), spawn "mpc toggle")
   , ((mod4Mask, xK_KP_Begin), spawn "mpc stop")
   , ((mod4Mask, xK_KP_End), spawn "mpc seek -10")
