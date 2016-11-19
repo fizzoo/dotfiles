@@ -1,0 +1,8 @@
+#!/bin/sh
+
+WALLPAPERS="/media/g/annat/Wallpapers"
+ALIST=( `ls -w1 $WALLPAPERS` )
+RANGE=${#ALIST[*]}
+SHOW=$(( $RANDOM % $RANGE ))
+SHOW2=$(( $RANDOM % $RANGE ))
+feh --bg-fill $WALLPAPERS/${ALIST[$SHOW]} $WALLPAPERS/${ALIST[$SHOW2]}
