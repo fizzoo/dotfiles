@@ -17,14 +17,10 @@ command S set spell!
 command SV set spell spelllang=sv | syntax spell toplevel
 command EN set spell spelllang=en | syntax spell toplevel
 
-set undofile
 set history=100
 set hidden
 set clipboard=unnamed
-
-set dir=/tmp
-set backupdir=/tmp
-set undodir=/tmp
+set noswapfile nobackup noundofile
 
 syntax on
 filetype plugin indent on
