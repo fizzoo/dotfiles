@@ -138,3 +138,5 @@ at(){ sg a "tmux -S /tmp/1 attach" }
 alias ana='make clean && scan-build -enable-checker alpha --view make'
 
 alias s='sudo -E zsh'
+
+eval $(dircolors -b $HOME/.dircolors)
