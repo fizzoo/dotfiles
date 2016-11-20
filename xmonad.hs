@@ -43,7 +43,7 @@ myKeys conf = M.fromList $
   , ((mod4Mask, xK_k), windows W.focusUp)
   , ((mod4Mask .|. shiftMask, xK_j), windows W.swapDown)
   , ((mod4Mask .|. shiftMask, xK_k), windows W.swapUp)
-  , ((mod4Mask, xK_d), spawn "dmenu_run -b -i -nf \"#888888\" -nb \"#2D1F21\" -sf \"#ffffff\" -sb \"#6D1F21\" -fn Dina -l 12")
+  , ((mod4Mask, xK_d), spawn "dmenu_run -b -i -nf \"#888888\" -nb \"#2D1F21\" -sf \"#ffffff\" -sb \"#6D1F21\" -fn \"Dina-13\" -l 12")
   , ((mod4Mask, xK_s), spawn "termite -t fully -e htop")
   , ((mod4Mask, xK_x), spawn "emacs")
   , ((mod4Mask, xK_w), spawn "termite -t fully -e statusy")
