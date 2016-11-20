@@ -10,6 +10,7 @@ net-wireless/bluez ~amd64
 sys-kernel/gentoo-sources ~amd64
 sys-kernel/linux-firmware ~amd64
 sys-libs/libomp ~amd64
+www-client/firefox ~amd64
 www-plugins/adobe-flash ~amd64
 x11-drivers/nvidia-drivers ~amd64
 x11-libs/vte ~amd64
@@ -17,3 +18,4 @@ x11-misc/discord ~amd64
 x11-terms/termite ~amd64
 x11-themes/gnome-themes-standard ~amd64
 x11-themes/gtk-engines-adwaita ~amd64
+dev-libs/nss ~amd64

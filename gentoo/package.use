@@ -20,3 +20,5 @@ x11-proto/xcb-proto abi_x86_32
 x11-proto/xextproto abi_x86_32
 x11-proto/xf86bigfontproto abi_x86_32
 x11-proto/xproto abi_x86_32
+media-libs/libpng apng
+dev-lang/python sqlite
