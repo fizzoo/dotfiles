@@ -1,0 +1,22 @@
+app-text/texlive cjk extra games graphics omega png pstricks publishers science truetype
+app-text/texlive-core cjk xetex
+dev-libs/boehm-gc threads
+dev-libs/glib dbus
+dev-libs/libpthread-stubs abi_x86_32
+dev-libs/libxml2 python
+media-fonts/noto cjk
+media-libs/gd fontconfig
+media-libs/harfbuzz icu
+x11-libs/libX11 abi_x86_32
+x11-libs/libXau abi_x86_32
+x11-libs/libXdmcp abi_x86_32
+x11-libs/libXext abi_x86_32
+x11-libs/libxcb abi_x86_32
+x11-libs/libxcb xkb
+x11-libs/vte termite-patch
+x11-proto/inputproto abi_x86_32
+x11-proto/kbproto abi_x86_32
+x11-proto/xcb-proto abi_x86_32
+x11-proto/xextproto abi_x86_32
+x11-proto/xf86bigfontproto abi_x86_32
+x11-proto/xproto abi_x86_32
