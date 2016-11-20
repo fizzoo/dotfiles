@@ -40,10 +40,7 @@
 (show-paren-mode 1)
 
 ;;; Smooth scrolling
-(setq scroll-margin 4)
-(setq scroll-step 1)
-(setq scroll-conservatively 10000)
-(setq auto-window-vscroll nil)
+(setq scroll-conservatively 8)
 
 ;;; No emacs-vc
 (setq vc-handled-backends ())
