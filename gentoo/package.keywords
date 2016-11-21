@@ -4,7 +4,6 @@ dev-libs/nss ~amd64
 media-fonts/dejavu ~amd64
 media-fonts/noto ~amd64
 media-fonts/noto-cjk ~amd64
-media-gfx/krita ~amd64
 media-plugins/deadbeef-librarybrowser ~amd64
 media-plugins/deadbeef-plugins-meta ~amd64
 media-sound/deadbeef ~amd64
