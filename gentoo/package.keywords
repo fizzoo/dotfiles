@@ -1,5 +1,6 @@
 app-misc/fzf ~amd64
 app-portage/gentoolkit ~amd64
+dev-libs/nss ~amd64
 media-fonts/dejavu ~amd64
 media-fonts/noto ~amd64
 media-fonts/noto-cjk ~amd64
@@ -18,4 +19,3 @@ x11-misc/discord ~amd64
 x11-terms/termite ~amd64
 x11-themes/gnome-themes-standard ~amd64
 x11-themes/gtk-engines-adwaita ~amd64
-dev-libs/nss ~amd64
