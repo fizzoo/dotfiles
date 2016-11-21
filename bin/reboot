@@ -1,2 +1,2 @@
 #!/bin/sh
-sudo /sbin/reboot
+sudo /bin/sh -c /sbin/reboot

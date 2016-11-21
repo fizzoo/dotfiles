@@ -1,0 +1,2 @@
+#!/bin/sh
+sudo /bin/sh -c 'echo mem > /sys/power/state'

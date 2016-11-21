@@ -52,6 +52,7 @@ myKeys conf = M.fromList $
   , ((mod4Mask, xK_p), spawn "pavucontrol")
   , ((0, xK_Print), spawn "maim -s")
   , ((0, 0x1008ff45), spawn "maim -s") -- F14
+  , ((mod4Mask, xK_Delete), spawn "susp")
   , ((mod4Mask, xK_KP_Down), spawn "mpc toggle")
   , ((mod4Mask, xK_KP_Begin), spawn "mpc stop")
   , ((mod4Mask, xK_KP_End), spawn "mpc seek -10")

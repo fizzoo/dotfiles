@@ -1,2 +1,2 @@
 #!/bin/sh
-sudo /sbin/poweroff
+sudo /bin/sh -c /sbin/poweroff
