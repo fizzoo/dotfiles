@@ -1,6 +1,0 @@
-mpd_host = localhost
-mpd_port = 6600
-mpd_music_dir = ~/musik
-media_library_primary_tag = album_artist
-display_bitrate = yes
-mouse_list_scroll_whole_page = no

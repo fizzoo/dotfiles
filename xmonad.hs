@@ -53,14 +53,6 @@ myKeys conf = M.fromList $
   , ((0, xK_Print), spawn "maim -s")
   , ((0, 0x1008ff45), spawn "maim -s") -- F14
   , ((mod4Mask, xK_Delete), spawn "susp")
-  , ((mod4Mask, xK_KP_Down), spawn "mpc toggle")
-  , ((mod4Mask, xK_KP_Begin), spawn "mpc stop")
-  , ((mod4Mask, xK_KP_End), spawn "mpc seek -10")
-  , ((mod4Mask, xK_KP_Page_Down), spawn "mpc seek +10")
-  , ((mod4Mask, xK_KP_Left), spawn "mpc prev")
-  , ((mod4Mask, xK_KP_Right), spawn "mpc next")
-  , ((mod4Mask, xK_KP_Home), spawn "mpc volume -10")
-  , ((mod4Mask, xK_KP_Page_Up), spawn "mpc volume +10")
   , ((0, 0x1008ff49), spawn "sleep 0.1 && xset dpms force off") -- F18
   , ((mod4Mask, xK_y), spawn "xmonad --recompile && xmonad --restart")
   , ((mod4Mask .|. shiftMask, xK_y), io exitSuccess)
