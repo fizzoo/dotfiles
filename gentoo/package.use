@@ -11,6 +11,7 @@ media-libs/gd fontconfig
 media-libs/harfbuzz icu
 media-libs/libpng apng
 media-sound/deadbeef cover
+net-analyzer/nmap gtk ipv6 lua nls ssl ncat ndiff nmap-update nping
 x11-libs/libX11 abi_x86_32
 x11-libs/libXau abi_x86_32
 x11-libs/libXdmcp abi_x86_32
