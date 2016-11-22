@@ -1,5 +1,6 @@
 app-text/texlive cjk extra games graphics omega png pstricks publishers science truetype
 app-text/texlive-core cjk xetex
+dev-lang/python tk
 dev-libs/boehm-gc threads
 dev-libs/glib dbus
 dev-libs/libpthread-stubs abi_x86_32
