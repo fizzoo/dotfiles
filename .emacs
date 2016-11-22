@@ -50,8 +50,6 @@
 (defvar gdb-show-main t)
 
 ;;; VA binds
-(global-set-key (kbd "<f1>") 'delete-other-windows)
-
 (defun zsh-terminal ()
   "Start up a terminal buffer with zsh somewhere visible.
 If there already exists one that we made, use that one.
@@ -63,7 +61,6 @@ And if we're inside said buffer, start up a new zsh."
          (if (get-buffer "*terminal*")
              (display-buffer "*terminal*")
            (term "/bin/zsh")))))
-(global-set-key (kbd "<f4>") 'zsh-terminal)
 
 
 ;;;
@@ -166,16 +163,14 @@ And if we're inside said buffer, start up a new zsh."
   (progn
     (ivy-mode t)
     (setq ivy-use-virtual-buffers t)
-    (setq ivy-initial-inputs-alist '())
-    (amap "<f2>" 'ivy-switch-buffer))
+    (setq ivy-initial-inputs-alist '()))
   :diminish ivy-mode)
 
 (use-package counsel
   :config
   (progn
     (counsel-mode 1)
-    (setq ivy-re-builders-alist '((swiper . ivy--regex-plus) (t . ivy--regex-fuzzy)))
-    (nmap "<f3>" 'counsel-find-file))
+    (setq ivy-re-builders-alist '((swiper . ivy--regex-plus) (t . ivy--regex-fuzzy))))
   :diminish counsel-mode)
 
 (use-package swiper)
