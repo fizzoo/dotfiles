@@ -47,7 +47,7 @@ myKeys conf = M.fromList $
   , ((mod4Mask, xK_s), spawn "termite -t fully -e htop")
   , ((mod4Mask, xK_x), spawn "emacs")
   , ((mod4Mask, xK_w), spawn "termite -t fully -e statusy")
-  , ((mod4Mask, xK_c), spawn "firefox")
+  , ((mod4Mask, xK_c), spawn "chromium")
   , ((mod4Mask, xK_o), spawn "swapsinks")
   , ((mod4Mask, xK_p), spawn "pavucontrol")
   , ((0, xK_Print), spawn "maim -s")

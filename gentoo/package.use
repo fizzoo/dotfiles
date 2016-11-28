@@ -5,13 +5,16 @@ dev-lang/python tk
 dev-libs/boehm-gc threads
 dev-libs/glib dbus
 dev-libs/libpthread-stubs abi_x86_32
+dev-libs/libxml2 icu
 dev-libs/libxml2 python
 media-fonts/noto cjk
 media-libs/gd fontconfig
 media-libs/harfbuzz icu
 media-libs/libpng apng
+media-libs/libvpx svc
 media-sound/deadbeef cover
 net-analyzer/nmap gtk ipv6 lua nls ssl ncat ndiff nmap-update nping
+sys-libs/zlib minizip
 x11-libs/libX11 abi_x86_32
 x11-libs/libXau abi_x86_32
 x11-libs/libXdmcp abi_x86_32
