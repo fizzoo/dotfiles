@@ -9,7 +9,7 @@ Config {
         -- layout
         , sepChar =  "%"   -- delineator between plugin names and straight text
         , alignSep = "}{"  -- separator between left-right alignment
-        , template = " %StdinReader% }{ %top%  %battery%    %date% "
+        , template = " %StdinReader% }{ %battery%    %date% "
 
         , commands =
         [
@@ -29,7 +29,7 @@ Config {
                 , "-i"	, ""
             ] 50
 
-            , Run TopProc ["-H", "90", "-h", "red", "-L", "25", "-l", "black"] 10
+            -- , Run TopProc ["-H", "90", "-h", "red", "-L", "25", "-l", "black"] 10
 
             -- time and date indicator
             --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
