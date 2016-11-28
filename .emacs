@@ -140,8 +140,6 @@ And if we're inside said buffer, start up a new zsh."
     (setq which-key-idle-delay 0.2))
   :diminish which-key-mode)
 
-(use-package hydra)
-
 (use-package undo-tree
   :config (global-undo-tree-mode)
   :diminish undo-tree-mode)
@@ -187,7 +185,8 @@ And if we're inside said buffer, start up a new zsh."
   :diminish company-mode)
 
 (use-package flycheck
-  :config (global-flycheck-mode))
+  :config (progn (global-flycheck-mode)
+                 (setq flycheck-check-syntax-automatically '(save mode-enabled))))
 
 (use-package yasnippet
   :config
@@ -221,9 +220,16 @@ And if we're inside said buffer, start up a new zsh."
   :config (slime-setup))
 
 ;; Python
-(use-package elpy
-  :defer
-  :init (add-hook 'python-mode-hook 'elpy-enable))
+(use-package anaconda-mode :defer)
+(use-package company-anaconda :defer)
+
+(defun pyhook ()
+  "Start my py mode."
+  (interactive)
+  (anaconda-mode)
+  (anaconda-eldoc-mode)
+  (add-to-list 'company-backends '(company-anaconda)))
+(add-hook 'python-mode-hook 'pyhook)
 
 ;; C/C++
 (use-package irony
@@ -278,7 +284,7 @@ And if we're inside said buffer, start up a new zsh."
 
 
 
-;;; Generic bindings area
+;;; Global bindings area
 
 ;; Inherit most emacs bindings instead of the few vim
 ;; insert-mode ones
@@ -288,26 +294,11 @@ And if we're inside said buffer, start up a new zsh."
 ;; undoes all meta keys otherwise
 (amap "<escape>" 'evil-normal-state)
 
-(defhydra hydra-buffer ()
-  "Change buffer quickly"
-  ("d" evil-next-buffer)
-  ("a" evil-prev-buffer)
-  ("q" evil-delete-buffer))
-(nmap "SPC w" 'hydra-buffer/body)
-
 (nmap "SPC SPC" 'counsel-M-x)
 (nmap "SPC 1" 'delete-other-windows
       "SPC 2" 'ivy-switch-buffer
       "SPC 3" 'counsel-find-file
       "SPC 4" 'zsh-terminal)
-
-(defhydra hydra-fonts ()
-  "Change font settings interactively"
-  ("w" text-scale-increase "larger")
-  ("s" text-scale-decrease "smaller")
-  ("d" (choose-font-if-exists "Dina") "Dina")
-  ("a" (choose-font-if-exists "Source Code Pro") "SCP"))
-(nmap "SPC z" 'hydra-fonts/body)
 
 (amap
  "C-<right>" 'sp-forward-sexp
@@ -323,8 +314,7 @@ And if we're inside said buffer, start up a new zsh."
 
 
 (nmap "SPC g" 'magit-status)
-(nmap "C-s" 'swiper)
-
+(amap "C-s" 'swiper)
 
 
 (provide 'init)
