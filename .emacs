@@ -32,7 +32,6 @@
 
 ;;; Use spaces
 (setq-default indent-tabs-mode nil)
-(setq tab-width 2)                      ;two of them
 
 ;;; Show matching parens
 (defvar show-paren-delay 0)
