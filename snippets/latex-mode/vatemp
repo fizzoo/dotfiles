@@ -15,7 +15,7 @@
 \usepackage{listings}
 \usepackage{tabu}
 \usepackage[hidelinks]{hyperref}
-\usepackage{amsmath}
+\usepackage{amsmath, amsthm, amssymb}
 \usepackage{float}
 
 
