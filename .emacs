@@ -183,6 +183,17 @@ And if we're inside said buffer, start up a new zsh."
   :config (global-company-mode)
   :diminish company-mode)
 
+;; http://emacs.stackexchange.com/a/24800
+(dolist (key '("<return>" "RET"))
+  (define-key company-active-map (kbd key)
+    `(menu-item nil company-complete
+                :filter ,(lambda (cmd)
+                            (when (company-explicit-action-p)
+                            cmd)))))
+(define-key company-active-map (kbd "TAB") #'company-complete-selection)
+(define-key company-active-map (kbd "SPC") nil)
+(setq company-auto-complete-chars nil)
+
 (use-package flycheck
   :config (progn (global-flycheck-mode)
                  (setq flycheck-check-syntax-automatically '(save mode-enabled))))
