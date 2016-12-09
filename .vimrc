@@ -1,7 +1,5 @@
 " term fix
 set ttimeoutlen=0
-" midclick paste through ssh works when in input
-set mouse=nv
 
 nnoremap    <space>         <nop>
 let mapleader = " "
