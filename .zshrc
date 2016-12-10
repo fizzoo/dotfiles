@@ -130,7 +130,7 @@ alias g='g++ -std=c++14 -g '
 
 alias l='ls --color=always -l'
 alias ll='ls --color=always -Al'
-alias d='du -had1'
+alias d='du -had1 | sort -h'
 
 ats(){ sg a "tmux -S /tmp/1" }
 at(){ sg a "tmux -S /tmp/1 attach" }
