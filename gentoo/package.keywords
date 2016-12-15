@@ -9,12 +9,14 @@ media-plugins/deadbeef-librarybrowser ~amd64
 media-plugins/deadbeef-plugins-meta ~amd64
 media-sound/deadbeef ~amd64
 net-wireless/bluez ~amd64
+sys-apps/inxi ~amd64
 sys-kernel/gentoo-sources ~amd64
 sys-kernel/linux-firmware ~amd64
 sys-libs/libomp ~amd64
 www-client/google-chrome ~amd64
 www-plugins/adobe-flash ~amd64
 x11-drivers/nvidia-drivers ~amd64
+x11-drivers/xf86-input-synaptics ~amd64
 x11-libs/vte ~amd64
 x11-misc/discord ~amd64
 x11-terms/termite ~amd64
