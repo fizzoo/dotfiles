@@ -7,16 +7,32 @@ dev-libs/glib dbus
 dev-libs/libpcre pcre16
 dev-libs/libxml2 icu
 dev-libs/libxml2 python
+dev-util/cmake -qt5
 games-util/steam-games-meta s3tc
 media-fonts/noto cjk
 media-libs/chromaprint tools
 media-libs/gd fontconfig
 media-libs/harfbuzz icu
+media-libs/libmypaint gegl
 media-libs/libpng apng
 media-libs/libvpx svc
 media-libs/mesa -bindist
 media-sound/deadbeef cover
 net-analyzer/nmap gtk ipv6 lua nls ssl ncat ndiff nmap-update nping
+net-print/cups -usb
 sys-libs/zlib minizip
 x11-libs/libxcb xkb
 x11-libs/vte termite-patch
+
+dev-libs/libpthread-stubs abi_x86_32
+x11-proto/inputproto abi_x86_32
+x11-proto/kbproto abi_x86_32
+x11-proto/xcb-proto abi_x86_32
+x11-proto/xextproto abi_x86_32
+x11-proto/xf86bigfontproto abi_x86_32
+x11-proto/xproto abi_x86_32
+x11-libs/libX11 abi_x86_32
+x11-libs/libXau abi_x86_32
+x11-libs/libXdmcp abi_x86_32
+x11-libs/libXext abi_x86_32
+x11-libs/libxcb abi_x86_32
