@@ -23,6 +23,7 @@ net-print/cups -usb
 sys-libs/zlib minizip
 x11-libs/libxcb xkb
 x11-libs/vte termite-patch
+media-plugins/deadbeef-plugins-meta musical-spectrum
 
 dev-libs/libpthread-stubs abi_x86_32
 x11-proto/inputproto abi_x86_32
