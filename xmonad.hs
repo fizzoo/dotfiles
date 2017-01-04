@@ -16,7 +16,7 @@ import           XMonad.Hooks.ManageHelpers (doFullFloat)
 import           XMonad.Layout.GridVariants (Grid (..))
 import           XMonad.Layout.LayoutHints  (layoutHintsWithPlacement)
 import           XMonad.Layout.Spacing      (spacing)
-import           XMonad.Util.Run            (hPutStrLn, spawnPipe, unsafeSpawn)
+import           XMonad.Util.Run            (hPutStrLn, spawnPipe)
 
 main :: IO ()
 main = do
