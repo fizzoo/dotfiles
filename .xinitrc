@@ -15,7 +15,6 @@ then
     numlockx
     redshift -t 5500:3000 -b 1.0:0.5 -l 59:17 &
     xset m 0 0
-    qbittorrent &
 fi
 if [[ $HOSTNAME == arc ]]
 then

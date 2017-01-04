@@ -4,6 +4,9 @@ import           System.Exit                (exitSuccess)
 import           XMonad
 import qualified XMonad.StackSet            as W
 
+import           Control.Monad              (when)
+import           Data.List                  (isInfixOf)
+import           Network.HostName           (getHostName)
 import           XMonad.Hooks.DynamicLog    (dynamicLogWithPP, ppOrder,
                                              ppOutput, xmobarPP)
 import           XMonad.Hooks.EwmhDesktops  (ewmh, fullscreenEventHook)
@@ -18,7 +21,6 @@ import           XMonad.Util.Run            (hPutStrLn, spawnPipe, unsafeSpawn)
 main :: IO ()
 main = do
   bar <- spawnPipe "xmobar"
-  unsafeSpawn "trayer-srg --widthtype request --height 20 --transparent true --tint 0x00000000 --alpha 0"
 
   xmonad $ ewmh def
     { modMask = mod4Mask
@@ -30,6 +32,7 @@ main = do
     , keys = myKeys
     , mouseBindings = myMouseBindings
     , logHook = dynamicLogWithPP xmobarPP {ppOrder = \(ws:_:wt:_) -> [ws, wt], ppOutput = hPutStrLn bar }
+    , startupHook = myStartup
     }
 
 -- Some keys brought straight from default config in order to have one overview
@@ -81,10 +84,17 @@ myMouseBindings _ = M.fromList
 
 myManageHook :: ManageHook
 myManageHook = composeAll
-  [ title =? "fully" --> doFullFloat,
-    title =? "WAKEUP" --> (doShiftScreen 2 <+> doFullFloat),
-    title =? "stalonetray" --> doShiftScreen 2
+  [ title =? "fully" --> doFullFloat
+  , title =? "WAKEUP" --> (doShiftScreen 2 <+> doFullFloat)
+  , title =? "stalonetray" --> doShiftScreen 2
+  , fmap ("qBittorrent" `isInfixOf`) title --> doShift "8"
   ]
+
+myStartup :: X ()
+myStartup = do
+  host <- io getHostName
+  spawn "trayer-srg --widthtype request --height 20 --transparent true --tint 0x00000000 --alpha 0"
+  when (host == "mag") $ spawn "qbittorrent"
 
 doShiftScreen :: ScreenId -> ManageHook
 doShiftScreen n = liftX (screenWorkspace n) >>= doShift . fromMaybe "0"
