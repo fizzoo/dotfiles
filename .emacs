@@ -33,6 +33,9 @@
 ;;; Use spaces
 (setq-default indent-tabs-mode nil)
 
+;;; Truncate if off screen
+(setq-default truncate-lines t)
+
 ;;; Show matching parens
 (defvar show-paren-delay 0)
 (defvar show-paren-style 'expression)
@@ -304,7 +307,6 @@ And if we're inside said buffer, start up a new zsh."
 ;; undoes all meta keys otherwise
 (amap "<escape>" 'evil-normal-state)
 
-(nmap "SPC SPC" 'counsel-M-x)
 (nmap "SPC 1" 'delete-other-windows
       "SPC 2" 'ivy-switch-buffer
       "SPC 3" 'counsel-find-file
@@ -323,6 +325,8 @@ And if we're inside said buffer, start up a new zsh."
  "C-M-w" 'sp-unwrap-sexp)
 
 
+(nmap "SPC SPC" 'evil-emacs-state)
+(nmap "SPC q" 'evil-delete-buffer)
 (nmap "SPC g" 'magit-status)
 (amap "C-s" 'swiper)
 
