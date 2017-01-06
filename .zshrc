@@ -134,6 +134,7 @@ alias d='du -had1 | sort -h'
 
 ats(){ sg a "tmux -S /tmp/1" }
 at(){ sg a "tmux -S /tmp/1 attach" }
+own(){ sudo chown -R $USER: $* }
 
 alias ana='make clean && scan-build -enable-checker alpha --view make'
 
