@@ -1,7 +1,7 @@
 app-text/texlive cjk extra games graphics omega png pstricks publishers science truetype
 app-text/texlive-core cjk xetex
-dev-lang/python sqlite
-dev-lang/python tk
+app-text/xmlto text
+dev-lang/python sqlite tk
 dev-libs/boehm-gc threads
 dev-libs/glib dbus
 dev-libs/libpcre pcre16
@@ -16,14 +16,13 @@ media-libs/harfbuzz icu
 media-libs/libmypaint gegl
 media-libs/libpng apng
 media-libs/libvpx svc
-media-libs/mesa -bindist
+media-plugins/deadbeef-plugins-meta musical-spectrum
 media-sound/deadbeef cover
 net-analyzer/nmap gtk ipv6 lua nls ssl ncat ndiff nmap-update nping
 net-print/cups -usb
 sys-libs/zlib minizip
 x11-libs/libxcb xkb
 x11-libs/vte termite-patch
-media-plugins/deadbeef-plugins-meta musical-spectrum
 
 dev-libs/libpthread-stubs abi_x86_32
 x11-proto/inputproto abi_x86_32
