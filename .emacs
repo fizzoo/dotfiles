@@ -198,8 +198,7 @@ And if we're inside said buffer, start up a new zsh."
 (setq company-auto-complete-chars nil)
 
 (use-package flycheck
-  :config (progn (global-flycheck-mode)
-                 (setq flycheck-check-syntax-automatically '(save mode-enabled))))
+  :config (progn (setq flycheck-check-syntax-automatically '(save mode-enabled))))
 
 (use-package yasnippet
   :config
@@ -312,6 +311,12 @@ And if we're inside said buffer, start up a new zsh."
       "SPC 3" 'counsel-find-file
       "SPC 4" 'zsh-terminal)
 
+(defun flycheck-mode-and-check ()
+  (interactive)
+  (flycheck-mode 'toggle)
+  (flycheck-buffer))
+(nmap "SPC 5" 'flycheck-mode-and-check)
+
 (amap
  "C-<right>" 'sp-forward-sexp
  "C-<left>" 'sp-backward-sexp
@@ -330,6 +335,7 @@ And if we're inside said buffer, start up a new zsh."
 (nmap "SPC g" 'magit-status)
 (amap "C-s" 'swiper)
 
+(setq python-shell-completion-native-enable nil)
 
 (provide 'init)
 ;;; .emacs ends here
