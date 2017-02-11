@@ -25,7 +25,7 @@
   (if (and (display-graphic-p) (font-exists-p font))
       (set-frame-font font)
     (message "Didn't find font %s." font)))
-(choose-font-if-exists "Dina 13")
+(choose-font-if-exists "Dina 10")
 
 ;;; Enable all functions
 (setq disabled-command-function nil)
@@ -336,6 +336,8 @@ And if we're inside said buffer, start up a new zsh."
 (amap "C-s" 'swiper)
 
 (setq python-shell-completion-native-enable nil)
+
+(setq use-dialog-box nil)
 
 (provide 'init)
 ;;; .emacs ends here

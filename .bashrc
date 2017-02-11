@@ -1,3 +1,5 @@
+export HISTCONTROL=ignoreboth:erasedups
+
 # functions & aliases
 color () {
   for i in {0..256}
@@ -83,3 +85,4 @@ own () { sudo chown -R $USER: $*; }
 
 alias ana='make clean && scan-build -enable-checker alpha --view make';
 
+nix? () { nix-env -qaP ".*$1.*"; }
