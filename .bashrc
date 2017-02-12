@@ -85,4 +85,4 @@ own () { sudo chown -R $USER: $*; }
 
 alias ana='make clean && scan-build -enable-checker alpha --view make';
 
-nix? () { nix-env -qaP ".*$1.*"; }
+nix? () { nix-env -qaP --description ".*$1.*"; }
