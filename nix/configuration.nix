@@ -15,27 +15,47 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   environment.systemPackages = with pkgs; [
-    vim
-    git
-    htop
-    gcc
-    binutils
-    file
+    vim git tree htop file
+    gcc binutils gnumake
 
-    tmux
-    wget
-    ag
-    fzf
+    nix-repl
+    
+    tmux wget ag fzf ncurses ranger
+    atool zip unzip
+    dina-font dmenu termite
+    dunst libnotify
+    emacs evince firefox
+    slop maim mediainfo
+    pavucontrol baobab lxappearance
+    ffmpeg-full lame
+    deadbeef-with-plugins picard
+    discord
+    arc-theme arc-icon-theme gtk-engine-murrine
+    mpv sxiv
+    sshfs-fuse
+    postgresql
+    networkmanagerapplet
 
-    dina-font
-    termite
-    emacs
-    firefox
-    slop maim
-    dunst
-    libnotify
-    haskellPackages.xmobar
+    ghc
+    haskellPackages.xmobar trayer
   ];
+
+  environment.variables = {
+    NO_AT_BRIDGE = "1";
+    GTK_DATA_PREFIX = "/run/current-system/sw/";
+    EDITOR = "vim";
+    VISUAL = "vim";
+    BROWSER = "firefox";
+  };
+
+  services.postgresql.enable = true;
+  services.postgresql.authentication = "local all all ident";
+  nixpkgs.config.allowUnfree = true;
+
+  #virtualisation.docker.enable = true;
+
+  # Workaround for docker cgroups, as systemd 232 broke something
+  #boot.kernelParams = [ "systemd.legacy_systemd_cgroup_controller=yes" ];
 
   programs.bash.interactiveShellInit = ''
     bind '"\e[A":history-search-backward'
@@ -78,7 +98,7 @@
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
-      extraPackages = haskellPackages: [ haskellPackages.network haskellPackages.xmobar];
+      extraPackages = hp: [ hp.hostname ];
     };
     libinput = {
       enable = true;
@@ -88,26 +108,31 @@
     # synaptics.twoFingerScroll = true;
   };
 
-  # List services that you want to enable:
+  services.openssh.enable = true;
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  services.printing.enable = true;
 
   hardware = {
     pulseaudio.enable = true;
     pulseaudio.support32Bit = true;
+    opengl.driSupport32Bit = true;
   };
   
   users.extraUsers.fizzo = {
     isNormalUser = true;
     home = "/home/fizzo";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" ];
   };
 
   # The NixOS release to be compatible with for stateful data such as databases.
   system.stateVersion = "16.09";
 
+  systemd.services.powertop = {
+    description = "One-shot powertop configuration script";
+    wantedBy = [ "multi-user.target" ];
+    after = [ "multi-user.target" ];
+    script = "/b/powertop-tune";
+    serviceConfig.Type = "oneshot";
+    path = [ pkgs.ethtool ];
+  };
 }
