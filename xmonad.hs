@@ -93,7 +93,7 @@ myManageHook = composeAll
 myStartup :: X ()
 myStartup = do
   host <- io getHostName
-  spawn "trayer-srg --widthtype request --height 20 --transparent true --tint 0x00000000 --alpha 0"
+  spawn "trayer --widthtype request --height 20 --transparent true --tint 0x00000000 --alpha 0"
   when (host == "mag") $ spawn "qbittorrent"
 
 doShiftScreen :: ScreenId -> ManageHook
