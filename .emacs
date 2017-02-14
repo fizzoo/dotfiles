@@ -65,6 +65,16 @@ And if we're inside said buffer, start up a new zsh."
            (term "/bin/zsh")))))
 
 
+(defun righty-python ()
+  (interactive)
+  (unless (get-buffer "*Python*")
+    (run-python))
+  (delete-other-windows)
+  (evil-window-vsplit)
+  (display-buffer "*Python*"))
+
+(nmap "SPC p" 'righty-python)
+
 ;;;
 ;;; Start of package-based settings
 ;;;
