@@ -1,8 +1,15 @@
 export HISTCONTROL=ignoreboth:erasedups
 
+export PATH=/b:$PATH
+
+
+haskelly () {
+  nix-shell -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ $* ])"
+}
+
 # functions & aliases
 color () {
-  for i in {0..256}
+  for i in {0..255}
   do
     tput setab $i
     printf "%8s" $i
@@ -86,3 +93,5 @@ own () { sudo chown -R $USER: $*; }
 alias ana='make clean && scan-build -enable-checker alpha --view make';
 
 nix? () { nix-env -qaP --description ".*$1.*"; }
+
+eval $( dircolors -b $HOME/.dircolors )
