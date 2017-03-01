@@ -1,22 +1,22 @@
-import qualified Data.Map                   as M (Map, fromList)
-import           Data.Maybe                 (fromMaybe)
-import           System.Exit                (exitSuccess)
+import           Control.Monad                    (when)
+import           Data.List                        (isInfixOf)
+import qualified Data.Map                         as M (Map, fromList)
+import           Data.Maybe                       (fromMaybe)
+import           Network.HostName                 (getHostName)
+import           System.Exit                      (exitSuccess)
 import           XMonad
-import qualified XMonad.StackSet            as W
-
-import           Control.Monad              (when)
-import           Data.List                  (isInfixOf)
-import           Network.HostName           (getHostName)
-import           XMonad.Hooks.DynamicLog    (dynamicLogWithPP, ppOrder,
-                                             ppOutput, xmobarPP)
-import           XMonad.Hooks.EwmhDesktops  (ewmh, fullscreenEventHook)
-import           XMonad.Hooks.ManageDocks   (avoidStruts, docksEventHook,
-                                             manageDocks)
-import           XMonad.Hooks.ManageHelpers (doFullFloat)
-import           XMonad.Layout.GridVariants (Grid (..))
-import           XMonad.Layout.LayoutHints  (layoutHintsWithPlacement)
-import           XMonad.Layout.Spacing      (spacing)
-import           XMonad.Util.Run            (hPutStrLn, spawnPipe)
+import qualified XMonad.Actions.FlexibleResize    as Flex
+import           XMonad.Hooks.DynamicLog          (dynamicLogWithPP, ppOrder,
+                                                   ppOutput, xmobarPP)
+import           XMonad.Hooks.EwmhDesktops        (ewmh, fullscreenEventHook)
+import           XMonad.Hooks.ManageDocks         (avoidStruts, docksEventHook,
+                                                   manageDocks)
+import           XMonad.Hooks.ManageHelpers       (doFullFloat)
+import           XMonad.Layout.GridVariants       (Grid (..))
+import           XMonad.Layout.LayoutHints        (layoutHintsWithPlacement)
+import           XMonad.Layout.MouseResizableTile
+import qualified XMonad.StackSet                  as W
+import           XMonad.Util.Run                  (hPutStrLn, spawnPipe)
 
 main :: IO ()
 main = do
@@ -26,7 +26,7 @@ main = do
     { modMask = mod4Mask
     , terminal = "termite"
     , borderWidth = 0
-    , layoutHook = avoidStruts (layoutHintsWithPlacement (0.5, 0.5) (spacing 4 $ Grid (16/9))) ||| Full
+    , layoutHook = avoidStruts (layoutHintsWithPlacement (0.5, 0.5) (mouseResizableTile { draggerType = FixedDragger 4 4 })) ||| Full
     , manageHook = myManageHook <+> manageDocks
     , handleEventHook = handleEventHook def <+> fullscreenEventHook <+> docksEventHook
     , keys = myKeys
@@ -78,8 +78,7 @@ myMouseBindings _ = M.fromList
   [ ((mod4Mask, button1), \w -> focus w >> mouseMoveWindow w
                                         >> windows W.shiftMaster)
   , ((mod4Mask, button2), windows . (W.shiftMaster .) . W.focusWindow)
-  , ((mod4Mask, button3), \w -> focus w >> mouseResizeWindow w
-                                       >> windows W.shiftMaster)
+  , ((mod4Mask, button3), (\w -> focus w >> Flex.mouseResizeWindow w))
   ]
 
 myManageHook :: ManageHook
