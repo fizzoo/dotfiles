@@ -17,9 +17,11 @@
   environment.systemPackages = with pkgs; [
     vim git tree htop file
     gcc binutils gnumake
+    pciutils
 
     nix-repl
     
+    st
     tmux wget ag fzf ncurses ranger
     atool zip unzip
     dina-font dmenu termite
@@ -88,10 +90,12 @@
     enable = true;
     layout = "se";
     xkbOptions = "ctrl:nocaps";
-    displayManager.slim = {
+    displayManager.sddm = {
       enable = true;
-      autoLogin = true;
-      defaultUser = "fizzo";
+      autoLogin = {
+        enable = true;
+        user = "fizzo";
+      };
     };
     desktopManager.default = "none";
     windowManager.default = "xmonad";
@@ -108,9 +112,10 @@
     # synaptics.twoFingerScroll = true;
   };
 
+  services.nscd.enable = false;
   services.openssh.enable = true;
-
   services.printing.enable = true;
+
 
   hardware = {
     pulseaudio.enable = true;
@@ -135,4 +140,13 @@
     serviceConfig.Type = "oneshot";
     path = [ pkgs.ethtool ];
   };
+
+  # Allegedly overrides argument of derivation
+  nixpkgs.config.packageOverrides = pkgs: rec {
+    st = pkgs.st.override {
+      patches = ["/k/dotfiles/nix/st-font.patch"
+                 "/k/dotfiles/nix/st-term.patch"];
+    };
+  };
+
 }

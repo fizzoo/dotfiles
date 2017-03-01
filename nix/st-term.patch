@@ -1,0 +1,13 @@
+diff --git a/config.def.h b/config.def.h
+index a719e36..8050afe 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -63,7 +63,7 @@ static unsigned int cursorthickness = 2;
+ static int bellvolume = 0;
+ 
+ /* default TERM value */
+-static char termname[] = "st-256color";
++static char termname[] = "xterm-256color";
+ 
+ /*
+  * spaces per tab
