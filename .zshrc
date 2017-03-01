@@ -34,12 +34,11 @@ else
   export PROMPT='%K{green}%(?..%K{red}[%?])%1(j.{%j}.) %n %3~ %k'
 fi
 
-bindkey -v
+bindkey -e
 export KEYTIMEOUT=1
 bindkey "^?" backward-delete-char
 bindkey "^[[3~" delete-char
 bindkey "^[[A" up-line-or-search && bindkey "^[[B" down-line-or-search
-bindkey -M vicmd '?' history-incremental-search-backward
 
 # functions & aliases
 color(){
