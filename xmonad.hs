@@ -24,7 +24,7 @@ main = do
 
   xmonad $ ewmh def
     { modMask = mod4Mask
-    , terminal = "termite"
+    , terminal = myterm
     , borderWidth = 0
     , layoutHook = avoidStruts (layoutHintsWithPlacement (0.5, 0.5) (mouseResizableTile { draggerType = FixedDragger 4 4 })) ||| Full
     , manageHook = myManageHook <+> manageDocks
@@ -34,6 +34,8 @@ main = do
     , logHook = dynamicLogWithPP xmobarPP {ppOrder = \(ws:_:wt:_) -> [ws, wt], ppOutput = hPutStrLn bar }
     , startupHook = myStartup
     }
+
+myterm = "st"
 
 -- Some keys brought straight from default config in order to have one overview
 -- of all active bindings.
@@ -47,9 +49,8 @@ myKeys conf = M.fromList $
   , ((mod4Mask .|. shiftMask, xK_j), windows W.swapDown)
   , ((mod4Mask .|. shiftMask, xK_k), windows W.swapUp)
   , ((mod4Mask, xK_d), spawn "dmenu_run -b -i -nf \"#888888\" -nb \"#2D1F21\" -sf \"#ffffff\" -sb \"#6D1F21\" -fn \"Dina-10\" -l 12")
-  , ((mod4Mask, xK_s), spawn "termite -t fully -e htop")
+  , ((mod4Mask, xK_s), spawn $ myterm ++ " -t fully -e htop")
   , ((mod4Mask, xK_x), spawn "emacs")
-  , ((mod4Mask, xK_w), spawn "termite -t fully -e statusy")
   , ((mod4Mask, xK_c), spawn "firefox")
   , ((mod4Mask, xK_o), spawn "swapsinks")
   , ((mod4Mask, xK_p), spawn "pavucontrol")
