@@ -2,10 +2,11 @@ export HISTCONTROL=ignoreboth:erasedups
 
 export PATH=/b:$PATH
 
+set show-all-if-ambiguous on
 
-haskelly () {
-  nix-shell -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ $* ])"
-}
+bind '"\e[A":history-search-backward'
+bind '"\e[B":history-search-forward'
+
 
 # functions & aliases
 color () {
@@ -25,9 +26,7 @@ serve () {
   sudo nginx -c $nginxfile
   printf "Started server on directory '$PWD'\n"
 
-  while true; do
-    sleep 1
-  done
+  while true; do sleep 1; done
 }
 
 cpr () {
@@ -90,8 +89,14 @@ ats () { sg a "tmux -S /tmp/1"; }
 at () { sg a "tmux -S /tmp/1 attach"; }
 own () { sudo chown -R $USER: $*; }
 
-alias ana='make clean && scan-build -enable-checker alpha --view make';
+alias ana='make clean && scan-build -enable-checker alpha --view make'
 
-nix? () { nix-env -qaP --description ".*$1.*"; }
+nixi () { nix-env -qaP --description ".*$1.*"; }
+haskelly () {
+  nix-shell -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ $* ])"
+}
+pythony () {
+  nix-shell -E "with import <nixpkgs> { }; with python35Packages; runCommand \"dummy\" { buildInputs = [ $* ]; } \"\""
+}
 
 eval $( dircolors -b $HOME/.dircolors )
