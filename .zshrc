@@ -1,6 +1,5 @@
 
-
-export PATH=/home/fizzo/.cabal/bin:$PATH
+export PATH=/b:$PATH
 
 
 #completers, _approximate tolerates 1 - max-errors faults
@@ -41,8 +40,8 @@ bindkey "^[[3~" delete-char
 bindkey "^[[A" up-line-or-search && bindkey "^[[B" down-line-or-search
 
 # functions & aliases
-color(){
-  for i in {0..256}
+color () {
+  for i in {0..255}
   do
     tput setab $i
     printf "%8s" $i
@@ -50,39 +49,25 @@ color(){
   tput op
 }
 
-serve(){
-  TRAPINT(){ sudo nginx -s stop; return 42 }
+serve () {
+  TRAPINT () { sudo nginx -s stop; return 42; }
   nginxfile='/tmp/nginx.conf'
   printf "user fizzo a; events { worker_connections 1024; } http { server { root \"$PWD\"; autoindex on; } }" >$nginxfile
 
   sudo nginx -c $nginxfile
   printf "Started server on directory '$PWD'\n"
 
-  while true; do; sleep 1; done
+  while true; do sleep 1; done
 }
 
-m(){
-  if [[ ! -a /tmp/music_dummy ]]
-  then
-    mpd
-    albumart 2>/dev/null & disown
-    touch /tmp/music_dummy
-  fi
-  ncmpcpp
-}
-
-cpr(){
+cpr () {
   if [ ! -d "$2" ]; then
     mkdir -p "$2"
   fi
   cp -r "$1" "$2"
 }
 
-twi(){
-  streamlink twitch.tv/$1 best
-}
-
-c(){
+c () {
   rootfind="."
   if [[ ! -z $1 && -d $1 ]]; then rootfind=$1; fi
   dir=$(find $rootfind -xdev -print 2> /dev/null | fzf)
@@ -91,31 +76,31 @@ c(){
   cd $dir
 }
 
-wifi(){
+wifi () {
   line=$(nmcli d wifi | tac | fzf +s)
   [[ -z $line ]] && return
   ssid=$(echo $line | sed 's/^.  //' | sed 's/ \+Infra.*//')
   nmcli -a d wifi connect "$ssid"
 }
 
-checkhs(){
+checkhs () {
   cp $1 /tmp/lel.hs && \
   echo "return []\nrunchecks = \$quickCheckAll" >> /tmp/lel.hs && \
   echo runchecks | ghci -XTemplateHaskell /tmp/lel.hs
 }
 
-e(){
+e () {
   emacs -nw $*
 }
-ew(){
+ew () {
   emacs $* &!
 }
 
-gs(){
+gs () {
   emacs -nw --eval "(progn (magit-status)(delete-other-windows))"
 }
 
-cmak(){
+cmak () {
   mkdir build
   cd build
   cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 ..
@@ -131,10 +116,18 @@ alias l='ls --color=always -l'
 alias ll='ls --color=always -Al'
 alias d='du -had1 | sort -h'
 
-ats(){ sg a "tmux -S /tmp/1" }
-at(){ sg a "tmux -S /tmp/1 attach" }
-own(){ sudo chown -R $USER: $* }
+ats () { sg a "tmux -S /tmp/1"; }
+at () { sg a "tmux -S /tmp/1 attach"; }
+own () { sudo chown -R $USER: $*; }
 
 alias ana='make clean && scan-build -enable-checker alpha --view make'
 
-eval $(dircolors -b $HOME/.dircolors)
+nixi () { nix-env -qaP --description ".*$1.*"; }
+haskelly () {
+  nix-shell -p "haskellPackages.ghcWithPackages (pkgs: with pkgs; [ $* ])"
+}
+pythony () {
+  nix-shell -E "with import <nixpkgs> { }; with python35Packages; runCommand \"dummy\" { buildInputs = [ $* ]; } \"\""
+}
+
+eval $( dircolors -b $HOME/.dircolors )

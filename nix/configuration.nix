@@ -59,11 +59,6 @@
   # Workaround for docker cgroups, as systemd 232 broke something
   #boot.kernelParams = [ "systemd.legacy_systemd_cgroup_controller=yes" ];
 
-  programs.bash.interactiveShellInit = ''
-    bind '"\e[A":history-search-backward'
-    bind '"\e[B":history-search-forward'
-  '';
-
   programs.bash.enableCompletion = true;
 
   fonts.fonts = with pkgs; [ dina-font ];
