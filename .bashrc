@@ -1,4 +1,7 @@
 export HISTCONTROL=ignoreboth:erasedups
+export HISTSIZE=88888
+export HISTFILESIZE=88888
+shopt -s histappend
 
 export PATH=/b:$PATH
 
