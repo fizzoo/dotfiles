@@ -97,5 +97,11 @@ haskelly () {
 pythony () {
   nix-shell -E "with import <nixpkgs> { }; with python35Packages; runCommand \"dummy\" { buildInputs = [ $* ]; } \"\""
 }
+spam () {
+  for i in {1..100}; do
+    echo $*
+  done
+}
 
-eval $( dircolors -b $HOME/.dircolors )
+[[ $- = *i* ]] && test -f ~/.liquidprompt/liquidprompt && source ~/.liquidprompt/liquidprompt
+test -f $HOME/.dircolors && eval $( dircolors -b $HOME/.dircolors )
