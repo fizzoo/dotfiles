@@ -136,12 +136,12 @@
     path = [ pkgs.ethtool ];
   };
 
-  # Allegedly overrides argument of derivation
+  # Don't override argument but actual patches, since the existing "patch" broke stuff
   nixpkgs.config.packageOverrides = pkgs: rec {
-    st = pkgs.st.override {
+    st = pkgs.stdenv.lib.overrideDerivation pkgs.st (oldAttrs: {
       patches = ["/k/dotfiles/nix/st-font.patch"
                  "/k/dotfiles/nix/st-term.patch"];
-    };
+    });
   };
 
 }
