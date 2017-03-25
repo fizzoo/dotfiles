@@ -2,7 +2,7 @@ import           Control.Monad                    (when)
 import           Data.List                        (isInfixOf)
 import qualified Data.Map                         as M (Map, fromList)
 import           Data.Maybe                       (fromMaybe)
-import           Network.HostName                 (getHostName)
+import           System.Environment               (getEnv)
 import           System.Exit                      (exitSuccess)
 import           XMonad
 import qualified XMonad.Actions.FlexibleResize    as Flex
@@ -92,7 +92,7 @@ myManageHook = composeAll
 
 myStartup :: X ()
 myStartup = do
-  host <- io getHostName
+  host <- io $ getEnv "HOSTNAME"
   spawn "trayer --widthtype request --height 20 --transparent true --tint 0x00000000 --alpha 0"
   when (host == "mag") $ spawn "qbittorrent"
 
