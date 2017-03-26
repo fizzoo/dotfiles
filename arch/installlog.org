@@ -3,14 +3,14 @@
 ls /sys/firmware/efi/efivars
 ** have internet?
 wifi-menu or nmcli
+** right time?
+timedatectl set-ntp true 
 
 * install
 ** mount
 if efi, mount efi on /boot
 ** base
 pacstrap /mnt base base-devel
-
-maybe add vim, git, tmux
 ** fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
@@ -20,6 +20,7 @@ arch-chroot /mnt
 alias l="ls --color=always"
 ** timezone
 ln -sf /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
+timedatectl set-ntp true 
 hwclock --systohc
 ** locale
 vim /etc/locale.gen
@@ -30,13 +31,7 @@ echo LANG=en_US.UTF-8 > /etc/locale.conf
 ** host
 echo arc > /etc/hostname
 ** network again
-pacman -S networkmanager dialog
-(slim this down if networkmanager keeps being bad, wpa_supplicant etc)
-(dialog for wifi-menu whose other dependencies gets pulled)
-
-i /etc/NetworkManager/NetworkManager.conf
-    [keyfile]
-    unmanaged-devices=mac:00:22:68:1c:59:b1;mac:00:1E:65:30:D1:C4;interface-name:eth0
+pacman -S wpa_supplicant wpa_actiond dialog
 ** root pw
 passwd
 ** bootloader
@@ -45,10 +40,9 @@ pacman -S efibootmgr
 efibootmgr -d /dev/sda -p 1 -c -L "arch" -l /vmlinuz-linux -u "root=/dev/sda2 rw initrd=/intel-ucode.img initrd=/initramfs-linux.img"
 
 * reboot
-systemctl enable wpa_ #TODO
+systemctl enable netctl-auto@wlan0
 
-
-pacman -S tmux git vim fzf
+pacman -S tmux git vim fzf htop bash-completion
 get dotfiles
 
 ** pacaur
@@ -69,7 +63,19 @@ gpasswd -a fizzo video
 
 visudo -- uncomment wheel
 ** graphics
-pacman -S mesa xorg-server
-.. noto-fonts noto-fonts-cjk noto-fonts-emoji dina-font
-.. xmonad xmonad-contrib xmobar xorg-xinit
-.. firefox
+pacman -S mesa xorg-server xorg-xinit
+    noto-fonts noto-fonts-cjk noto-fonts-emoji dina-font
+    xmonad xmonad-contrib xmobar trayer
+    firefox dmenu maim
+    xorg-xrandr xorg-xbacklight feh
+    sxiv mpv evince zathura
+** audio
+pacman -S pulseaudio pavucontrol
+** autologin
+/etc/systemd/system/getty@tty1.service.d/override.conf
+    [Service]
+    Type=simple
+    ExecStart=
+    ExecStart=-/usr/bin/agetty --autologin fizzo --noclear %I $TERM
+
+add the .profile if uncommented
