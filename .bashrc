@@ -1,3 +1,9 @@
+export EDITOR='vim'
+export VISUAL='vim'
+export PAGER='less'
+export BROWSER='firefox'
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 export HISTCONTROL=ignoreboth:erasedups
 export HISTSIZE=88888
 export HISTFILESIZE=88888
