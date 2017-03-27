@@ -42,7 +42,7 @@ efibootmgr -d /dev/sda -p 1 -c -L "arch" -l /vmlinuz-linux -u "root=/dev/sda2 rw
 * reboot
 systemctl enable netctl-auto@wlan0
 
-pacman -S tmux git vim fzf htop bash-completion
+pacman -S tmux git vim fzf htop bash-completion openssh
 get dotfiles
 
 ** pacaur
@@ -64,7 +64,7 @@ gpasswd -a fizzo video
 visudo -- uncomment wheel
 ** graphics
 pacman -S mesa xorg-server xorg-xinit
-    noto-fonts noto-fonts-cjk noto-fonts-emoji dina-font
+    noto-fonts noto-fonts-cjk noto-fonts-emoji dina-font ttf-dejavu
     xmonad xmonad-contrib xmobar trayer
     firefox dmenu maim
     xorg-xrandr xorg-xbacklight feh
@@ -79,3 +79,11 @@ pacman -S pulseaudio pavucontrol
     ExecStart=-/usr/bin/agetty --autologin fizzo --noclear %I $TERM
 
 add the .profile if uncommented
+** various
+*** firefox dirs
+.config/user-dirs.dirs
+    XDG_DESKTOP_DIR="$HOME/"
+*** e-file
+pacman -Fo
+after
+pacman -Fy
