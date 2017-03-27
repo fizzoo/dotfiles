@@ -1,4 +1,5 @@
 import           Control.Monad                    (when)
+import           XMonad.Util.Run                  (runProcessWithInput)
 import           Data.List                        (isInfixOf)
 import qualified Data.Map                         as M (Map, fromList)
 import           Data.Maybe                       (fromMaybe)
@@ -92,9 +93,10 @@ myManageHook = composeAll
 
 myStartup :: X ()
 myStartup = do
-  host <- io $ getEnv "HOSTNAME"
   spawn "trayer --widthtype request --height 20 --transparent true --tint 0x00000000 --alpha 0"
-  when (host == "mag") $ spawn "qbittorrent"
+  host <- runProcessWithInput "hostname" [] ""
+  let mag = "mag" `isInfixOf` host
+  when mag $ spawn "qbittorrent"
 
 doShiftScreen :: ScreenId -> ManageHook
 doShiftScreen n = liftX (screenWorkspace n) >>= doShift . fromMaybe "0"
