@@ -20,12 +20,7 @@ then
 fi
 if [[ $HOSTNAME == arc ]]
 then
-    # vert + horiz 2-finger scroll
-    xinput --set-prop "SynPS/2 Synaptics TouchPad" "Synaptics Two-Finger Scrolling" 1 1
-    # lower scale so deceleration is in effect more often
-    xinput --set-prop "SynPS/2 Synaptics TouchPad" "Device Accel Velocity Scaling" 8
-    # lower speed in general
-    xinput --set-prop "SynPS/2 Synaptics TouchPad" "Device Accel Constant Deceleration" 4
+    sudo powertop-tuned
 fi
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources

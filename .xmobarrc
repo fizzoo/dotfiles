@@ -24,9 +24,9 @@ Config {
                 -- discharging status
                 , "-o"	, "<left>% (<timeleft>)"
                 -- AC "on" status
-                , "-O"	, ""
+                , "-O"	, "<left>% (<timeleft>)"
                 -- charged status
-                , "-i"	, ""
+                , "-i"	, "<left>% (<timeleft>)"
             ] 50
 
             -- , Run TopProc ["-H", "90", "-h", "red", "-L", "25", "-l", "black"] 10
