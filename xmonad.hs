@@ -48,7 +48,7 @@ myKeys conf = M.fromList $
   , ((mod4Mask .|. shiftMask, xK_Tab), up)
   , ((mod4Mask, xK_j),                 down)
   , ((mod4Mask, xK_k),                 up)
-  , ((mod4Mask .|. shiftMask, xK_j),   swap down)
+  , ((mod4Mask .|. shiftMask, xK_j),   swapdown)
   , ((mod4Mask .|. shiftMask, xK_k),   swapup)
   , ((mod4Mask, xK_d),                 spawn "dmenu_run -b -i -nf \"#888888\" -nb \"#2D1F21\" -sf \"#ffffff\" -sb \"#6D1F21\" -fn \"Dina-10\" -l 12")
   , ((mod4Mask, xK_s),                 spawn $ myterm ++ " -t fully -e htop")
