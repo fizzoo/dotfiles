@@ -161,6 +161,8 @@ And if we're inside said buffer, start up a new zsh."
 (use-package ivy
   :config
   (progn
+    (ivy-mode t)
+    (define-key ivy-minibuffer-map (kbd "<C-return>") 'ivy-immediate-done)
     (setq ivy-use-virtual-buffers t)
     (setq ivy-initial-inputs-alist '()))
   :diminish ivy-mode)
@@ -168,7 +170,7 @@ And if we're inside said buffer, start up a new zsh."
 (use-package counsel
   :config
   (progn
-    (counsel-mode 1)
+    (counsel-mode t)
     (setq ivy-re-builders-alist '((swiper . ivy--regex-plus) (t . ivy--regex-fuzzy))))
   :diminish counsel-mode)
 
