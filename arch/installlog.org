@@ -31,7 +31,7 @@ echo LANG=en_US.UTF-8 > /etc/locale.conf
 ** host
 echo arc > /etc/hostname
 ** network again
-pacman -S wpa_supplicant wpa_actiond dialog
+pacman -S wpa_supplicant wpa_actiond dialog wicd
 ** root pw
 passwd
 ** bootloader
@@ -79,6 +79,10 @@ pacman -S pulseaudio pavucontrol
     ExecStart=-/usr/bin/agetty --autologin fizzo --noclear %I $TERM
 
 add the .profile if uncommented
+** notifs
+pacman -S dunst
+** themes
+pacman -S gnome-themes-standard lxappearance
 ** various
 *** firefox dirs
 .config/user-dirs.dirs
