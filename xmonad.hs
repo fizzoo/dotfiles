@@ -7,6 +7,7 @@ import           System.Environment               (getEnv)
 import           System.Exit                      (exitSuccess)
 import           XMonad
 import qualified XMonad.Actions.FlexibleResize    as Flex
+import           XMonad.Actions.Warp              (warpToWindow)
 import           XMonad.Hooks.DynamicLog          (dynamicLogWithPP, ppOrder,
                                                    ppOutput, xmobarPP)
 import           XMonad.Hooks.EwmhDesktops        (ewmh, fullscreenEventHook)
