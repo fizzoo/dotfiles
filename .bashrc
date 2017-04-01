@@ -111,6 +111,9 @@ spam () {
     echo $*
   done
 }
+pyprofile () {
+  python -m cProfile -s cumtime $*
+}
 
 [[ $- = *i* ]] && test -f ~/.liquidprompt/liquidprompt && source ~/.liquidprompt/liquidprompt
 test -f $HOME/.dircolors && eval $( dircolors -b $HOME/.dircolors )
