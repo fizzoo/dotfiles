@@ -55,17 +55,17 @@ myKeys conf = M.fromList $
   , ((mod4Mask, xK_c), spawn "firefox")
   , ((mod4Mask, xK_o), spawn "swapsinks")
   , ((mod4Mask, xK_p), spawn "pavucontrol")
-  , ((0, xK_Print), spawn "maim -s")
-  , ((0, 0x1008ff45), spawn "maim -s") -- F14
+  , ((0, xK_Print), spawn "maim -s ~/maim$(date +%s).png")
+  , ((0, 0x1008ff45), spawn "maim -s ~/maim$(date +%s).png") -- F14
   , ((mod4Mask, xK_Delete), spawn "susp")
   , ((0, 0x1008ff49), spawn "sleep 0.1 && xset dpms force off") -- F18
   , ((mod4Mask, xK_y), spawn "xmonad --recompile && xmonad --restart")
   , ((mod4Mask .|. shiftMask, xK_y), io exitSuccess)
   , ((mod4Mask, xK_q), kill)
-  , ((mod4Mask, xK_F1), spawn "xbacklight = 4")
-  , ((mod4Mask, xK_F2), spawn "xbacklight = 16")
-  , ((mod4Mask, xK_F3), spawn "xbacklight = 50")
-  , ((mod4Mask, xK_F4), spawn "xbacklight = 100")
+  , ((mod4Mask, xK_F1), spawn "sudo backlight 64")
+  , ((mod4Mask, xK_F2), spawn "sudo backlight 200")
+  , ((mod4Mask, xK_F3), spawn "sudo backlight 400")
+  , ((mod4Mask, xK_F4), spawn "sudo backlight 852")
   , ((mod4Mask, xK_t), sinkAll >> setLayout (XMonad.layoutHook conf))
   , ((mod4Mask, xK_a), sinkAll >> floatAllCurrent)
   , ((mod4Mask, xK_f), sendMessage NextLayout)
