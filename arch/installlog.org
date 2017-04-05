@@ -2,7 +2,7 @@
 ** booted EFI?
 ls /sys/firmware/efi/efivars
 ** have internet?
-wifi-menu or nmcli
+wifi-menu or nmcli or wpa_cli
 ** right time?
 timedatectl set-ntp true 
 
@@ -31,7 +31,19 @@ echo LANG=en_US.UTF-8 > /etc/locale.conf
 ** host
 echo arc > /etc/hostname
 ** network again
-pacman -S wpa_supplicant wpa_actiond dialog wicd
+pacman -S wpa_supplicant dialog
+wpa_supplicant with wpa_cli is good.
+
+/etc/wpa_supplicant/wpa_supplicant-wlan0.conf:
+    ctrl_interface=/var/run/wpa_supplicant
+    ctrl_interface_group=/var/run/wpa_supplicant
+    update_config=1
+    
+Then wpa_cli can connect, though check with `interface` if it's a dummy.
+
+Use dhcpcd or networkd to get an ip, the first can be one-shotted
+easily for testing, the other won't delay startup at boot-time if
+enabled.
 ** root pw
 passwd
 ** bootloader
