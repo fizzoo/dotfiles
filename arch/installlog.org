@@ -95,6 +95,9 @@ add the .profile if uncommented
 pacman -S dunst
 ** themes
 pacman -S gnome-themes-standard lxappearance
+** multilib
+Uncomment repo in /etc/pacman.conf
+get glibc
 ** various
 *** firefox dirs
 .config/user-dirs.dirs
