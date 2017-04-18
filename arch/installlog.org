@@ -98,6 +98,8 @@ pacman -S gnome-themes-standard lxappearance
 ** multilib
 Uncomment repo in /etc/pacman.conf
 get glibc
+** inxi (speccy)
+pacman -S mesa-demos inxi xorg-xdpyinfo
 ** various
 *** firefox dirs
 .config/user-dirs.dirs
