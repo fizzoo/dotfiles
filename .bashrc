@@ -50,7 +50,7 @@ c () {
   dir=$(find $rootfind -xdev -print 2> /dev/null | fzf)
   if [[ -z $dir ]]; then return; fi
   if [[ ! -d $dir ]]; then dir=$(dirname $dir); fi
-  cd $dir
+  cd "$dir"
 }
 
 wifi () {
