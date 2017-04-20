@@ -4,3 +4,6 @@
 <sys-process/procps-3.3.9-r2
 sys-fs/udev
 ys-apps/systemd
+
+# nvidia drivers
+>=sys-kernel/gentoo-sources-4.11

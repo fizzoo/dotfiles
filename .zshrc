@@ -1,7 +1,4 @@
 
-export PATH=/b:$PATH
-
-
 #completers, _approximate tolerates 1 - max-errors faults
 zstyle ':completion:*' completer _complete _approximate
 zstyle ':completion:*' max-errors 4
