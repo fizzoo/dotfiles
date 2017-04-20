@@ -44,6 +44,7 @@ color () {
     printf "%8s" $i
   done
   tput op
+  echo
 }
 
 serve () {
