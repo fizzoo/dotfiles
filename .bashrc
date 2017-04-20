@@ -113,5 +113,5 @@ pyprofile () {
   python -m cProfile -s cumtime $*
 }
 
-[[ $- = *i* ]] && test -f ~/.liquidprompt/liquidprompt && source ~/.liquidprompt/liquidprompt
+[[ $- = *i* ]] && test -f /opt/liquidprompt/liquidprompt && source /opt/liquidprompt/liquidprompt
 test -f $HOME/.dircolors && eval $( dircolors -b $HOME/.dircolors )
