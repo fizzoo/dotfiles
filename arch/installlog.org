@@ -4,13 +4,13 @@ ls /sys/firmware/efi/efivars
 ** have internet?
 wifi-menu or nmcli or wpa_cli
 ** right time?
-timedatectl set-ntp true 
+timedatectl set-ntp true
 
 * install
 ** mount
 if efi, mount efi on /boot
 ** base
-pacstrap /mnt base base-devel
+pacstrap /mnt base base-devel vim git tmux
 ** fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
@@ -20,7 +20,7 @@ arch-chroot /mnt
 alias l="ls --color=always"
 ** timezone
 ln -sf /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
-timedatectl set-ntp true 
+timedatectl set-ntp true
 hwclock --systohc
 ** locale
 vim /etc/locale.gen
@@ -38,25 +38,42 @@ wpa_supplicant with wpa_cli is good.
     ctrl_interface=/var/run/wpa_supplicant
     ctrl_interface_group=/var/run/wpa_supplicant
     update_config=1
-    
+
 Then wpa_cli can connect, though check with `interface` if it's a dummy.
 
 Use dhcpcd or networkd to get an ip, the first can be one-shotted
 easily for testing, the other won't delay startup at boot-time if
 enabled.
+*** networkd
+systemctl enable systemd-networkd
+/etc/systemd/network/50-wired.network
+    [Match]
+    Name=eno1
+
+    [Network]
+    DHCP=ipv4
 ** root pw
 passwd
 ** bootloader
+*** grub
+pacman -S grub os-prober intel-ucode
 *** efibootmgr
 pacman -S efibootmgr
 efibootmgr -d /dev/sda -p 1 -c -L "arch" -l /vmlinuz-linux -u "root=/dev/sda2 rw initrd=/intel-ucode.img initrd=/initramfs-linux.img"
 
 * reboot
-systemctl enable netctl-auto@wlan0
+** useful term programs
+pacman -S tmux git vim fzf htop bash-completion
+zsh zsh-completions openssh ranger
+the_silver_searcher
 
-pacman -S tmux git vim fzf htop bash-completion openssh
 get dotfiles
 
+** user
+useradd -m -G wheel fizzo
+gpasswd -a fizzo video
+
+visudo -- uncomment wheel
 ** pacaur
 curl https://aur.archlinux.org/cgit/aur.git/snapshot/cower.tar.gz > cower.tar.gz
 tar xf cower.tar.gz
@@ -69,18 +86,23 @@ makepkg -si
 ** abs
 pacman -S abs
 abs
-** user
-useradd -m -G wheel fizzo
-gpasswd -a fizzo video
-
-visudo -- uncomment wheel
 ** graphics
+*** common
 pacman -S mesa xorg-server xorg-xinit
     noto-fonts noto-fonts-cjk noto-fonts-emoji dina-font ttf-dejavu
     xmonad xmonad-contrib xmobar trayer
-    firefox dmenu maim
+    firefox dmenu maim emacs
     xorg-xrandr xorg-xbacklight feh
-    sxiv mpv evince zathura
+    sxiv mpv evince zathura st xterm
+    numlockx xorg-xinput
+*** nvidia
+pacman -S nvidia nvidia-settings
+libglvnd seems good.
+** keyboard
+copy 00-keyboard.conf
+*** apple
+/etc/modprobe.d/applekbd.conf
+    options hid_apple iso_layout=0 swap_opt_cmd=1
 ** audio
 pacman -S pulseaudio pavucontrol
 ** autologin
@@ -101,10 +123,11 @@ get glibc
 ** inxi (speccy)
 pacman -S mesa-demos inxi xorg-xdpyinfo
 ** various
+*** ntfs-3g
 *** firefox dirs
 .config/user-dirs.dirs
     XDG_DESKTOP_DIR="$HOME/"
 *** e-file
-pacman -Fo
-after
 pacman -Fy
+then
+pacman -Fs
