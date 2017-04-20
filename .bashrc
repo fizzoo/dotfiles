@@ -9,8 +9,6 @@ export HISTSIZE=88888
 export HISTFILESIZE=88888
 shopt -s histappend
 
-export PATH=/b:$PATH
-
 bind 'set show-all-if-ambiguous on'
 bind '"\e[A":history-search-backward'
 bind '"\e[B":history-search-forward'
@@ -46,10 +44,10 @@ cpr () {
 
 c () {
   rootfind="."
-  if [[ ! -z $1 && -d $1 ]]; then rootfind=$1; fi
-  dir=$(find $rootfind -xdev -print 2> /dev/null | fzf)
-  if [[ -z $dir ]]; then return; fi
-  if [[ ! -d $dir ]]; then dir=$(dirname $dir); fi
+  if [[ ! -z "$1" && -d "$1" ]]; then rootfind="$1"; fi
+  dir=$(find "$rootfind" -xdev -print 2> /dev/null | fzf)
+  if [[ -z "$dir" ]]; then return; fi
+  if [[ ! -d "$dir" ]]; then dir=$(dirname "$dir"); fi
   cd "$dir"
 }
 
