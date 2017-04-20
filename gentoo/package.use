@@ -1,6 +1,7 @@
 app-text/texlive cjk extra games graphics omega png pstricks publishers science truetype
 app-text/texlive-core cjk xetex
 app-text/xmlto text
+dev-java/swing-layout source
 dev-lang/python sqlite tk
 dev-libs/boehm-gc threads
 dev-libs/glib dbus
@@ -21,9 +22,9 @@ media-sound/deadbeef cover
 net-analyzer/nmap gtk ipv6 lua nls ssl ncat ndiff nmap-update nping
 net-print/cups -usb
 sys-libs/zlib minizip
+x11-drivers/nvidia-drivers uvm
 x11-libs/libxcb xkb
 x11-libs/vte termite-patch
-dev-java/swing-layout source
 
 dev-libs/libpthread-stubs abi_x86_32
 x11-proto/inputproto abi_x86_32
