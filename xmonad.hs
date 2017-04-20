@@ -37,7 +37,7 @@ main = do
     , startupHook = myStartup
     }
 
-myterm = "st"
+myterm = "urxvtc"
 
 -- Some keys brought straight from default config in order to have one overview
 -- of all active bindings.

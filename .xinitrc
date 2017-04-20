@@ -31,5 +31,6 @@ fi
 xset b off
 sh ~/.fehbg
 dunst &
+urxvtd -q -f -o
 
 exec xmonad
