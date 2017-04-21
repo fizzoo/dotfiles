@@ -22,6 +22,7 @@ HISTSIZE=800
 SAVEHIST=800
 setopt extendedglob histverify autopushd pushdsilent nobeep hist_ignore_all_dups hist_ignore_space inc_append_history
 
+# Prompt is overridden by liquidprompt, if available
 if [[ $EUID = 0 ]]; then
   umask 022
   export PROMPT='%K{magenta}%(?..%K{cyan}[%?])%1(j.{%j}.) %n %3~ %k'
@@ -127,5 +128,14 @@ haskelly () {
 pythony () {
   nix-shell -E "with import <nixpkgs> { }; with python35Packages; runCommand \"dummy\" { buildInputs = [ $* ]; } \"\""
 }
+spam () {
+  for i in {1..100}; do
+    echo $*
+  done
+}
+pyprofile () {
+  python -m cProfile -s cumtime $*
+}
 
-eval $( dircolors -b $HOME/.dircolors )
+[[ $- = *i* ]] && test -f /opt/liquidprompt/liquidprompt && source /opt/liquidprompt/liquidprompt
+test -f $HOME/.dircolors && eval $( dircolors -b $HOME/.dircolors )
