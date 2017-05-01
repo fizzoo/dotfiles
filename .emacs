@@ -239,6 +239,7 @@ And if we're inside said buffer, start up a new zsh."
 (defun pyhook ()
   "Start my py mode."
   (interactive)
+  (modify-syntax-entry ?_ "w")
   (anaconda-mode)
   (anaconda-eldoc-mode)
   (add-to-list 'company-backends '(company-anaconda)))
