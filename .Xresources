@@ -42,3 +42,4 @@ URxvt*scrollTtyKeypress: true
 
 URxvt.font: xft:Dina:pixelsize=10
 URxvt*scrollBar: false
+urxvt.saveLines: 1000000
