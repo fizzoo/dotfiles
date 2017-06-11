@@ -8,29 +8,32 @@
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
-     clojure
-     javascript
-     markdown
-     csv
-     python
-     ivy
+     (c-c++ :variables c-c++-enable-clang-support t)
+     haskell
+     (latex :variables latex-enable-auto-fill nil)
+     (shell :variables
+            shell-default-height 30
+            shell-default-position 'bottom)
+     (spell-checking :variables spell-checking-enable-by-default nil)
      auto-completion
      better-defaults
+     clojure
+     csv
      emacs-lisp
-     git
      ess
-     (latex :variables latex-enable-auto-fill nil)
-     org
+     git
+     ivy
+     javascript
      markdown
-     (spell-checking :variables spell-checking-enable-by-default nil)
-     (shell :variables shell-default-height 30
-            shell-default-position 'bottom)
+     markdown
+     org
+     python
      syntax-checking
      version-control
      )
 
 
-   dotspacemacs-addiflattertional-packages '()
+   dotspacemacs-additional-packages '()
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages '()
    dotspacemacs-install-packages 'used-only))
@@ -71,7 +74,8 @@
    dotspacemacs-auto-resume-layouts nil
    dotspacemacs-large-file-size 10
    dotspacemacs-auto-save-file-location 'cache
-   dotspacemacs-max-rollback-slots 5 dotspacemacs-helm-resize nil
+   dotspacemacs-max-rollback-slots 5
+   dotspacemacs-helm-resize nil
    dotspacemacs-helm-no-header nil
    dotspacemacs-helm-position 'bottom
    dotspacemacs-helm-use-fuzzy 'always
@@ -91,23 +95,66 @@
    dotspacemacs-folding-method 'evil
    dotspacemacs-smartparens-strict-mode nil
    dotspacemacs-smart-closing-parenthesis nil
-   dotspacemacs-highlight-delimiters 'all
+   dotspacemacs-highlight-delimiters 'any
    dotspacemacs-persistent-server nil
    dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
    dotspacemacs-default-package-repository nil
    dotspacemacs-whitespace-cleanup nil ))
 
+;; System for defining keys easily, relies on evil since i use that.
+(eval-when-compile
+  (defun pair-list (l)
+    "Pair elements in even list L."
+    (if l
+        (cons (list (car l) (cadr l))
+              (pair-list (cddr l)))
+      nil))
+
+  (defun add-map (map pair)
+    "Create a 'define-key to MAP with mapping PAIR."
+    (list 'define-key map (list 'kbd (car pair)) (cadr pair)))
+  (defun add-map-list (map l)
+    "Perform add-map using MAP on all of list L."
+    (mapcar (lambda (x) (add-map map x)) (pair-list l)))
+
+  (defun add-all-list (l)
+    "Add bindings to global map."
+    (mapcar
+     (lambda (pair)
+       (list 'global-set-key (list 'kbd (car pair)) (cadr pair)))
+     (pair-list l)))
+
+  (defmacro imap (&rest l)
+    "Map the bindings of L with 'evil-insert-state-map."
+    `(progn ,@(add-map-list 'evil-insert-state-map l)))
+  (defmacro nmap (&rest l)
+    "Map the bindings of L with 'evil-normal-state-map."
+    `(progn ,@(add-map-list 'evil-normal-state-map l)))
+  (defmacro amap (&rest l)
+    "Map the bindings of L with all the maps."
+    `(progn ,@(add-all-list l))))
 
 (defun dotspacemacs/user-init ()
   (setq custom-file "~/.emacs.d/private/custom.el")
   (if (file-exists-p custom-file) (load custom-file))
+
+  (setq vc-follow-symlinks t)
+  (defvar org-confirm-babel-evaluate nil)
+
   )
 
 (defun dotspacemacs/user-config ()
-  (setq ivy-initial-inputs-alist nil)
-  (setq powerline-default-separator 'arrow)
   (setq disabled-command-function nil)
-  (global-set-key (kbd "§") 'lisp-state-toggle-lisp-state)
+  (setq powerline-default-separator 'arrow)
+  (setq ivy-initial-inputs-alist nil)
+
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (setq show-paren-style 'expression)
+  (setq show-paren-delay 0)
+  (show-paren-mode +1)
+  (show-smartparens-global-mode -1)
+
+  (amap "§" 'lisp-state-toggle-lisp-state)
 
   (defun font-exists-p (font)
     "Check if FONT exists."
@@ -125,4 +172,19 @@
     (interactive)
     (choose-font-if-exists "Source Code Pro"))
 
+  (defun myhook-py ()
+    (modify-syntax-entry ?_ "w"))
+  (add-hook 'python-mode-hook 'myhook-python)
+
+  (defun myhook-lisp ()
+    (dolist (k '(?- ?_))
+      (modify-syntax-entry k "w")))
+  (add-hook 'emacs-lisp-mode-hook 'myhook-lisp)
+
+  (defun myhook-haskell ()
+    (setq evil-auto-indent nil)
+    (setq haskell-stylish-on-save t)
+    (push 'company-ghci company-backends)
+    )
+  (add-hook 'haskell-mode-hook 'myhook-haskell t)
   )
