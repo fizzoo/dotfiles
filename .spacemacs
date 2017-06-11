@@ -154,9 +154,9 @@
 (defun attach-hooks ()
   (mapc (lambda (p)
           (add-hook (car p) (cadr p) t))
-        '((python-mode-hook 'myhook-python)
-          (emacs-lisp-mode-hook 'myhook-lisp)
-          (haskell-mode-hook 'myhook-haskell))))
+        '((python-mode-hook myhook-python)
+          (emacs-lisp-mode-hook myhook-lisp)
+          (haskell-mode-hook myhook-haskell))))
 
 (defun dotspacemacs/user-config ()
   (setq disabled-command-function nil)
