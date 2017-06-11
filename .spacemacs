@@ -140,8 +140,23 @@
 
   (setq vc-follow-symlinks t)
   (defvar org-confirm-babel-evaluate nil)
-
   )
+
+(defun myhook-python ()
+  (modify-syntax-entry ?_ "w"))
+(defun myhook-lisp ()
+  (dolist (k '(?- ?_))
+    (modify-syntax-entry k "w")))
+(defun myhook-haskell ()
+  (setq evil-auto-indent nil)
+  (setq haskell-stylish-on-save t)
+  (push 'company-ghci company-backends))
+(defun attach-hooks ()
+  (mapc (lambda (p)
+          (add-hook (car p) (cadr p) t))
+        '((python-mode-hook 'myhook-python)
+          (emacs-lisp-mode-hook 'myhook-lisp)
+          (haskell-mode-hook 'myhook-haskell))))
 
 (defun dotspacemacs/user-config ()
   (setq disabled-command-function nil)
@@ -172,19 +187,5 @@
     (interactive)
     (choose-font-if-exists "Source Code Pro"))
 
-  (defun myhook-py ()
-    (modify-syntax-entry ?_ "w"))
-  (add-hook 'python-mode-hook 'myhook-python)
-
-  (defun myhook-lisp ()
-    (dolist (k '(?- ?_))
-      (modify-syntax-entry k "w")))
-  (add-hook 'emacs-lisp-mode-hook 'myhook-lisp)
-
-  (defun myhook-haskell ()
-    (setq evil-auto-indent nil)
-    (setq haskell-stylish-on-save t)
-    (push 'company-ghci company-backends)
-    )
-  (add-hook 'haskell-mode-hook 'myhook-haskell t)
+  (attach-hooks)
   )
