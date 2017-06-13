@@ -15,7 +15,7 @@
             shell-default-height 30
             shell-default-position 'bottom)
      (spell-checking :variables spell-checking-enable-by-default nil)
-     auto-completion
+     (auto-completion :variables auto-completion-enable-help-tooltip t)
      better-defaults
      clojure
      csv
