@@ -36,6 +36,8 @@ export KEYTIMEOUT=1
 bindkey "^?" backward-delete-char
 bindkey "^[[3~" delete-char
 bindkey "^[[A" up-line-or-search && bindkey "^[[B" down-line-or-search
+bindkey '^xa' _expand_alias
+bindkey '^[*' _expand_alias
 
 # functions & aliases
 color () {
