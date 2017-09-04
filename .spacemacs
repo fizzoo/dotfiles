@@ -8,6 +8,7 @@
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
+     octave
      (c-c++ :variables c-c++-enable-clang-support t)
      haskell
      (latex :variables latex-enable-auto-fill nil)
