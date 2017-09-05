@@ -2,7 +2,6 @@ export EDITOR='vim'
 export VISUAL='vim'
 export PAGER='less'
 export BROWSER='firefox'
-export _JAVA_AWT_WM_NONREPARENTING=1
 export R_LIBS_USER='/opt/R-user/'
 export PATH="$PATH:$HOME/.local/bin"
 

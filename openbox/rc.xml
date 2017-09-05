@@ -27,7 +27,7 @@
 <placement>
   <policy>Smart</policy>
   <!-- 'Smart' or 'UnderMouse' -->
-  <center>yes</center>
+  <center>no</center>
   <!-- whether to place windows in the center of the free area found or
        the top left corner -->
   <monitor>Primary</monitor>
@@ -238,6 +238,11 @@
       <command>urxvt</command>
     </action>
   </keybind>
+  <keybind key="W-S-Return">
+    <action name="Execute">
+      <command>xterm</command>
+    </action>
+  </keybind>
   <keybind key="W-C">
     <action name="Execute">
       <command>firefox</command>
@@ -253,6 +258,10 @@
       <command>openbox --reconfigure</command>
     </action>
   </keybind>
+  <keybind key="W-F1"> <action name="Execute"> <command>sudo backlight 64 </command> </action> </keybind>
+  <keybind key="W-F2"> <action name="Execute"> <command>sudo backlight 200</command> </action> </keybind>
+  <keybind key="W-F3"> <action name="Execute"> <command>sudo backlight 400</command> </action> </keybind>
+  <keybind key="W-F4"> <action name="Execute"> <command>sudo backlight 852</command> </action> </keybind>
 </keyboard>
 
 <mouse>
@@ -283,9 +292,7 @@
     </mousebind>
 
     <mousebind button="W-Middle" action="Press">
-      <action name="Lower"/>
-      <action name="FocusToBottom"/>
-      <action name="Unfocus"/>
+      <action name="GrowToFill"><direction>west</direction></action>
     </mousebind>
 
     <mousebind button="W-Up" action="Click">
@@ -367,12 +374,6 @@
   <context name="Bottom">
     <mousebind button="Left" action="Drag">
       <action name="Resize"><edge>bottom</edge></action>
-    </mousebind>
-
-    <mousebind button="Right" action="Press">
-      <action name="Focus"/>
-      <action name="Raise"/>
-      <action name="ShowMenu"><menu>client-menu</menu></action>
     </mousebind>
   </context>
 
