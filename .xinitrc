@@ -30,7 +30,10 @@ fi
 
 xset b off
 sh ~/.fehbg
-dunst &
 urxvtd -q -f -o
 
-exec xmonad
+if [ -z "$WM" ]; then
+  exec openbox-session
+else
+  exec $WM
+fi

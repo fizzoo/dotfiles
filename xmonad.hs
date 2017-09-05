@@ -1,5 +1,4 @@
 import           Control.Monad                    (when)
-import           XMonad.Util.Run                  (runProcessWithInput)
 import           Data.List                        (isInfixOf)
 import qualified Data.Map                         as M (Map, fromList)
 import           Data.Maybe                       (fromMaybe)
@@ -18,6 +17,7 @@ import           XMonad.Layout.GridVariants       (Grid (..))
 import           XMonad.Layout.LayoutHints        (layoutHintsWithPlacement)
 import           XMonad.Layout.MouseResizableTile
 import qualified XMonad.StackSet                  as W
+import           XMonad.Util.Run                  (runProcessWithInput)
 import           XMonad.Util.Run                  (hPutStrLn, spawnPipe)
 
 main :: IO ()
