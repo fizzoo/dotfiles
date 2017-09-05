@@ -262,6 +262,9 @@
   <keybind key="W-F2"> <action name="Execute"> <command>sudo backlight 200</command> </action> </keybind>
   <keybind key="W-F3"> <action name="Execute"> <command>sudo backlight 400</command> </action> </keybind>
   <keybind key="W-F4"> <action name="Execute"> <command>sudo backlight 852</command> </action> </keybind>
+
+  <keybind key="Print"> <action name="Execute"> <command>sh -c "maim -s ~/maim$(date +%s).png"</command> </action> </keybind>
+  <keybind key="XF86Launch5"> <action name="Execute"> <command>sh -c "maim -s ~/maim$(date +%s).png"</command> </action> </keybind>
 </keyboard>
 
 <mouse>

@@ -94,7 +94,7 @@ pacman -S mesa xorg-server xorg-xinit
     xorg-xrandr xorg-xbacklight feh
     sxiv mpv mpd mpc evince zathura st xterm
     numlockx xorg-xinput
-    wmctrl xdotool xorg-xprop
+    wmctrl xdotool xorg-xprop xorg-xev
 *** xmonad-style
 xmonad xmonad-contrib xmobar trayer
 *** openbox-style
