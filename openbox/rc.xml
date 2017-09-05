@@ -201,6 +201,26 @@
     </action>
   </keybind>
 
+
+  <keybind key="W-Left">
+    <action name="UnmaximizeFull"/>
+    <action name="MoveResizeTo">
+      <x>0</x>
+      <y>0</y>
+      <width>50%</width>
+      <height>100%</height>
+    </action>
+  </keybind>
+  <keybind key="W-Right">
+    <action name="UnmaximizeFull"/>
+    <action name="MoveResizeTo">
+      <x>1/2</x>
+      <y>0</y>
+      <width>50%</width>
+      <height>100%</height>
+    </action>
+  </keybind>
+
   <!-- Keybindings for window switching with the arrow keys -->
   <keybind key="W-S-Right">
     <action name="DirectionalCycleWindows">
@@ -292,10 +312,6 @@
     </mousebind>
     <mousebind button="W-Right" action="Drag">
       <action name="Resize"/>
-    </mousebind>
-
-    <mousebind button="W-Middle" action="Press">
-      <action name="GrowToFill"><direction>west</direction></action>
     </mousebind>
 
     <mousebind button="W-Up" action="Click">
