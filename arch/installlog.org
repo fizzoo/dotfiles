@@ -65,7 +65,7 @@ efibootmgr -d /dev/sda -p 1 -c -L "arch" -l /vmlinuz-linux -u "root=/dev/sda2 rw
 ** useful term programs
 pacman -S tmux git vim fzf htop bash-completion
 zsh zsh-completions openssh ranger
-the_silver_searcher
+the_silver_searcher ripgrep
 
 get dotfiles
 
@@ -90,11 +90,15 @@ abs
 *** common
 pacman -S mesa xorg-server xorg-xinit
     noto-fonts noto-fonts-cjk noto-fonts-emoji dina-font ttf-dejavu
-    xmonad xmonad-contrib xmobar trayer
     firefox dmenu maim emacs
     xorg-xrandr xorg-xbacklight feh
-    sxiv mpv evince zathura st xterm
+    sxiv mpv mpd mpc evince zathura st xterm
     numlockx xorg-xinput
+    wmctrl xdotool xorg-xprop
+*** xmonad-style
+xmonad xmonad-contrib xmobar trayer
+*** openbox-style
+openbox polybar-git
 *** nvidia
 pacman -S nvidia nvidia-settings
 libglvnd seems good.
@@ -116,13 +120,18 @@ add the .profile if uncommented
 ** notifs
 pacman -S dunst
 ** themes
-pacman -S gnome-themes-standard lxappearance
-** multilib
+pacaur -S gnome-themes-standard lxappearance
+    arc-gtk-theme gtk-engine-murrine arc-icon-theme
+    openbox-arc-git
+** pacman.conf
+uncomment color, verbosepkglist, multilib
+*** multilib
 Uncomment repo in /etc/pacman.conf
 get glibc
 ** inxi (speccy)
 pacman -S mesa-demos inxi xorg-xdpyinfo
 ** various
+   
 *** ntfs-3g
 *** firefox dirs
 .config/user-dirs.dirs:
