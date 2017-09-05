@@ -65,7 +65,7 @@ cpr () {
   if [ ! -d "$2" ]; then
     mkdir -p "$2"
   fi
-  cp -r "$1" "$2"
+  cp -rv "$1" "$2"
 }
 
 c () {
@@ -113,8 +113,8 @@ alias crash='coredumpctl info -1'
 
 alias g='g++ -std=c++14 -g '
 
-alias l='ls --color=always -l'
-alias ll='ls --color=always -Al'
+alias l='ls --color=always -lh'
+alias ll='ls --color=always -Alh'
 alias d='du -had1 | sort -h'
 
 ats () { sg a "tmux -S /tmp/1"; }
