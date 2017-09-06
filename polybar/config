@@ -15,7 +15,7 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 modules-left = 
 modules-center = 
-modules-right = volume memory cpu temperature wlan eth battery1 battery2 date
+modules-right = volume memory cpu temperature wlan lappyeth eth battery1 battery2 date
 font-0 = Dina:pixelsize=10
 font-1 = Noto Sans:pixelsize=10
 font-2 = sans:pixelsize=10
@@ -61,7 +61,7 @@ format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #4bffdc
 label = %percentage_used%%
 
-[module/wlan]
+[module/network]
 type = internal/network
 interface = wlp4s0
 interval = 3.0
@@ -76,7 +76,7 @@ format-disconnected =
 
 [module/eth]
 type = internal/network
-interface = enp0s31f6
+interface = eno1
 interval = 3.0
 
 format-connected-underline = #55aa55
@@ -85,6 +85,10 @@ format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
 format-disconnected =
+
+[module/lappyeth]
+inherit = module/eth
+interface = enp0s31f6
 
 [module/date]
 type = internal/date
