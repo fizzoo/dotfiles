@@ -220,6 +220,12 @@
       <height>100%</height>
     </action>
   </keybind>
+  <keybind key="W-Up">
+      <action name="Maximize"></action>
+  </keybind>
+  <keybind key="W-Down">
+      <action name="UnMaximize"></action>
+  </keybind>
 
   <!-- Keybindings for window switching with the arrow keys -->
   <keybind key="W-S-Right">
