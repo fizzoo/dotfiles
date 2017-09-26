@@ -1,7 +1,5 @@
 #!/bin/bash
 
-polybar mybar &
-
 if [[ `hostname` == "mag" ]]; then
   qbittorrent &
   sleep 2 && wmctrl -r qBittorrent -t 8
