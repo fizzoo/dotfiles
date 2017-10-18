@@ -139,5 +139,11 @@ pyprofile () {
   python -m cProfile -s cumtime $*
 }
 
+clean(){
+  paccache -rvk 1
+  paccache -urvk 0
+  rm -vrf ~/.local/share/Trash
+}
+
 [[ $- = *i* ]] && test -f /opt/liquidprompt/liquidprompt && source /opt/liquidprompt/liquidprompt
 test -f $HOME/.dircolors && eval $( dircolors -b $HOME/.dircolors )
