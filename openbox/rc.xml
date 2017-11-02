@@ -301,6 +301,12 @@
 
   <keybind key="Print"> <action name="Execute"> <command>sh -c "maim -s ~/maim$(date +%s).png"</command> </action> </keybind>
   <keybind key="XF86Launch5"> <action name="Execute"> <command>sh -c "maim -s ~/maim$(date +%s).png"</command> </action> </keybind>
+  <keybind key="XF86MonBrightnessUp"> <action name="Execute"> <command>xbacklight +1</command> </action> </keybind>
+  <keybind key="XF86MonBrightnessDown"> <action name="Execute"> <command>xbacklight -1</command> </action> </keybind>
+  <keybind key="XF86AudioMute"> <action name="Execute"> <command>bash -c 'notify-send "volume: $(amixer set Master 0% | rg -o '[0-9]+%' | head -n 1)"'</command> </action> </keybind>
+  <keybind key="XF86AudioLowerVolume"> <action name="Execute"> <command>bash -c 'notify-send "volume: $(amixer set Master 5%- | rg -o '[0-9]+%' | head -n 1)"'</command> </action> </keybind>
+  <keybind key="XF86AudioRaiseVolume"> <action name="Execute"> <command>bash -c 'notify-send "volume: $(amixer set Master 5%+ | rg -o '[0-9]+%' | head -n 1)"'</command> </action> </keybind>
+
 </keyboard>
 
 <mouse>
