@@ -141,6 +141,7 @@
 
   (setq vc-follow-symlinks t)
   (defvar org-confirm-babel-evaluate nil)
+  (setq org-startup-indented t)
   )
 
 (defun myhook-python ()
