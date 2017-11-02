@@ -139,10 +139,19 @@ pyprofile () {
   python -m cProfile -s cumtime $*
 }
 
-clean(){
+clean () {
   paccache -rvk 1
   paccache -urvk 0
   rm -vrf ~/.local/share/Trash
+}
+
+gitclean () {
+  git clean -xdn
+  echo -n "Proceed? (y)"
+  read YESNO
+  if [[ $YESNO =~ "^[Yy]$" ]]; then
+    git clean -xdf
+  fi
 }
 
 [[ $- = *i* ]] && test -f /opt/liquidprompt/liquidprompt && source /opt/liquidprompt/liquidprompt
