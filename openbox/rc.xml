@@ -294,9 +294,9 @@
       <command>openbox --reconfigure</command>
     </action>
   </keybind>
-  <keybind key="W-F1"> <action name="Execute"> <command>xbacklight '=16' </command> </action> </keybind>
-  <keybind key="W-F2"> <action name="Execute"> <command>xbacklight '=32'</command> </action> </keybind>
-  <keybind key="W-F3"> <action name="Execute"> <command>xbacklight '=64'</command> </action> </keybind>
+  <keybind key="W-F1"> <action name="Execute"> <command>xbacklight '=4' </command> </action> </keybind>
+  <keybind key="W-F2"> <action name="Execute"> <command>xbacklight '=16'</command> </action> </keybind>
+  <keybind key="W-F3"> <action name="Execute"> <command>xbacklight '=32'</command> </action> </keybind>
   <keybind key="W-F4"> <action name="Execute"> <command>xbacklight '=100'</command> </action> </keybind>
 
   <keybind key="Print"> <action name="Execute"> <command>sh -c "maim -s ~/maim$(date +%s).png"</command> </action> </keybind>
