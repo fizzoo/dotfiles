@@ -22,10 +22,19 @@
   (not (null (x-list-fonts font))))
 (defun choose-font-if-exists (font)
   "Set frame font to FONT if it exists."
+  (interactive "sSet font to: ")
   (if (and (display-graphic-p) (font-exists-p font))
       (set-frame-font font)
     (message "Didn't find font %s." font)))
-(choose-font-if-exists "Dina 10")
+(defun font-dina ()
+  "Switch font to dina."
+  (interactive)
+  (choose-font-if-exists "Dina"))
+(defun font-scp ()
+  "Switch font to source code pro."
+  (interactive)
+  (choose-font-if-exists "Source Code Pro"))
+(font-dina)
 
 ;;; Enable all functions
 (setq disabled-command-function nil)
@@ -112,6 +121,7 @@ And if we're inside said buffer, start up a new zsh."
   (defun add-map-list (map l)
     "Perform add-map using MAP on all of list L."
     (mapcar (lambda (x) (add-map map x)) (pair-list l)))
+
   (defmacro imap (&rest l)
     "Map the bindings of L with 'evil-insert-state-map."
     `(progn ,@(add-map-list 'evil-insert-state-map l)))
@@ -125,12 +135,7 @@ And if we're inside said buffer, start up a new zsh."
             ,@(add-map-list 'evil-emacs-state-map l))))
 
 (use-package evil
-  :config
-  (progn
-    (evil-define-command ERC ()
-      "edit rc"
-      (find-file "~/.emacs"))
-    (evil-mode 1)))
+  :config (evil-mode 1))
 
 (use-package evil-matchit
   :config (global-evil-matchit-mode))
@@ -139,20 +144,12 @@ And if we're inside said buffer, start up a new zsh."
   :config
   (progn
     (which-key-mode)
-    (setq which-key-idle-delay 0.2))
+    (setq which-key-idle-delay 0.1))
   :diminish which-key-mode)
 
 (use-package undo-tree
   :config (global-undo-tree-mode)
   :diminish undo-tree-mode)
-
-(use-package smartparens
-  :config (progn
-            (require 'smartparens-config)
-            (smartparens-global-mode)))
-
-(use-package rainbow-delimiters
-  :init (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (use-package magit)
 
@@ -192,8 +189,8 @@ And if we're inside said buffer, start up a new zsh."
   (define-key company-active-map (kbd key)
     `(menu-item nil company-complete
                 :filter ,(lambda (cmd)
-                            (when (company-explicit-action-p)
-                            cmd)))))
+                           (when (company-explicit-action-p)
+                             cmd)))))
 (define-key company-active-map (kbd "TAB") #'company-complete-selection)
 (define-key company-active-map (kbd "SPC") nil)
 (setq company-auto-complete-chars nil)
@@ -204,7 +201,7 @@ And if we're inside said buffer, start up a new zsh."
 (use-package yasnippet
   :config
   (progn
-    (setq-default yas-snippet-dirs '("~/.emacs.d/snippets"))
+    (setq-default yas-snippet-dirs '("~/.snippets"))
     (yas-global-mode))
   :diminish yas-minor-mode)
 
@@ -308,34 +305,29 @@ And if we're inside said buffer, start up a new zsh."
 ;; undoes all meta keys otherwise
 (amap "<escape>" 'evil-normal-state)
 
-(nmap "SPC 1" 'delete-other-windows
-      "SPC 2" 'ivy-switch-buffer
-      "SPC 3" 'counsel-find-file
-      "SPC 4" 'zsh-terminal)
+(nmap "SPC w f" 'delete-other-windows
+      "SPC b b" 'ivy-switch-buffer
+      "SPC f f" 'counsel-find-file
+      "SPC f t" 'zsh-terminal)
 
-(defun flycheck-mode-and-check ()
+(defun edit-emacs-rc ()
+  "Go to emacsrc."
+  (interactive)
+  (find-file "~/.emacs"))
+(nmap "SPC f e" 'edit-emacs-rc)
+
+(defun flycheck-toggle-and-check ()
+  "Toggle flycheck mode and check if it was previously off."
   (interactive)
   (flycheck-mode 'toggle)
-  (flycheck-buffer))
-(nmap "SPC 5" 'flycheck-mode-and-check)
+  (if (bound-and-true-p flycheck-mode) (flycheck-buffer)))
 
-(amap
- "C-<right>" 'sp-forward-sexp
- "C-<left>" 'sp-backward-sexp
- "C-<up>" 'sp-up-sexp
- "C-<down>" 'sp-down-sexp
- "C-S-<right>" 'sp-forward-slurp-sexp
- "C-S-<left>" 'sp-forward-barf-sexp
- "C-S-<up>" 'sp-backward-slurp-sexp
- "C-S-<down>" 'sp-backward-barf-sexp
- "C-M-t" 'sp-transpose-sexp
- "C-M-w" 'sp-unwrap-sexp)
+(nmap "SPC t" 'flycheck-toggle-and-check)
 
-
-(nmap "SPC SPC" 'evil-emacs-state)
-(nmap "SPC q" 'evil-delete-buffer)
+(nmap "SPC SPC" 'counsel-M-x)
 (nmap "SPC g" 'magit-status)
-(amap "C-s" 'swiper)
+(nmap "SPC b d" 'evil-delete-buffer)
+(nmap "SPC s" 'swiper)
 
 (setq python-shell-completion-native-enable nil)
 
