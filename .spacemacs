@@ -26,7 +26,6 @@
      ivy
      javascript
      markdown
-     markdown
      org
      python
      syntax-checking
