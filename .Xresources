@@ -40,6 +40,6 @@ URxvt*scrollTtyOutput: false
 URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
 
-URxvt.font: xft:Dina:pixelsize=10
+URxvt.font: xft:Dina:pixelsize=13
 URxvt*scrollBar: false
 urxvt.saveLines: 1000000
