@@ -24,10 +24,8 @@ setopt extendedglob histverify autopushd pushdsilent nobeep hist_ignore_all_dups
 
 # Prompt is overridden by liquidprompt, if available
 if [[ $EUID = 0 ]]; then
-  umask 022
   export PROMPT='%K{magenta}%(?..%K{cyan}[%?])%1(j.{%j}.) %n %3~ %k'
 else
-  umask 007
   export PROMPT='%K{green}%(?..%K{red}[%?])%1(j.{%j}.) %n %3~ %k'
 fi
 
