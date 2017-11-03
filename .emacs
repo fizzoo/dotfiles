@@ -98,6 +98,8 @@ And if we're inside said buffer, start up a new zsh."
 ;; :bind is easily replaced with a :command and map in init, which is
 ;; also more in line with how the command+hook works.
 
+(use-package evil
+  :config (evil-mode 1))
 (use-package powerline)
 (use-package powerline-evil)
 (use-package moe-theme
@@ -134,9 +136,6 @@ And if we're inside said buffer, start up a new zsh."
             ,@(add-map-list 'evil-insert-state-map l)
             ,@(add-map-list 'evil-emacs-state-map l))))
 
-(use-package evil
-  :config (evil-mode 1))
-
 (use-package evil-matchit
   :config (global-evil-matchit-mode))
 
@@ -144,14 +143,14 @@ And if we're inside said buffer, start up a new zsh."
   :config
   (progn
     (which-key-mode)
-    (setq which-key-idle-delay 0.1))
+    (setq which-key-idle-delay 0.01))
   :diminish which-key-mode)
 
 (use-package undo-tree
   :config (global-undo-tree-mode)
   :diminish undo-tree-mode)
 
-(use-package magit)
+(use-package magit :defer)
 
 (use-package flx)
 
@@ -196,6 +195,7 @@ And if we're inside said buffer, start up a new zsh."
 (setq company-auto-complete-chars nil)
 
 (use-package flycheck
+  :defer
   :config (progn (setq flycheck-check-syntax-automatically '(save mode-enabled))))
 
 (use-package yasnippet
@@ -219,9 +219,8 @@ And if we're inside said buffer, start up a new zsh."
    '((C . t) (haskell . t) (emacs-lisp . t) (latex . t) (python . t))))
 
 ;; Markdown
-(use-package markdown-mode)
-(use-package flymd
-  :defer)
+(use-package markdown-mode :defer)
+(use-package flymd :defer)
 
 ;; Lisp
 (use-package slime
@@ -274,6 +273,7 @@ And if we're inside said buffer, start up a new zsh."
 
 ;; Haskell
 (use-package haskell-mode
+  :defer
   :init (add-hook 'haskell-mode-hook
                   (lambda () (interactive)
                     (setq evil-auto-indent nil)
