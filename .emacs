@@ -54,7 +54,8 @@
 (setq scroll-conservatively 8)
 
 ;;; No emacs-vc
-(setq vc-handled-backends ())
+;; (setq vc-handled-backends ())
+(setq vc-follow-symlinks t)
 
 ;;; gdb
 (defvar gdb-many-windows t)
@@ -327,7 +328,7 @@ And if we're inside said buffer, start up a new zsh."
 (nmap "SPC SPC" 'counsel-M-x)
 (nmap "SPC g" 'magit-status)
 (nmap "SPC b d" 'evil-delete-buffer)
-(nmap "SPC s" 'swiper)
+(amap "C-s" 'swiper)
 
 (setq python-shell-completion-native-enable nil)
 
