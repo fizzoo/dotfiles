@@ -89,7 +89,7 @@ abs
 ** graphics
 *** common
 pacman -S mesa xorg-server xorg-xinit
-    noto-fonts noto-fonts-cjk noto-fonts-emoji dina-font ttf-dejavu
+    noto-fonts noto-fonts-cjk noto-fonts-emoji dina-font ttf-dejavu ttf-liberation
     firefox dmenu maim emacs
     xorg-xrandr xorg-xbacklight feh
     sxiv mpv mpd mpc evince zathura st xterm
@@ -123,6 +123,31 @@ pacman -S dunst
 pacaur -S gnome-themes-standard lxappearance
     arc-gtk-theme gtk-engine-murrine arc-icon-theme
     openbox-arc-git
+** fonts
+*** subpixel rendering
+lxappearance fonts -> subpixel: rgb
+(or whatever the screen is)
+
+*** /etc/fonts/local.conf:
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+    <match>
+        <edit mode="prepend" name="family"><string>Noto Sans</string></edit>
+    </match>
+    <match target="pattern">
+        <test qual="any" name="family"><string>serif</string></test>
+        <edit name="family" mode="assign" binding="same"><string>Noto Serif</string></edit>
+    </match>
+    <match target="pattern">
+        <test qual="any" name="family"><string>sans-serif</string></test>
+        <edit name="family" mode="assign" binding="same"><string>Noto Sans</string></edit>
+    </match>
+    <match target="pattern">
+        <test qual="any" name="family"><string>monospace</string></test>
+        <edit name="family" mode="assign" binding="same"><string>Noto Mono</string></edit>
+    </match>
+</fontconfig>
 ** pacman.conf
 uncomment color, verbosepkglist, multilib
 *** multilib
