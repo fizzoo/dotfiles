@@ -42,9 +42,6 @@
 ;;; Use spaces
 (setq-default indent-tabs-mode nil)
 
-;;; Truncate if off screen
-(setq-default truncate-lines t)
-
 ;;; Show matching parens
 (defvar show-paren-delay 0)
 (defvar show-paren-style 'expression)
@@ -324,6 +321,7 @@ And if we're inside said buffer, start up a new zsh."
   (if (bound-and-true-p flycheck-mode) (flycheck-buffer)))
 
 (nmap "SPC t" 'flycheck-toggle-and-check)
+(nmap "SPC o t" 'toggle-truncate-lines)
 
 (nmap "SPC SPC" 'counsel-M-x)
 (nmap "SPC g" 'magit-status)
