@@ -28,7 +28,6 @@ fi
 
 
 xset b off
-sh ~/.fehbg
 urxvtd -q -f -o
 
 if [ -z "$WM" ]; then
