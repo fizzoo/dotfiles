@@ -150,8 +150,6 @@ And if we're inside said buffer, start up a new zsh."
 
 (use-package magit :defer)
 
-(use-package flx)
-
 (use-package ivy
   :config
   (progn
@@ -162,10 +160,7 @@ And if we're inside said buffer, start up a new zsh."
   :diminish ivy-mode)
 
 (use-package counsel
-  :config
-  (progn
-    (counsel-mode t)
-    (setq ivy-re-builders-alist '((swiper . ivy--regex-plus) (t . ivy--regex-fuzzy))))
+  :init (counsel-mode t)
   :diminish counsel-mode)
 
 (use-package swiper)
@@ -263,11 +258,16 @@ And if we're inside said buffer, start up a new zsh."
   :after irony
   :init (defvar cmake-ide-build-dir "build"))
 
+(use-package cuda-mode)
+
 ;; TeX
 (use-package tex
   :defer
   :ensure auctex
   :config (setq TeX-parse-self t))
+
+(use-package evil-surround
+  :config (global-evil-surround-mode 1))
 
 ;; Haskell
 (use-package haskell-mode
@@ -277,6 +277,8 @@ And if we're inside said buffer, start up a new zsh."
                     (setq evil-auto-indent nil)
                     (interactive-haskell-mode)))
   :config (setq haskell-stylish-on-save t))
+(use-package ess
+  :defer)
 
 ;; JS
 (use-package js2-mode
