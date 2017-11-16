@@ -1,0 +1,6 @@
+#!/bin/sh
+path+=/opt/MATLAB/R2017a/bin
+#wmname LG3D
+export J2D_D3D=false
+export MATLAB_JAVA=/usr/lib/jvm/java-8-openjdk/jre
+export _JAVA_AWT_WM_NONREPARENTING=true
