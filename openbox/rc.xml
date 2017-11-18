@@ -432,6 +432,10 @@ and back in -->
       <mousebind button="W-Down" action="Click">
         <action name="UnMaximize"></action>
       </mousebind>
+
+      <mousebind button="W-Middle" action="Click">
+        <action name="GrowToFill"></action>
+      </mousebind>
     </context>
 
     <context name="Titlebar">
@@ -481,41 +485,6 @@ and back in -->
         <action name="Focus"/>
         <action name="Raise"/>
         <action name="ShowMenu"><menu>client-menu</menu></action>
-      </mousebind>
-    </context>
-
-    <context name="Top">
-      <mousebind button="Left" action="Drag">
-        <action name="Resize"><edge>top</edge></action>
-      </mousebind>
-    </context>
-
-    <context name="Left">
-      <mousebind button="Left" action="Drag">
-        <action name="Resize"><edge>left</edge></action>
-      </mousebind>
-    </context>
-
-    <context name="Right">
-      <mousebind button="Left" action="Drag">
-        <action name="Resize"><edge>right</edge></action>
-      </mousebind>
-    </context>
-
-    <context name="Bottom">
-      <mousebind button="Left" action="Drag">
-        <action name="Resize"><edge>bottom</edge></action>
-      </mousebind>
-    </context>
-
-    <context name="TRCorner BRCorner TLCorner BLCorner">
-      <mousebind button="Left" action="Press">
-        <action name="Focus"/>
-        <action name="Raise"/>
-        <action name="Unshade"/>
-      </mousebind>
-      <mousebind button="Left" action="Drag">
-        <action name="Resize"/>
       </mousebind>
     </context>
 
