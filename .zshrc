@@ -23,11 +23,7 @@ SAVEHIST=800
 setopt extendedglob histverify autopushd pushdsilent nobeep hist_ignore_all_dups hist_ignore_space inc_append_history
 
 # Prompt is overridden by liquidprompt, if available
-if [[ $EUID = 0 ]]; then
-  export PROMPT='%K{magenta}%(?..%K{cyan}[%?])%1(j.{%j}.) %n %3~ %k'
-else
-  export PROMPT='%K{green}%(?..%K{red}[%?])%1(j.{%j}.) %n %3~ %k'
-fi
+export PROMPT='%B%(!,%F{red},%F{green})%(0?,>,!)> %f%b'
 
 bindkey -e
 export KEYTIMEOUT=1
@@ -68,7 +64,7 @@ cpr () {
 
 c () {
   rootfind="."
-  if [[ ! -z $1 && -d $1 ]]; then rootfind=$1; fi
+  if [[ ! -z "$1" && -d "$1" ]]; then rootfind="$1"; fi
   dir="$(find $rootfind -xdev -print 2> /dev/null | fzf)"
   if [[ -z "$dir" ]]; then return; fi
   if [[ ! -d "$dir" ]]; then dir="$(dirname $dir)"; fi
@@ -111,8 +107,8 @@ alias crash='coredumpctl info -1'
 
 alias g='g++ -std=c++14 -g '
 
-alias l='ls --color=always -lh'
-alias ll='ls --color=always -Alh'
+alias l='pwd;ls --color=always -lh'
+alias ll='pwd;ls --color=always -Alh'
 alias d='du -had1 | sort -h'
 
 ats () { sg a "tmux -S /tmp/1"; }
@@ -152,5 +148,4 @@ gitclean () {
   fi
 }
 
-[[ $- = *i* ]] && test -f /opt/liquidprompt/liquidprompt && source /opt/liquidprompt/liquidprompt
 test -f $HOME/.dircolors && eval $( dircolors -b $HOME/.dircolors )
