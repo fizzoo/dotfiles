@@ -329,6 +329,7 @@ And if we're inside said buffer, start up a new zsh."
 (nmap "SPC g" 'magit-status)
 (nmap "SPC b d" 'evil-delete-buffer)
 (amap "C-s" 'swiper)
+(nmap "C-u" 'evil-scroll-up)
 
 (setq python-shell-completion-native-enable nil)
 
