@@ -258,7 +258,10 @@ And if we're inside said buffer, start up a new zsh."
   :after irony
   :init (defvar cmake-ide-build-dir "build"))
 
-(use-package cuda-mode)
+(use-package cuda-mode
+  :defer)
+(use-package clang-format
+  :after irony)
 
 ;; TeX
 (use-package tex
@@ -292,6 +295,9 @@ And if we're inside said buffer, start up a new zsh."
 (use-package json-mode
   :defer
   :init (add-to-list 'auto-mode-alist '("\\.json$" . json-mode)))
+
+(use-package web-mode
+  :defer)
 
 
 
