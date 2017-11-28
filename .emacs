@@ -210,6 +210,8 @@ And if we're inside said buffer, start up a new zsh."
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((C . t) (haskell . t) (emacs-lisp . t) (latex . t) (python . t))))
+(use-package org-ref
+  :after org)
 
 ;; Markdown
 (use-package markdown-mode :defer)
