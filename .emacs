@@ -273,12 +273,13 @@ And if we're inside said buffer, start up a new zsh."
   :config (global-evil-surround-mode 1))
 
 ;; Haskell
-(use-package intero
+(use-package haskell-mode
   :defer
   :init (add-hook 'haskell-mode-hook
-                  'intero-mode)
-  :config (flycheck-add-next-checker 'intero '(warning . haskell-hlint)))
-
+                  (lambda () (interactive)
+                    (setq evil-auto-indent nil)
+                    (interactive-haskell-mode)))
+  :config (setq haskell-stylish-on-save t))
 (use-package ess
   :defer)
 
