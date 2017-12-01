@@ -3,6 +3,8 @@
 # key: vatemp
 # --
 \documentclass[11pt,a4paper,article,oneside]{memoir}
+%\setulmarginsandblock{3.5cm}{3.5cm}{*}
+%\setlrmarginsandblock{3.5cm}{3.5cm}{*}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
 \usepackage[english]{babel}
