@@ -80,6 +80,10 @@ f () {
 res () {
   stty sane iutf8
 }
+cl () {
+  res
+  clear
+}
 
 wifi () {
   line=$(nmcli d wifi | tac | fzf +s)
