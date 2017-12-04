@@ -111,8 +111,14 @@ alias l='pwd;ls --color=always -lh'
 alias ll='pwd;ls --color=always -Alh'
 alias d='du -had1 | sort -h'
 
-ats () { sg a "tmux -S /tmp/1"; }
-at () { sg a "tmux -S /tmp/1 attach"; }
+ats () { sg a "tmux -S /tmp/tmuxs"; }
+at () {
+    if [[ ! -S /tmp/tmuxs ]]; then
+        echo "no socket yet, wait for host to create."
+    else
+        sg a "tmux -S /tmp/tmuxs attach"
+    fi
+}
 own () { sudo chown -R $USER: $*; }
 
 alias ana='make clean && scan-build -enable-checker alpha --view make'
