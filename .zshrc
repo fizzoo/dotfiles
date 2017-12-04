@@ -71,6 +71,16 @@ c () {
   cd "$dir"
 }
 
+f () {
+  rootfind="."
+  if [[ ! -z "$1" && -d "$1" ]]; then rootfind="$1"; fi
+  find $rootfind -xdev -print 2> /dev/null | fzf -m
+}
+
+res () {
+  stty sane iutf8
+}
+
 wifi () {
   line=$(nmcli d wifi | tac | fzf +s)
   [[ -z $line ]] && return
