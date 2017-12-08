@@ -125,6 +125,7 @@ alias l='pwd;ls --color=always -lh'
 alias ll='pwd;ls --color=always -Alh'
 alias d='du -had1 | sort -h'
 alias s='ranger'
+alias ck='c /k/ && pwd'
 
 ats () { sg a "tmux -S /tmp/tmuxs"; }
 at () {
