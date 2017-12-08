@@ -124,6 +124,7 @@ alias g='g++ -std=c++14 -g '
 alias l='pwd;ls --color=always -lh'
 alias ll='pwd;ls --color=always -Alh'
 alias d='du -had1 | sort -h'
+alias s='ranger'
 
 ats () { sg a "tmux -S /tmp/tmuxs"; }
 at () {
