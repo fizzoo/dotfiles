@@ -148,6 +148,19 @@ And if we're inside said buffer, start up a new zsh."
   :config (global-undo-tree-mode)
   :diminish undo-tree-mode)
 
+(use-package ws-butler
+  :config
+  (progn
+    (setq ws-butler-keep-whitespace-before-point nil)
+    (ws-butler-global-mode t)))
+
+(use-package aggressive-indent
+  :config
+  (progn
+    (global-aggressive-indent-mode)
+    (add-to-list 'aggressive-indent-excluded-modes
+                 'haskell-mode)))
+
 (use-package magit :defer)
 
 (use-package ivy
