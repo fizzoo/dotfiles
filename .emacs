@@ -186,7 +186,7 @@ And if we're inside said buffer, start up a new zsh."
     (setq recentf-max-saved-items 512)))
 
 (use-package company
-  :init (defvar company-idle-delay 0.1)
+  :init (defvar company-idle-delay 0.01)
   :config (progn
             (global-company-mode)
             (setq company-frontends
@@ -195,8 +195,7 @@ And if we're inside said buffer, start up a new zsh."
                     company-preview-frontend))
             (amapm company-active-map
                    "<return>" nil
-                   "C-SPC" 'company-complete-selection)
-            (imap "C-SPC" 'company-complete))
+                   "C-SPC" 'company-complete-selection))
   :diminish company-mode)
 
 (use-package ggtags
@@ -352,6 +351,8 @@ And if we're inside said buffer, start up a new zsh."
 (nmap "SPC b d" 'evil-delete-buffer)
 (amap "C-s" 'swiper)
 (nmap "C-u" 'evil-scroll-up)
+
+(imap "C-SPC" 'company-complete)
 
 (setq python-shell-completion-native-enable nil)
 
