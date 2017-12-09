@@ -119,15 +119,13 @@ And if we're inside said buffer, start up a new zsh."
                     (add-kbds (nthcdr 2 l))))))
   (defmacro imapm (map &rest l)
     "Map the bindings of L with 'evil-insert-state-map."
-    `(progn (evil-define-key 'insert ,map ,@(add-kbds l))))
+    `(evil-define-key 'insert ,map ,@(add-kbds l)))
   (defmacro nmapm (map &rest l)
     "Map the bindings of L with 'evil-normal-state-map."
-    `(progn (evil-define-key 'normal ,map ,@(add-kbds l))))
+    `(evil-define-key 'normal ,map ,@(add-kbds l)))
   (defmacro amapm (map &rest l)
     "Map the bindings of L with all the maps."
-    `(progn (evil-define-key 'normal ,map ,@(add-kbds l))
-            (evil-define-key 'insert ,map ,@(add-kbds l))
-            (evil-define-key 'emacs  ,map ,@(add-kbds l))))
+    `(evil-define-key nil ,map ,@(add-kbds l)))
   (defmacro imap (&rest l)
     `(imapm global-map ,@l))
   (defmacro nmap (&rest l)
@@ -189,23 +187,24 @@ And if we're inside said buffer, start up a new zsh."
 
 (use-package company
   :init (defvar company-idle-delay 0.1)
-  :config (global-company-mode)
+  :config (progn
+            (global-company-mode)
+            (setq company-frontends
+                  '(company-pseudo-tooltip-frontend
+                    company-echo-metadata-frontend
+                    company-preview-frontend))
+            (amapm company-active-map
+                   "<return>" nil
+                   "C-SPC" 'company-complete-selection)
+            (imap "C-SPC" 'company-complete))
   :diminish company-mode)
 
-;; http://emacs.stackexchange.com/a/24800
-(dolist (key '("<return>" "RET"))
-  (define-key company-active-map (kbd key)
-    `(menu-item nil company-complete
-                :filter ,(lambda (cmd)
-                           (when (company-explicit-action-p)
-                             cmd)))))
-(define-key company-active-map (kbd "TAB") #'company-complete-selection)
-(define-key company-active-map (kbd "SPC") nil)
-(setq company-auto-complete-chars nil)
 
 (use-package flycheck
   :defer
-  :config (progn (setq flycheck-check-syntax-automatically '(save mode-enabled))))
+  :config (progn
+            (setq flycheck-check-syntax-automatically '(save mode-enabled))
+            (add-to-list 'evil-emacs-state-modes 'flycheck-mode)))
 
 (use-package yasnippet
   :config
