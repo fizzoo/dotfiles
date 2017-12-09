@@ -173,6 +173,7 @@ And if we're inside said buffer, start up a new zsh."
     (setq ivy-use-virtual-buffers t)
     (setq ivy-initial-inputs-alist '()))
   :diminish ivy-mode)
+(use-package ivy-hydra)
 
 (use-package counsel
   :init (counsel-mode t)
