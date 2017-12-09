@@ -199,6 +199,10 @@ And if we're inside said buffer, start up a new zsh."
             (imap "C-SPC" 'company-complete))
   :diminish company-mode)
 
+(use-package ggtags
+  :init
+  (progn
+    (nmap "M-." 'ggtags-find-tag-dwim)))
 
 (use-package flycheck
   :defer
@@ -270,10 +274,6 @@ And if we're inside said buffer, start up a new zsh."
 (use-package flycheck-irony
   :after irony
   :config (flycheck-irony-setup))
-
-(use-package cmake-ide
-  :after irony
-  :init (defvar cmake-ide-build-dir "build"))
 
 (use-package cuda-mode
   :defer)
