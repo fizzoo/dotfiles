@@ -109,30 +109,31 @@ And if we're inside said buffer, start up a new zsh."
 
 ;; System for defining keys easily, relies on evil since i use that.
 (eval-when-compile
-  (defun pair-list (l)
-    "Pair elements in even list L."
+  (defun add-kbds (l)
+    "Add kbd before every even element in list L."
+    (cl-assert (= (mod (length l) 2) 0) t
+               (format "List length of %s not divisble by 2" l))
     (if l
-        (cons (list (car l) (cadr l))
-              (pair-list (cddr l)))
-      nil))
-  (defun add-map (map pair)
-    "Create a 'define-key to MAP with mapping PAIR."
-    (list 'define-key map (list 'kbd (car pair)) (cadr pair)))
-  (defun add-map-list (map l)
-    "Perform add-map using MAP on all of list L."
-    (mapcar (lambda (x) (add-map map x)) (pair-list l)))
-
-  (defmacro imap (&rest l)
+        (cons (list 'kbd (nth 0 l))
+              (cons (nth 1 l)
+                    (add-kbds (nthcdr 2 l))))))
+  (defmacro imapm (map &rest l)
     "Map the bindings of L with 'evil-insert-state-map."
-    `(progn ,@(add-map-list 'evil-insert-state-map l)))
-  (defmacro nmap (&rest l)
+    `(progn (evil-define-key 'insert ,map ,@(add-kbds l))))
+  (defmacro nmapm (map &rest l)
     "Map the bindings of L with 'evil-normal-state-map."
-    `(progn ,@(add-map-list 'evil-normal-state-map l)))
-  (defmacro amap (&rest l)
+    `(progn (evil-define-key 'normal ,map ,@(add-kbds l))))
+  (defmacro amapm (map &rest l)
     "Map the bindings of L with all the maps."
-    `(progn ,@(add-map-list 'evil-normal-state-map l)
-            ,@(add-map-list 'evil-insert-state-map l)
-            ,@(add-map-list 'evil-emacs-state-map l))))
+    `(progn (evil-define-key 'normal ,map ,@(add-kbds l))
+            (evil-define-key 'insert ,map ,@(add-kbds l))
+            (evil-define-key 'emacs  ,map ,@(add-kbds l))))
+  (defmacro imap (&rest l)
+    `(imapm global-map ,@l))
+  (defmacro nmap (&rest l)
+    `(nmapm global-map ,@l))
+  (defmacro amap (&rest l)
+    `(amapm global-map ,@l)))
 
 (use-package evil-matchit
   :config (global-evil-matchit-mode))
@@ -149,6 +150,7 @@ And if we're inside said buffer, start up a new zsh."
   :diminish undo-tree-mode)
 
 (use-package ws-butler
+  :diminish ws-butler-mode
   :config
   (progn
     (setq ws-butler-keep-whitespace-before-point nil)
