@@ -99,15 +99,25 @@ And if we're inside said buffer, start up a new zsh."
 ;; also more in line with how the command+hook works.
 
 (use-package evil
-  :config (evil-mode 1))
+  :config (progn
+            (evil-mode 1)
+            (add-to-list 'evil-emacs-state-modes 'debugger-mode)))
+
 (use-package powerline)
-(use-package powerline-evil)
-(use-package moe-theme
+(use-package powerline-evil
+  :after powerline
+  :config (powerline-evil-center-color-theme))
+(use-package doom-themes
   :config
   (progn
-    (moe-dark)
-    (powerline-moe-theme)
-    (powerline-evil-center-color-theme)))
+    (load-theme 'doom-one t)
+    (doom-themes-visual-bell-config)
+    (doom-themes-org-config)))
+(use-package solaire-mode
+  :config (progn
+            (add-hook 'after-change-major-mode-hook #'turn-on-solaire-mode)
+            (solaire-mode-swap-bg)))
+
 
 ;; System for defining keys easily, relies on evil since i use that.
 (eval-when-compile
@@ -137,6 +147,12 @@ And if we're inside said buffer, start up a new zsh."
 
 (use-package evil-matchit
   :config (global-evil-matchit-mode))
+
+(use-package neotree
+  :defer
+  :init (progn
+          (nmap "SPC f t" 'neotree)
+          (add-to-list 'evil-emacs-state-modes 'neotree-mode)))
 
 (use-package which-key
   :config
@@ -350,7 +366,7 @@ And if we're inside said buffer, start up a new zsh."
 (nmap "SPC w f" 'delete-other-windows
       "SPC b b" 'ivy-switch-buffer
       "SPC f f" 'counsel-find-file
-      "SPC f t" 'zsh-terminal)
+      "SPC f z" 'zsh-terminal)
 
 (defun edit-emacs-rc ()
   "Go to emacsrc."
