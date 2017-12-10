@@ -89,6 +89,8 @@ And if we're inside said buffer, start up a new zsh."
     (require 'use-package)))
 (setq use-package-always-ensure t)
 
+(use-package diminish)
+
 ;;; Start of use-package stanzas
 ;; I will somewhat keep to a system of placing options and necessary
 ;; hooks in the :init and :config fields, but defining most useful
@@ -193,10 +195,15 @@ And if we're inside said buffer, start up a new zsh."
                   '(company-pseudo-tooltip-frontend
                     company-echo-metadata-frontend
                     company-preview-frontend))
+            (define-key company-active-map (kbd "<return>") nil)
             (amapm company-active-map
                    "<return>" nil
+                   "RET" nil
                    "C-SPC" 'company-complete-selection))
   :diminish company-mode)
+(use-package company-quickhelp
+  :after company
+  :config (company-quickhelp-mode 1))
 
 (use-package ggtags
   :init
@@ -289,12 +296,25 @@ And if we're inside said buffer, start up a new zsh."
   :config (global-evil-surround-mode 1))
 
 ;; Haskell
-(use-package intero
+(use-package haskell-mode
   :defer
   :init (add-hook 'haskell-mode-hook
-                  'intero-mode)
-  :config (flycheck-add-next-checker 'intero '(warning . haskell-hlint)))
+                  (lambda () (interactive)
+                    (setq evil-auto-indent nil)
+                    (interactive-haskell-mode)))
+  :config
+  (progn
+    (setq haskell-stylish-on-save t)
+    (nmapm 'haskell-mode-map
+           "M-." 'haskell-mode-jump-to-def-or-tag)))
+(use-package company-ghc
+  :after haskell-mode
+  :config (add-to-list 'company-backends 'company-ghc))
+(use-package company-ghci
+  :after haskell-mode
+  :config (add-to-list 'company-backends 'company-ghci))
 
+;; R
 (use-package ess
   :defer)
 
