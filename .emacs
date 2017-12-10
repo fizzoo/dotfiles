@@ -306,6 +306,7 @@ And if we're inside said buffer, start up a new zsh."
   (progn
     (setq haskell-stylish-on-save t)
     (nmapm 'haskell-mode-map
+           "M-?" 'haskell-mode-find-uses
            "M-." 'haskell-mode-jump-to-def-or-tag)))
 (use-package company-ghc
   :after haskell-mode
@@ -371,6 +372,10 @@ And if we're inside said buffer, start up a new zsh."
 (nmap "SPC b d" 'evil-delete-buffer)
 (amap "C-s" 'swiper)
 (nmap "C-u" 'evil-scroll-up)
+
+(amapm highlight-uses-mode-map
+       "M-n" 'highlight-uses-mode-next
+       "M-p" 'highlight-uses-mode-prev)
 
 (imap "C-SPC" 'company-complete)
 
