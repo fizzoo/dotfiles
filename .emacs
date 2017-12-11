@@ -110,6 +110,15 @@ And if we're inside said buffer, start up a new zsh."
     (doom-themes-visual-bell-config)
     (doom-themes-org-config)))
 
+;; The non-solaire brightness is apparently the same as the bright
+;; variant of solaire. So might as well use it to darken some stuff at
+;; least. Also separates the windows better.
+(use-package solaire-mode
+  :config
+  (progn
+    (add-hook 'after-change-major-mode-hook #'turn-on-solaire-mode)
+    (solaire-mode-swap-bg)))
+
 
 ;; System for defining keys easily, relies on evil since i use that.
 (eval-when-compile
