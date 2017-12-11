@@ -397,7 +397,6 @@ And if we're inside said buffer, start up a new zsh."
 (nmap "SPC b d" 'evil-delete-buffer)
 (amap "C-s" 'swiper)
 (nmap "C-u" 'evil-scroll-up)
-(nmap "C-w SPC" 'delete-other-windows)
 
 (amapm highlight-uses-mode-map
        "M-n" 'highlight-uses-mode-next
