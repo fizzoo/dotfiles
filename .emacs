@@ -109,15 +109,16 @@ And if we're inside said buffer, start up a new zsh."
   :config
   (progn
     (setq
-     telephone-line-primary-left-separator 'telephone-line-flat
-     telephone-line-primary-right-separator 'telephone-line-flat
-     telephone-line-secondary-left-separator 'telephone-line-flat
-     telephone-line-secondary-right-separator 'telephone-line-flat)
+     telephone-line-primary-left-separator 'telephone-line-nil
+     telephone-line-primary-right-separator 'telephone-line-nil
+     telephone-line-secondary-left-separator 'telephone-line-nil
+     telephone-line-secondary-right-separator 'telephone-line-nil)
     (setq telephone-line-lhs
           '((evil   . (telephone-line-evil-tag-segment))
             (accent . (telephone-line-erc-modified-channels-segment
                        telephone-line-process-segment))
             (accent . (telephone-line-minor-mode-segment
+                       (telephone-line-fill 1)
                        telephone-line-buffer-segment))))
     (setq telephone-line-rhs
           '((nil    . (telephone-line-misc-info-segment))
@@ -263,7 +264,7 @@ And if we're inside said buffer, start up a new zsh."
   (progn
     (setq projectile-mode-line
           '(:eval (if (projectile-project-p)
-                      (format " {%s} " (projectile-project-name))
+                      (format " {%s}" (projectile-project-name))
                     "")))
     (projectile-mode 1)))
 (use-package counsel-projectile
