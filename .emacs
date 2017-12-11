@@ -99,16 +99,31 @@ And if we're inside said buffer, start up a new zsh."
             (add-hook 'debugger-mode 'evil-emacs-state)
             (add-hook 'special-mode 'evil-emacs-state)))
 
-(use-package powerline)
-(use-package powerline-evil
-  :after powerline
-  :config (powerline-evil-center-color-theme))
 (use-package doom-themes
   :config
   (progn
     (load-theme 'doom-one t)
     (doom-themes-visual-bell-config)
     (doom-themes-org-config)))
+(use-package telephone-line
+  :config
+  (progn
+    (setq
+     telephone-line-primary-left-separator 'telephone-line-flat
+     telephone-line-primary-right-separator 'telephone-line-flat
+     telephone-line-secondary-left-separator 'telephone-line-flat
+     telephone-line-secondary-right-separator 'telephone-line-flat)
+    (setq telephone-line-lhs
+          '((evil   . (telephone-line-evil-tag-segment))
+            (accent . (telephone-line-erc-modified-channels-segment
+                       telephone-line-process-segment))
+            (accent . (telephone-line-minor-mode-segment
+                       telephone-line-buffer-segment))))
+    (setq telephone-line-rhs
+          '((nil    . (telephone-line-misc-info-segment))
+            (accent . (telephone-line-major-mode-segment))
+            (evil   . (telephone-line-airline-position-segment))))
+    (telephone-line-mode 1)))
 
 ;; The non-solaire brightness is apparently the same as the bright
 ;; variant of solaire. So might as well use it to darken some stuff at
@@ -117,6 +132,7 @@ And if we're inside said buffer, start up a new zsh."
   :config
   (progn
     (add-hook 'after-change-major-mode-hook #'turn-on-solaire-mode)
+    (add-hook 'after-revert-hook #'turn-on-solaire-mode)
     (solaire-mode-swap-bg)))
 
 
@@ -174,6 +190,7 @@ And if we're inside said buffer, start up a new zsh."
     (ws-butler-global-mode t)))
 
 (use-package aggressive-indent
+  :diminish aggressive-indent-mode
   :config
   (progn
     (global-aggressive-indent-mode)
@@ -244,6 +261,7 @@ And if we're inside said buffer, start up a new zsh."
 (use-package projectile
   :config (projectile-mode 1))
 (use-package counsel-projectile
+  :diminish projectile-mode
   :after projectile
   :config (progn
             (counsel-projectile-on)
