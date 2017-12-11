@@ -259,9 +259,14 @@ And if we're inside said buffer, start up a new zsh."
   :diminish yas-minor-mode)
 
 (use-package projectile
-  :config (projectile-mode 1))
+  :config
+  (progn
+    (setq projectile-mode-line
+          '(:eval (if (projectile-project-p)
+                      (format " {%s} " (projectile-project-name))
+                    "")))
+    (projectile-mode 1)))
 (use-package counsel-projectile
-  :diminish projectile-mode
   :after projectile
   :config (progn
             (counsel-projectile-on)
