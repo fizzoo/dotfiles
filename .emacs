@@ -15,6 +15,7 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (setq inhibit-startup-screen t)
+(setq use-dialog-box nil)
 
 ;;; Font selection
 (defun font-exists-p (font)
@@ -91,17 +92,12 @@ And if we're inside said buffer, start up a new zsh."
 
 (use-package diminish)
 
-;;; Start of use-package stanzas
-;; I will somewhat keep to a system of placing options and necessary
-;; hooks in the :init and :config fields, but defining most useful
-;; keybindings further down this file.
-;; :bind is easily replaced with a :command and map in init, which is
-;; also more in line with how the command+hook works.
-
 (use-package evil
   :config (progn
             (evil-mode 1)
-            (add-to-list 'evil-emacs-state-modes 'debugger-mode)))
+            (add-to-list 'evil-emacs-state-modes 'debugger-mode)
+            (add-hook 'debugger-mode 'evil-emacs-state)
+            (add-hook 'special-mode 'evil-emacs-state)))
 
 (use-package powerline)
 (use-package powerline-evil
@@ -113,10 +109,6 @@ And if we're inside said buffer, start up a new zsh."
     (load-theme 'doom-one t)
     (doom-themes-visual-bell-config)
     (doom-themes-org-config)))
-(use-package solaire-mode
-  :config (progn
-            (add-hook 'after-change-major-mode-hook #'turn-on-solaire-mode)
-            (solaire-mode-swap-bg)))
 
 
 ;; System for defining keys easily, relies on evil since i use that.
@@ -224,7 +216,8 @@ And if we're inside said buffer, start up a new zsh."
 (use-package ggtags
   :init
   (progn
-    (nmap "M-." 'ggtags-find-tag-dwim)))
+    (nmap "M-." 'ggtags-find-tag-dwim)
+    (nmap "M-?" 'ggtags-find-reference)))
 
 (use-package flycheck
   :defer
@@ -238,6 +231,20 @@ And if we're inside said buffer, start up a new zsh."
     (setq-default yas-snippet-dirs '("~/.snippets"))
     (yas-global-mode))
   :diminish yas-minor-mode)
+
+(use-package projectile
+  :config (projectile-mode 1))
+(use-package counsel-projectile
+  :after projectile
+  :config (progn
+            (counsel-projectile-on)
+            (nmap "SPC f SPC" 'counsel-projectile)))
+
+(use-package rg
+  :config (progn
+            (nmap "SPC r SPC" 'rg-project)
+            (nmap "SPC r d" 'rg-dwim)
+            (nmap "SPC r r" 'rg)))
 
 ;; Org
 (use-package org
@@ -300,7 +307,9 @@ And if we're inside said buffer, start up a new zsh."
 (use-package cuda-mode
   :defer)
 (use-package clang-format
-  :after irony)
+  :after irony
+  :config (nmapm 'c++-mode-map
+                 "SPC a" 'clang-format-buffer))
 
 ;; TeX
 (use-package tex
@@ -353,6 +362,7 @@ And if we're inside said buffer, start up a new zsh."
 
 
 
+
 ;;; Global bindings area
 
 ;; Inherit most emacs bindings instead of the few vim
@@ -363,10 +373,10 @@ And if we're inside said buffer, start up a new zsh."
 ;; undoes all meta keys otherwise
 (amap "<escape>" 'evil-normal-state)
 
-(nmap "SPC w f" 'delete-other-windows
-      "SPC b b" 'ivy-switch-buffer
-      "SPC f f" 'counsel-find-file
-      "SPC f z" 'zsh-terminal)
+(nmap
+ "SPC b b" 'ivy-switch-buffer
+ "SPC f f" 'counsel-find-file
+ "SPC f z" 'zsh-terminal)
 
 (defun edit-emacs-rc ()
   "Go to emacsrc."
@@ -383,11 +393,11 @@ And if we're inside said buffer, start up a new zsh."
 (nmap "SPC t" 'flycheck-toggle-and-check)
 (nmap "SPC o t" 'toggle-truncate-lines)
 
-(nmap "SPC SPC" 'counsel-M-x)
 (nmap "SPC g" 'magit-status)
 (nmap "SPC b d" 'evil-delete-buffer)
 (amap "C-s" 'swiper)
 (nmap "C-u" 'evil-scroll-up)
+(nmap "C-w SPC" 'delete-other-windows)
 
 (amapm highlight-uses-mode-map
        "M-n" 'highlight-uses-mode-next
@@ -396,8 +406,6 @@ And if we're inside said buffer, start up a new zsh."
 (imap "C-SPC" 'company-complete)
 
 (setq python-shell-completion-native-enable nil)
-
-(setq use-dialog-box nil)
 
 (defun righty-python ()
   (interactive)
