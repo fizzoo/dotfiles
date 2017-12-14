@@ -63,13 +63,14 @@ cpr () {
 }
 
 c () {
-  rootfind="."
-  if [[ ! -z "$1" && -d "$1" ]]; then rootfind="$1"; fi
-  dir="$(find $rootfind -xdev -print 2> /dev/null | fzf)"
+  dir="$(find $* -xdev -print 2> /dev/null | fzf)"
   if [[ -z "$dir" ]]; then return; fi
   if [[ ! -d "$dir" ]]; then dir="$(dirname $dir)"; fi
   cd "$dir"
 }
+
+alias ck='c /k/ && pwd'
+alias cm='c /media/* && pwd'
 
 f () {
   rootfind="."
@@ -125,7 +126,6 @@ alias l='pwd;ls --color=always -lh'
 alias ll='pwd;ls --color=always -Alh'
 alias d='du -had1 | sort -h'
 alias s='ranger'
-alias ck='c /k/ && pwd'
 
 ats () { sg a "tmux -S /tmp/tmuxs"; }
 at () {

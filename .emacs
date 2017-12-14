@@ -176,7 +176,7 @@ And if we're inside said buffer, start up a new zsh."
   :config
   (progn
     (which-key-mode)
-    (setq which-key-idle-delay 0.01))
+    (setq which-key-idle-delay 0.1))
   :diminish which-key-mode)
 
 (use-package undo-tree
