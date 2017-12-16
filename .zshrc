@@ -63,10 +63,10 @@ cpr () {
 }
 
 c () {
-  dir="$(find $* -xdev -print 2> /dev/null | fzf)"
+  dir=$(find "$@" -xdev -print 2> /dev/null | fzf)
   if [[ -z "$dir" ]]; then return; fi
-  if [[ ! -d "$dir" ]]; then dir="$(dirname $dir)"; fi
-  cd "$dir"
+  if [[ ! -d "$dir" ]]; then dir=$(dirname "$dir"); fi
+  cd "$dir" || exit 1
 }
 
 alias ck='c /k/ && pwd'

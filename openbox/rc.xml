@@ -379,6 +379,11 @@ and back in -->
         <command>emacs</command>
       </action>
     </keybind>
+    <keybind key="W-V">
+      <action name="Execute">
+        <command>anamnesis --browser</command>
+      </action>
+    </keybind>
     <keybind key="W-Y">
       <action name="Execute">
         <command>openbox --reconfigure</command>
