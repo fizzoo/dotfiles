@@ -29,7 +29,6 @@ fi
 
 xset b off
 urxvtd -q -f -o
-anamnesis --start
 
 if [ -z "$WM" ]; then
   exec openbox-session

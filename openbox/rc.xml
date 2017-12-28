@@ -381,7 +381,12 @@ and back in -->
     </keybind>
     <keybind key="W-V">
       <action name="Execute">
-        <command>anamnesis --browser</command>
+        <command>bash -c "xclip -o -sel p | xclip -i -sel c"</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-V">
+      <action name="Execute">
+        <command>bash -c "xclip -o -sel c | xclip -i -sel p"</command>
       </action>
     </keybind>
     <keybind key="W-Y">
