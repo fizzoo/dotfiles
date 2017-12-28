@@ -288,9 +288,11 @@ And if we're inside said buffer, start up a new zsh."
     (defvar org-src-fontify-natively t)
     (defvar org-confirm-babel-evaluate nil))
   :config
-  (org-babel-do-load-languages
-   'org-babel-load-languages
-   '((C . t) (haskell . t) (emacs-lisp . t) (latex . t) (python . t))))
+  (progn
+    (add-to-list 'org-file-apps (cons "pdf" "zathura %s"))
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((C . t) (haskell . t) (emacs-lisp . t) (latex . t) (python . t)))))
 (use-package org-ref
   :after org)
 
