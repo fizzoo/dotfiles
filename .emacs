@@ -195,6 +195,7 @@ And if we're inside said buffer, start up a new zsh."
   :config
   (progn
     (global-aggressive-indent-mode)
+    (nmap "SPC o a" 'aggressive-indent-mode)
     (add-to-list 'aggressive-indent-excluded-modes
                  'haskell-mode)))
 
