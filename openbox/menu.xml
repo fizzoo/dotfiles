@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <openbox_menu xmlns="http://openbox.org/3.4/menu">
+  <menu id="root-menu" label="Openbox 3">
+    <separator label="Applications" />
 
+    <item label="_firefox"><action name="Execute"><execute>firefox</execute></action></item>
+    <item label="_chromium"><action name="Execute"><execute>chromium</execute></action></item>
+    <item label="_qutebrowser"><action name="Execute"><execute>qutebrowser</execute></action></item>
+    <separator />
+    <item label="_emacs"><action name="Execute"><execute>emacs</execute></action></item>
+    <item label="_discord"><action name="Execute"><execute>discord</execute></action></item>
+    <item label="_mp[dc]+cantata"><action name="Execute"><execute>bash -c "( mpd || mpc update ); cantata"</execute></action></item>
 
-<menu id="root-menu" label="Openbox 3">
-  <separator label="Applications" />
-  <menu id="applications" label="apps" execute="xdg_menu --format openbox3-pipe"/>
-  <item label="_discord">
-    <action name="Execute">
-      <execute>discord</execute>
-    </action>
-  </item>
-  <separator label="System" />
-  <menu id="system-menu"/>
-  <separator />
-  <item label="--_reconfigure">
-    <action name="Reconfigure"/>
-  </item>
-  <item label="Log Out">
-    <action name="Exit">
-      <prompt>yes</prompt>
-    </action>
-  </item>
-</menu>
+    <separator label="System" />
+
+    <menu id="system-menu"/>
+    <item label="--reconfigure"><action name="Reconfigure"/></item>
+    <item label="log out"><action name="Exit"><prompt>no</prompt></action></item>
+    <item label="reboot"><action name="Execute"><execute>reboot</execute></action></item>
+    <item label="poweroff"><action name="Execute"><execute>poweroff</execute></action></item>
+  </menu>
 
 </openbox_menu>
