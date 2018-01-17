@@ -226,6 +226,14 @@ and back in -->
     <keybind key="W-Down">
       <action name="UnMaximize"></action>
     </keybind>
+    <keybind key="W-o">
+      <action name="ToggleOmnipresent"/>
+    </keybind>
+    <keybind key="W-m">
+      <action name="MoveResizeTo">
+        <monitor>next</monitor>
+      </action>
+    </keybind>
     <keybind key="W-a" chroot="true">
       <keybind key="Escape"><action name="BreakChroot"/></keybind>
       <keybind key="q">
