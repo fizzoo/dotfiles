@@ -359,7 +359,7 @@ and back in -->
     </keybind>
     <keybind key="W-Return">
       <action name="Execute">
-        <command>urxvt</command>
+        <command>urxvtc</command>
       </action>
     </keybind>
     <keybind key="W-S-Return">

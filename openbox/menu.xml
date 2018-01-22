@@ -12,6 +12,10 @@
     <item label="_discord"><action name="Execute"><execute>discord</execute></action></item>
     <item label="_mp[dc]+cantata"><action name="Execute"><execute>bash -c "( mpd || mpc update ); cantata"</execute></action></item>
 
+    <separator />
+    <item label="xterm"><action name="Execute"><execute>xterm</execute></action></item>
+    <item label="urxvt"><action name="Execute"><execute>urxvt</execute></action></item>
+    <item label="nautilus"><action name="Execute"><execute>nautilus</execute></action></item>
     <separator label="System" />
 
     <menu id="system-menu"/>
