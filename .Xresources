@@ -45,4 +45,4 @@ URxvt*urgentOnBell: true
 
 URxvt.font: xft:Dina:pixelsize=13
 URxvt*scrollBar: false
-urxvt.saveLines: 1000000
+urxvt.saveLines: 8192
