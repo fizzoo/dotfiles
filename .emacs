@@ -244,8 +244,9 @@ And if we're inside said buffer, start up a new zsh."
 (use-package ggtags
   :init
   (progn
-    (nmap "M-." 'ggtags-find-tag-dwim)
-    (nmap "M-?" 'ggtags-find-reference)))
+    (nmapm 'c++-mode-map
+           "M-." 'ggtags-find-tag-dwim
+           "M-?" 'ggtags-find-reference)))
 
 (use-package flycheck
   :defer
@@ -317,7 +318,8 @@ And if we're inside said buffer, start up a new zsh."
   (modify-syntax-entry ?_ "w")
   (anaconda-mode)
   (anaconda-eldoc-mode)
-  (add-to-list 'company-backends '(company-anaconda)))
+  (add-to-list 'company-backends '(company-anaconda))
+  (add-to-list 'evil-emacs-state-modes 'anaconda-mode-view-mode))
 (add-hook 'python-mode-hook 'pyhook)
 
 ;; C/C++
