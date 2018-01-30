@@ -29,6 +29,7 @@ fi
 
 xset b off
 urxvtd -q -f -o
+xss-lock -- slock &
 
 if [ -z "$WM" ]; then
   exec openbox-session

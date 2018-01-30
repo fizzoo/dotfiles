@@ -229,7 +229,7 @@ and back in -->
     <keybind key="W-o">
       <action name="ToggleOmnipresent"/>
     </keybind>
-    <keybind key="W-m">
+    <keybind key="W-i">
       <action name="MoveResizeTo">
         <monitor>next</monitor>
       </action>
@@ -390,6 +390,16 @@ and back in -->
     <keybind key="W-V">
       <action name="Execute">
         <command>bash -c "xclip -o -sel p | xclip -i -sel c"</command>
+      </action>
+    </keybind>
+    <keybind key="W-m">
+      <action name="ShowMenu">
+        <menu>root-menu</menu>
+      </action>
+    </keybind>
+    <keybind key="W-Escape">
+      <action name="Execute">
+        <command>systemctl suspend</command>
       </action>
     </keybind>
     <keybind key="W-S-V">

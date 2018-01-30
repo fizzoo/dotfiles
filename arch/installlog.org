@@ -109,7 +109,8 @@ copy 00-keyboard.conf
     options hid_apple iso_layout=0 swap_opt_cmd=1 fnmode=2
 ** audio
 pacman -S pulseaudio pavucontrol
-** autologin
+** loginstuff
+*** autologin
 /etc/systemd/system/getty@tty1.service.d/override.conf:
     [Service]
     Type=simple
@@ -117,6 +118,10 @@ pacman -S pulseaudio pavucontrol
     ExecStart=-/usr/bin/agetty --autologin fizzo --noclear %I $TERM
 
 add the .profile if uncommented
+
+*** explicit login, lock
+pacman -S slock xss-lock
+in xinitrc: =xss-lock -- slock &=
 ** notifs
 pacman -S dunst
 ** themes
