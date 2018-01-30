@@ -10,7 +10,7 @@
     <separator />
     <item label="_emacs"><action name="Execute"><execute>emacs</execute></action></item>
     <item label="_discord"><action name="Execute"><execute>discord</execute></action></item>
-    <item label="_mp[dc]+cantata"><action name="Execute"><execute>bash -c "( mpd || mpc update ); cantata"</execute></action></item>
+    <item label="_mp[dc]+cantata"><action name="Execute"><execute>bash -c "mpd; mpc update; cantata"</execute></action></item>
 
     <separator />
     <item label="xterm"><action name="Execute"><execute>xterm</execute></action></item>
