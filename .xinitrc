@@ -17,6 +17,8 @@ then
     numlockx
     redshift -t 5500:3000 -b 1.0:0.5 -l 59:17 &
     xinput set-prop "Kingsis Peripherals ZOWIE Gaming mouse" "libinput Accel Profile Enabled" 0, 1
+    xset dpms 1800 1800 1800
+    xset s 1800
 fi
 if [[ $HOSTNAME == arc ]]
 then
