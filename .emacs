@@ -276,9 +276,8 @@ And if we're inside said buffer, start up a new zsh."
     (projectile-mode 1)))
 (use-package counsel-projectile
   :after projectile
-  :config (progn
-            (counsel-projectile-on)
-            (nmap "SPC f SPC" 'counsel-projectile)))
+  :config
+  (nmap "SPC f SPC" 'counsel-projectile))
 
 (use-package rg
   :config (progn
