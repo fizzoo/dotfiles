@@ -412,10 +412,10 @@ and back in -->
         <command>openbox --reconfigure</command>
       </action>
     </keybind>
-    <keybind key="W-F1"> <action name="Execute"> <command>xbacklight '=4' </command> </action> </keybind>
-    <keybind key="W-F2"> <action name="Execute"> <command>xbacklight '=16'</command> </action> </keybind>
-    <keybind key="W-F3"> <action name="Execute"> <command>xbacklight '=32'</command> </action> </keybind>
-    <keybind key="W-F4"> <action name="Execute"> <command>xbacklight '=100'</command> </action> </keybind>
+    <keybind key="W-F1"> <action name="Execute"> <command>xbacklight '=4'   </command> </action> </keybind>
+    <keybind key="W-F2"> <action name="Execute"> <command>xbacklight '=16'  </command> </action> </keybind>
+    <keybind key="W-F3"> <action name="Execute"> <command>xbacklight '=32'  </command> </action> </keybind>
+    <keybind key="W-F4"> <action name="Execute"> <command>xbacklight '=100' </command> </action> </keybind>
 
     <keybind key="Print"> <action name="Execute"> <command>sh -c "maim -s ~/maim$(date +%s).png"</command> </action> </keybind>
     <keybind key="XF86Launch5"> <action name="Execute"> <command>sh -c "maim -s ~/maim$(date +%s).png"</command> </action> </keybind>
@@ -425,11 +425,18 @@ and back in -->
     <keybind key="XF86AudioLowerVolume"> <action name="Execute"> <command>bash -c 'notify-send "volume: $(amixer set Master 5%- | rg -o '[0-9]+%' | head -n 1)"'</command> </action> </keybind>
     <keybind key="XF86AudioRaiseVolume"> <action name="Execute"> <command>bash -c 'notify-send "volume: $(amixer set Master 5%+ | rg -o '[0-9]+%' | head -n 1)"'</command> </action> </keybind>
 
-    <keybind key="W-KP_2"> <action name="Execute"> <command>mpc toggle </command> </action> </keybind>
-    <keybind key="W-KP_3"> <action name="Execute"> <command>mpc seek +5</command> </action> </keybind>
-    <keybind key="W-KP_1"> <action name="Execute"> <command>mpc seek -5</command> </action> </keybind>
-    <keybind key="W-KP_6"> <action name="Execute"> <command>mpc next   </command> </action> </keybind>
-    <keybind key="W-KP_4"> <action name="Execute"> <command>mpc prev   </command> </action> </keybind>
+
+    <keybind key="W-space" chroot="true">
+      <keybind key="Escape"><action name="BreakChroot"/></keybind>
+      <keybind key="space"> <action name="Execute"> <command>mpc toggle   </command> </action> </keybind>
+      <keybind key="Right"> <action name="Execute"> <command>mpc seek +5% </command> </action> </keybind>
+      <keybind key="Left">  <action name="Execute"> <command>mpc seek -5% </command> </action> </keybind>
+      <keybind key="Up">    <action name="Execute"> <command>mpc next     </command> </action> </keybind>
+      <keybind key="Down">  <action name="Execute"> <command>mpc prev     </command> </action> </keybind>
+      <keybind key="u">     <action name="Execute"> <command>mpc update   </command> </action> </keybind>
+      <keybind key="m">     <action name="Execute"> <command>mpd          </command> </action> </keybind>
+      <keybind key="c">     <action name="Execute"> <command>cantata      </command> </action> </keybind>
+    </keybind>
   </keyboard>
 
   <mouse>

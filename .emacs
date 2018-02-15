@@ -153,6 +153,9 @@ And if we're inside said buffer, start up a new zsh."
   (defmacro nmapm (map &rest l)
     "Map the bindings of L with 'evil-normal-state-map."
     `(evil-define-key 'normal ,map ,@(add-kbds l)))
+  (defmacro vmapm (map &rest l)
+    "Map the bindings of L with 'evil-normal-state-map."
+    `(evil-define-key 'visual ,map ,@(add-kbds l)))
   (defmacro amapm (map &rest l)
     "Map the bindings of L with all the maps."
     `(evil-define-key nil ,map ,@(add-kbds l)))
@@ -160,6 +163,8 @@ And if we're inside said buffer, start up a new zsh."
     `(imapm global-map ,@l))
   (defmacro nmap (&rest l)
     `(nmapm global-map ,@l))
+  (defmacro vmap (&rest l)
+    `(vmapm global-map ,@l))
   (defmacro amap (&rest l)
     `(amapm global-map ,@l)))
 
@@ -431,10 +436,11 @@ And if we're inside said buffer, start up a new zsh."
 (nmap "SPC t" 'flycheck-toggle-and-check)
 (nmap "SPC o t" 'toggle-truncate-lines)
 
-(nmap "SPC g" 'magit-status)
+(nmap "SPC g"   'magit-status)
 (nmap "SPC b d" 'evil-delete-buffer)
-(amap "C-s" 'swiper)
-(nmap "C-u" 'evil-scroll-up)
+(amap "C-s"     'swiper)
+(nmap "C-u"     'evil-scroll-up)
+(vmap "SPC a"   'align-regexp)
 
 (amapm highlight-uses-mode-map
        "M-n" 'highlight-uses-mode-next
