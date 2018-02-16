@@ -185,7 +185,9 @@ And if we're inside said buffer, start up a new zsh."
   :diminish which-key-mode)
 
 (use-package undo-tree
-  :config (global-undo-tree-mode)
+  :config (progn
+            (global-undo-tree-mode)
+            (setq undo-tree-enable-undo-in-region nil))
   :diminish undo-tree-mode)
 
 (use-package ws-butler
