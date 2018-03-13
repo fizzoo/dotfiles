@@ -402,6 +402,11 @@ and back in -->
         <command>systemctl suspend</command>
       </action>
     </keybind>
+    <keybind key="W-section">
+      <action name="Execute">
+        <command>bash -c "sleep 0.2; xset dpms force off"</command>
+      </action>
+    </keybind>
     <keybind key="W-S-V">
       <action name="Execute">
         <command>bash -c "xclip -o -sel c | xclip -i -sel p"</command>
