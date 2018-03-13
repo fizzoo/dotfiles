@@ -433,14 +433,14 @@ and back in -->
 
     <keybind key="W-space" chroot="true">
       <keybind key="Escape"><action name="BreakChroot"/></keybind>
-      <keybind key="space"> <action name="Execute"> <command>mpc toggle   </command> </action> </keybind>
-      <keybind key="Right"> <action name="Execute"> <command>mpc seek +5% </command> </action> </keybind>
-      <keybind key="Left">  <action name="Execute"> <command>mpc seek -5% </command> </action> </keybind>
-      <keybind key="Up">    <action name="Execute"> <command>mpc next     </command> </action> </keybind>
-      <keybind key="Down">  <action name="Execute"> <command>mpc prev     </command> </action> </keybind>
-      <keybind key="u">     <action name="Execute"> <command>mpc update   </command> </action> </keybind>
-      <keybind key="m">     <action name="Execute"> <command>mpd          </command> </action> </keybind>
-      <keybind key="c">     <action name="Execute"> <command>cantata      </command> </action> </keybind>
+      <keybind key="space"> <action name="Execute"> <command>mpc toggle    </command> </action> </keybind>
+      <keybind key="Right"> <action name="Execute"> <command>mpc seek +10% </command> </action> </keybind>
+      <keybind key="Left">  <action name="Execute"> <command>mpc seek -10% </command> </action> </keybind>
+      <keybind key="Up">    <action name="Execute"> <command>mpc next      </command> </action> </keybind>
+      <keybind key="Down">  <action name="Execute"> <command>mpc prev      </command> </action> </keybind>
+      <keybind key="u">     <action name="Execute"> <command>mpc update    </command> </action> </keybind>
+      <keybind key="m">     <action name="Execute"> <command>mpd           </command> </action> </keybind>
+      <keybind key="c">     <action name="Execute"> <command>cantata       </command> </action> </keybind>
     </keybind>
   </keyboard>
 
