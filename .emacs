@@ -325,7 +325,7 @@ And if we're inside said buffer, start up a new zsh."
   (anaconda-mode)
   (anaconda-eldoc-mode)
   (add-to-list 'company-backends '(company-anaconda))
-  (add-to-list 'evil-emacs-state-modes 'anaconda-mode-view-mode))
+  (add-to-list 'evil-emacs-state-modes 'anaconda-view-mode))
 (add-hook 'python-mode-hook 'pyhook)
 
 ;; C/C++
