@@ -325,7 +325,10 @@ And if we're inside said buffer, start up a new zsh."
   (anaconda-mode)
   (anaconda-eldoc-mode)
   (add-to-list 'company-backends '(company-anaconda))
-  (add-to-list 'evil-emacs-state-modes 'anaconda-view-mode))
+  (add-to-list 'evil-emacs-state-modes 'anaconda-view-mode)
+  (nmapm python-mode-map
+         "M-." 'anaconda-mode-find-definitions
+         "M-?" 'anaconda-mode-show-doc))
 (add-hook 'python-mode-hook 'pyhook)
 
 ;; C/C++
@@ -440,6 +443,8 @@ And if we're inside said buffer, start up a new zsh."
 (nmap "SPC g"   'magit-status)
 (nmap "SPC b d" 'evil-delete-buffer)
 (amap "C-s"     'swiper)
+(amap "C-e"     'move-end-of-line)
+(nmap "C-e"     'move-end-of-line)
 (nmap "C-u"     'evil-scroll-up)
 (vmap "SPC a"   'align-regexp)
 

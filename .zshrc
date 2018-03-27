@@ -25,9 +25,13 @@ setopt extendedglob histverify autopushd pushdsilent nobeep hist_ignore_all_dups
 # Prompt is overridden by liquidprompt, if available
 export PROMPT='%B%(!,%F{red},%F{green})%(0?,>,!)> %f%b'
 
-bindkey -e
+bindkey -v
 export KEYTIMEOUT=1
 bindkey "^?" backward-delete-char
+bindkey "^w" backward-kill-word
+bindkey "^r" history-incremental-search-backward
+bindkey "^a" beginning-of-line
+bindkey "^e" end-of-line
 bindkey "^[[3~" delete-char
 bindkey "^[[A" up-line-or-search && bindkey "^[[B" down-line-or-search
 bindkey '^xa' _expand_alias
