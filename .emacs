@@ -35,6 +35,10 @@
   "Switch font to source code pro."
   (interactive)
   (choose-font-if-exists "Source Code Pro"))
+(defun font-big ()
+  "Switch font to a big source code pro."
+  (interactive)
+  (choose-font-if-exists "Source Code Pro 18"))
 (font-dina)
 
 ;;; Enable all functions
@@ -118,7 +122,6 @@ And if we're inside said buffer, start up a new zsh."
             (accent . (telephone-line-erc-modified-channels-segment
                        telephone-line-process-segment))
             (accent . (telephone-line-minor-mode-segment
-                       (telephone-line-fill 1)
                        telephone-line-buffer-segment))))
     (setq telephone-line-rhs
           '((nil    . (telephone-line-misc-info-segment))
