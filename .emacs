@@ -285,10 +285,15 @@ And if we're inside said buffer, start up a new zsh."
   (nmap "SPC f SPC" 'counsel-projectile))
 
 (use-package rg
-  :config (progn
-            (nmap "SPC r SPC" 'rg-project)
-            (nmap "SPC r d" 'rg-dwim)
-            (nmap "SPC r r" 'rg)))
+  :config
+  (progn
+    (rg-define-search rg-project-all
+      :files "all"
+      :dir project)
+    (nmap "SPC r SPC" 'rg-project-all)
+    (nmap "SPC r p" 'rg-project)
+    (nmap "SPC r d" 'rg-dwim)
+    (nmap "SPC r r" 'rg)))
 
 ;; Org
 (use-package org
