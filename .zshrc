@@ -179,3 +179,4 @@ gitclean () {
 }
 
 test -f $HOME/.dircolors && eval $( dircolors -b $HOME/.dircolors )
+test -f $HOME/.zshtmp && . $HOME/.zshtmp
