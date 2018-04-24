@@ -134,7 +134,9 @@ _l_help () {
     if (( $# == 0 )); then
         echo `pwd`
     elif (( $# == 1 )); then
-        if [[ $1 =~ "/.*" ]]; then; else
+        if [[ $1 =~ "^/" ]]; then
+            echo $1
+        else
             echo `pwd`/$1
         fi
     fi
