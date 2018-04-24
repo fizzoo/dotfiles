@@ -245,7 +245,8 @@ And if we're inside said buffer, start up a new zsh."
             (amapm company-active-map
                    "<return>" nil
                    "RET" nil
-                   "C-SPC" 'company-complete-selection))
+                   "C-SPC" 'company-complete-selection)
+            (amap "C-." 'company-files))
   :diminish company-mode)
 (use-package company-quickhelp
   :after company
