@@ -326,6 +326,69 @@ and back in -->
           <height>100%</height>
         </action>
       </keybind>
+      <keybind key="y">
+        <action name="UnmaximizeFull"/>
+        <action name="MoveResizeTo">
+          <x>0</x>
+          <y>0</y>
+          <width>1/3</width>
+          <height>100%</height>
+        </action>
+      </keybind>
+      <keybind key="u">
+        <action name="UnmaximizeFull"/>
+        <action name="MoveResizeTo">
+          <x>1/3</x>
+          <y>0</y>
+          <width>1/3</width>
+          <height>100%</height>
+        </action>
+      </keybind>
+      <keybind key="i">
+        <action name="UnmaximizeFull"/>
+        <action name="MoveResizeTo">
+          <x>2/3</x>
+          <y>0</y>
+          <width>1/3</width>
+          <height>100%</height>
+        </action>
+      </keybind>
+      <keybind key="h">
+        <action name="UnmaximizeFull"/>
+        <action name="MoveResizeTo">
+          <x>0</x>
+          <y>0</y>
+          <width>1/4</width>
+          <height>100%</height>
+        </action>
+      </keybind>
+      <keybind key="j">
+        <action name="UnmaximizeFull"/>
+        <action name="MoveResizeTo">
+          <x>1/4</x>
+          <y>0</y>
+          <width>1/4</width>
+          <height>100%</height>
+        </action>
+      </keybind>
+      <keybind key="k">
+        <action name="UnmaximizeFull"/>
+        <action name="MoveResizeTo">
+          <x>2/4</x>
+          <y>0</y>
+          <width>1/4</width>
+          <height>100%</height>
+        </action>
+      </keybind>
+      <keybind key="l">
+        <action name="UnmaximizeFull"/>
+        <action name="MoveResizeTo">
+          <x>3/4</x>
+          <y>0</y>
+          <width>1/4</width>
+          <height>100%</height>
+        </action>
+      </keybind>
       <keybind key="Tab">
         <action name="NextWindow">
           <interactive>no</interactive>
@@ -365,8 +428,33 @@ and back in -->
       </action>
     </keybind>
 
+    <!-- same but hjkl -->
+    <keybind key="W-L">
+      <action name="DirectionalCycleWindows">
+        <direction>right</direction>
+      </action>
+    </keybind>
+    <keybind key="W-H">
+      <action name="DirectionalCycleWindows">
+        <direction>left</direction>
+      </action>
+    </keybind>
+    <keybind key="W-K">
+      <action name="DirectionalCycleWindows">
+        <direction>up</direction>
+      </action>
+    </keybind>
+    <keybind key="W-J">
+      <action name="DirectionalCycleWindows">
+        <direction>down</direction>
+      </action>
+    </keybind>
+
     <keybind key="W-F">
       <action name="ToggleFullscreen"/>
+    </keybind>
+    <keybind key="W-G">
+        <action name="GrowToFill"></action>
     </keybind>
 
     <!-- Keybindings for running applications -->
