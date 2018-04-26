@@ -22,7 +22,7 @@ HISTSIZE=800
 SAVEHIST=800
 setopt extendedglob histverify autopushd pushdsilent nobeep hist_ignore_all_dups hist_ignore_space inc_append_history
 
-export PROMPT="${RANGER_LEVEL:+(r$RANGER_LEVEL)}%B%(!,%F{red},%F{green})%(0?,>,!)> %f%b"
+export PROMPT="%F{blue}${RANGER_LEVEL:+(r${RANGER_LEVEL})}%B%(!,%F{red},%F{green})%(0?,>,!)> %f%b"
 
 bindkey -v
 export KEYTIMEOUT=1
