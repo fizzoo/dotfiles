@@ -36,6 +36,32 @@ bindkey "^[[A" up-line-or-search && bindkey "^[[B" down-line-or-search
 bindkey '^xa' _expand_alias
 bindkey '^[*' _expand_alias
 
+
+# Exports, path and stuff
+
+# Make path an array-unique, so no duplicates
+typeset -aU path
+
+# Then pathmunge is trivial
+pathmunge () {
+    if (( $# == 0 )); then
+        echo $path
+        return
+    elif (( $# == 1 )); then
+        path=($1 $path)
+        return
+    fi
+}
+
+export EDITOR='vim'
+export VISUAL='vim'
+export PAGER='less'
+export R_LIBS_USER='/opt/R-user/'
+
+pathmunge "$HOME/.local/bin"
+pathmunge "/opt/cuda/bin"
+
+
 # functions & aliases
 color () {
     for i in {0..255}
