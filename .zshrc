@@ -40,7 +40,7 @@ bindkey '^[*' _expand_alias
 # Exports, path and stuff
 
 # Make path an array-unique, so no duplicates
-typeset -aU path
+typeset -U PATH path
 
 # Then pathmunge is trivial
 pathmunge () {
