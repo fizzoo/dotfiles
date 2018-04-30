@@ -73,6 +73,10 @@ color () {
     echo
 }
 
+csv () {
+    column -s, -t $@ | less -\#8 -S
+}
+
 serve () {
     TRAPINT () { sudo nginx -s stop; return 42; }
     nginxfile='/tmp/nginx.conf'
@@ -93,6 +97,10 @@ cpr () {
         mkdir -p "${@: -1}"
     fi
     cp -rv $*
+}
+
+manrg () {
+    rg -z "$@" /usr/share/man/man{0,1,2,4,5,6,7,8,n}
 }
 
 c () {
