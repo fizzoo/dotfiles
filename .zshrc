@@ -77,6 +77,10 @@ csv () {
     column -s, -t $@ | less -\#8 -S
 }
 
+perm () {
+    namei -mo $(readlink -f $*)
+}
+
 serve () {
     TRAPINT () { sudo nginx -s stop; return 42; }
     nginxfile='/tmp/nginx.conf'
