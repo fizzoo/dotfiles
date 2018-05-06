@@ -81,6 +81,10 @@ perm () {
     namei -mo $(readlink -f $*)
 }
 
+jsondiff () {
+    diff -u --color <(jq -S . $1) <(jq -S . $2)
+}
+
 serve () {
     TRAPINT () { sudo nginx -s stop; return 42; }
     nginxfile='/tmp/nginx.conf'
