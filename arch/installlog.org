@@ -36,7 +36,7 @@ wpa_supplicant with wpa_cli is good.
 
 /etc/wpa_supplicant/wpa_supplicant-wlan0.conf:
     ctrl_interface=/var/run/wpa_supplicant
-    ctrl_interface_group=/var/run/wpa_supplicant
+    ctrl_interface_group=wheel
     update_config=1
 
 Then wpa_cli can connect, though check with `interface` if it's a dummy.
