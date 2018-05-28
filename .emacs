@@ -373,6 +373,10 @@ And if we're inside said buffer, start up a new zsh."
   :ensure auctex
   :config (setq TeX-parse-self t))
 
+(use-package company-auctex
+  :after tex
+  :config (company-auctex-init))
+
 (use-package evil-surround
   :config (global-evil-surround-mode 1))
 
