@@ -232,5 +232,11 @@ gitclean () {
     fi
 }
 
+test_and_src () {
+    test -f $1 && source $1
+}
+
 test -f $HOME/.dircolors && eval $( dircolors -b $HOME/.dircolors )
-test -f $HOME/.zshtmp && . $HOME/.zshtmp
+test_and_src $HOME/.zshtmp
+test_and_src /usr/share/fzf/completion.zsh
+test_and_src /usr/share/fzf/key-bindings.zsh
