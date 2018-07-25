@@ -23,6 +23,7 @@ fi
 if [[ $HOSTNAME == arc ]]
 then
     xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Accel Speed" -0.25
+    xinput set-prop "SynPS/2 Synaptics TouchPad" "libinput Disable While Typing Enabled" 0
 fi
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
