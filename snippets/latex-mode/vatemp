@@ -10,7 +10,11 @@
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{microtype}
-\usepackage{parskip}
+
+%\usepackage{parskip}
+%OR
+\setlength{\parindent}{0pt}
+\nonzeroparskip
 
 \usepackage{minibox}
 \usepackage{listings}
