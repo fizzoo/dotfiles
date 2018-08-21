@@ -50,6 +50,12 @@ pathmunge () {
     elif (( $# == 1 )); then
         path=($1 $path)
         return
+    elif (( $# == 2 )); then
+        if [[ $2 == "after" ]]; then
+          path=($path $1)
+        else
+          echo "Unknown \$2: $2"
+        fi
     fi
 }
 
@@ -60,6 +66,7 @@ export R_LIBS_USER='/opt/R-user/'
 
 pathmunge "$HOME/.local/bin"
 pathmunge "/opt/cuda/bin"
+alias an='pathmunge "/opt/anaconda3/bin"'
 
 
 # functions & aliases
