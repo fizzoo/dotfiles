@@ -240,7 +240,7 @@ gitclean () {
 }
 
 test_and_src () {
-    test -f $1 && source $1
+    [[ -f $1 && -r $1 ]] && source $1
 }
 
 test -f $HOME/.dircolors && eval $( dircolors -b $HOME/.dircolors )
