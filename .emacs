@@ -364,8 +364,12 @@ And if we're inside said buffer, start up a new zsh."
   :defer)
 (use-package clang-format
   :after irony
-  :config (nmapm 'c++-mode-map
-                 "SPC a" 'clang-format-buffer))
+  :config
+  (progn
+    (nmapm 'c++-mode-map
+           "SPC a" 'clang-format-buffer)
+    (nmapm 'c-mode-map
+           "SPC a" 'clang-format-buffer)))
 
 ;; TeX
 (use-package tex
