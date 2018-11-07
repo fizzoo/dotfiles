@@ -508,7 +508,7 @@ and back in -->
         <command>systemctl suspend</command>
       </action>
     </keybind>
-    <keybind key="W-section">
+    <keybind key="W-grave">
       <action name="Execute">
         <command>bash -c "sleep 0.2; xset dpms force off"</command>
       </action>
