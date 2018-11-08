@@ -200,15 +200,6 @@ And if we're inside said buffer, start up a new zsh."
     (setq ws-butler-keep-whitespace-before-point nil)
     (ws-butler-global-mode t)))
 
-(use-package aggressive-indent
-  :diminish aggressive-indent-mode
-  :config
-  (progn
-    (global-aggressive-indent-mode)
-    (nmap "SPC o a" 'aggressive-indent-mode)
-    (add-to-list 'aggressive-indent-excluded-modes
-                 'haskell-mode)))
-
 (use-package magit :defer)
 
 (use-package ivy
