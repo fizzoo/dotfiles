@@ -64,6 +64,21 @@ export VISUAL='vim'
 export PAGER='less'
 export R_LIBS_USER='/opt/R-user/'
 
+# `less` colors, mainly for `man`.
+export LESS_TERMCAP_mb=$(tput bold; tput setaf 3) # blink, rarely used
+export LESS_TERMCAP_md=$(tput bold; tput setaf 1) # h1, bold
+export LESS_TERMCAP_me=$(tput sgr0) # end bold, blink, underline
+export LESS_TERMCAP_so=$(tput bold; tput setaf 5; tput setab 0) # help text on bottom
+export LESS_TERMCAP_se=$(tput sgr0) # end standout
+export LESS_TERMCAP_us=$(tput bold; tput setaf 2) # h2, underline
+export LESS_TERMCAP_ue=$(tput sgr0) # end underline
+export LESS_TERMCAP_mr=$(tput rev)
+export LESS_TERMCAP_mh=$(tput dim)
+export LESS_TERMCAP_ZN=$(tput ssubm)
+export LESS_TERMCAP_ZV=$(tput rsubm)
+export LESS_TERMCAP_ZO=$(tput ssupm)
+export LESS_TERMCAP_ZW=$(tput rsupm)
+
 pathmunge "$HOME/.local/bin"
 pathmunge "/opt/cuda/bin"
 alias an='pathmunge "/opt/anaconda3/bin"'
