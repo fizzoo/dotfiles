@@ -771,9 +771,14 @@ and back in -->
 
   <applications>
     <application name="FULLY">
-      <fullscreen>
-        yes
-      </fullscreen>
+    <size>
+       <width>80%</width>
+       <height>80%</height>
+    </size>
+      <position>
+        <x>center</x>
+        <y>center</y>
+      </position>
     </application>
   </applications>
 
