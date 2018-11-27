@@ -83,6 +83,18 @@ pathmunge "$HOME/.local/bin"
 pathmunge "/opt/cuda/bin"
 alias an='pathmunge "/opt/anaconda3/bin"'
 
+ensure_n_args () {
+  if (( $1 != $2 )); then
+    printf "Function %s wants %d parameters, got %d\n" $funcstack[2] $1 $2
+    return -1
+  fi
+}
+alias nargs0='ensure_n_args 0 $# || return $?'
+alias nargs1='ensure_n_args 1 $# || return $?'
+alias nargs2='ensure_n_args 2 $# || return $?'
+alias nargs3='ensure_n_args 3 $# || return $?'
+alias nargs4='ensure_n_args 4 $# || return $?'
+alias nargs5='ensure_n_args 5 $# || return $?'
 
 # functions & aliases
 color () {
@@ -137,7 +149,7 @@ c () {
     dir=$(find "$@" -xdev -print 2> /dev/null | fzf)
     if [[ -z "$dir" ]]; then return; fi
     if [[ ! -d "$dir" ]]; then dir=$(dirname "$dir"); fi
-    cd "$dir" || exit 1
+    cd "$dir" || return -1
 }
 
 alias ck='c /k/ && pwd'
@@ -252,6 +264,14 @@ gitclean () {
     if [[ $YESNO =~ "^[Yy]$" ]]; then
         git clean -xdf
     fi
+}
+
+spectroview () {
+  nargs1
+  file=`mktemp --suffix .png`
+  sox $1 -n remix 1 spectrogram -x 3000 -y 513 -z 120 -w Kaiser -o $file
+  sxiv $file
+  rm $file
 }
 
 test_and_src () {
