@@ -483,6 +483,11 @@ and back in -->
         <command>urxvtc -name FULLY -e htop</command>
       </action>
     </keybind>
+    <keybind key="W-E">
+      <action name="Execute">
+        <command>urxvtc -name FULLY -e glances</command>
+      </action>
+    </keybind>
     <keybind key="W-W">
       <action name="Execute">
         <command>urxvtc -name FULLY -e statusy</command>
