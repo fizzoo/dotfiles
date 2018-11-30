@@ -1,8 +1,3 @@
 #!/bin/bash
 
-if [[ `hostname` == "mag" ]]; then
-  qbittorrent &
-  (for i in {1..50}; do sleep 0.1 && wmctrl -r qBittorrent -t 8; done) &
-fi
-
 [ -f ~/.fehbg ] && sh ~/.fehbg
