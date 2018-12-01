@@ -31,6 +31,10 @@
   "Switch font to dina."
   (interactive)
   (choose-font-if-exists "Dina"))
+(defun font-inputmono ()
+  "Switch font to dina."
+  (interactive)
+  (choose-font-if-exists "Input Mono"))
 (defun font-scp ()
   "Switch font to source code pro."
   (interactive)
@@ -39,7 +43,7 @@
   "Switch font to a big source code pro."
   (interactive)
   (choose-font-if-exists "Source Code Pro 18"))
-(font-dina)
+(font-inputmono)
 
 ;;; Enable all functions
 (setq disabled-command-function nil)
@@ -83,6 +87,7 @@ And if we're inside said buffer, start up a new zsh."
 
 ;;; Package manager
 (require 'package)
+(add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 (if (not (file-exists-p "~/.emacs.d/elpa/")) (package-refresh-contents))
