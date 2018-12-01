@@ -282,3 +282,6 @@ test -f $HOME/.dircolors && eval $( dircolors -b $HOME/.dircolors )
 test_and_src $HOME/.zshtmp
 test_and_src /usr/share/fzf/completion.zsh
 test_and_src /usr/share/fzf/key-bindings.zsh
+
+# In case tests fail, do not produce an error code on startup
+true
