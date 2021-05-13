@@ -138,6 +138,7 @@ export LESS_TERMCAP_ZW=$(tput rsupm)
 
 pathmunge "$HOME/.local/bin"
 pathmunge "/opt/cuda/bin"
+pathmunge "$HOME/.cargo/bin"
 alias an='pathmunge "/opt/anaconda3/bin"'
 
 ensure_n_args () {
@@ -302,6 +303,7 @@ test -f $HOME/.dircolors && eval $( dircolors -b $HOME/.dircolors )
 test_and_src $HOME/.zshtmp
 test_and_src /usr/share/fzf/completion.zsh
 test_and_src /usr/share/fzf/key-bindings.zsh
+test_and_src $HOME/.nix-profile/etc/profile.d/nix.sh
 
 # In case tests fail, do not produce an error code on startup
 true

@@ -238,6 +238,9 @@ And if we're inside said buffer, start up a new zsh."
                     company-echo-metadata-frontend
                     company-preview-frontend))
             (define-key company-active-map (kbd "<return>") nil)
+            (setq company-tooltip-align-annotations t)
+            (setq company-minimum-prefix-length 1)
+
             (amapm company-active-map
                    "<return>" nil
                    "RET" nil
@@ -419,6 +422,26 @@ And if we're inside said buffer, start up a new zsh."
 
 (use-package web-mode
   :defer)
+
+(use-package lsp-mode
+  :commands lsp
+  :config (require 'lsp-clients))
+(use-package company-lsp)
+(use-package lsp-ui)
+
+;; Rust
+(use-package toml-mode)
+(use-package rust-mode
+  :init (setq company-tooltip-align-annotations t
+              rust-format-on-save t)
+  :hook (rust-mode . lsp))
+
+;; Add keybindings for interacting with Cargo
+(use-package cargo
+  :hook (rust-mode . cargo-minor-mode))
+
+(use-package flycheck-rust
+  :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
 
 
 
