@@ -1,3 +1,16 @@
+# If AUTO_TMUX is set (probably as part of ssh command sent to the remote desktop), exec tmux in a default session.
+if [[ -n "$AUTO_TMUX" ]] && WHICH_FISH=$(whence -p fish); then
+  echo "Starting tm(ux) through fish."
+  export WHICH_FISH
+  exec "$WHICH_FISH" -i -c "tm new -A -s main"
+fi
+
+# start fish shell if interactive, it's available, and safeguard not already defined.
+# doing this at the start since the rest of the file affects interactive (zsh) mode only.
+if [[ $- = *i* && -z $WHICH_FISH ]] && WHICH_FISH=$(whence -p fish); then
+  export WHICH_FISH
+  exec "$WHICH_FISH" -i
+fi
 
 #completers, _approximate tolerates 1 - max-errors faults
 zstyle ':completion:*' completer _complete _approximate
