@@ -1,0 +1,15 @@
+window {
+margin: 5px;
+border: 1px solid red;
+background-color: #333333;
+}
+
+#input {
+  border: 0px;
+}
+
+#outer-box {
+  margin: 3px;
+}
+
+/* inner-box, text, scroll */
