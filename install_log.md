@@ -1,0 +1,10 @@
+- Copy or make new ssh keys (shared between cloudtops only)
+  - ssh, sftp, put -r .ssh
+- sudo glinux-add-repo fish-google && sudo apt update
+- sudo apt install fzf kitty fish fish-google-config ripgrep htop ciderd csvtool adb
+- git clone git@github.com:fizzoo/dotfiles.git
+  - mv dotfiles .dotfiles
+  - cp .dotfiles/.tmux.conf ~/
+- cd ~/.local/config/ && git clone git@github.com:fizzoo/fish.git
+- cd to recent remote and copy over history
+  - `put .local/share/fish/fish_history .local/share/fish/fish_history`
